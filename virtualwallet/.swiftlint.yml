@@ -1,0 +1,7 @@
+opt_in_rules:
+  - force_unwrapping
+excluded:
+ - Pods
+ - R.generated.swift
+
+force_unwrapping: error
