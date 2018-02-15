@@ -1,0 +1,16 @@
+platform :ios, ‘9.3’
+use_frameworks!
+
+def main_pods
+    pod 'Alamofire'
+    pod 'SwiftLint'
+    pod 'R.swift'
+end
+
+target 'virtualwallet' do
+    main_pods
+end
+
+target 'virtualwalletTests' do
+
+end
