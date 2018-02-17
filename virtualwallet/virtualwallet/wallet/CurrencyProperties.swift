@@ -7,8 +7,7 @@
 //
 
 import Foundation
-// TODO: Maybe change this name to something like "CapitalProperties" to make it more generic.
-// I think that currency seems to apply only to coins (virtual or not)
+
 struct CurrencyProperties {
     let acronym: String
     let sellPrice: Double
