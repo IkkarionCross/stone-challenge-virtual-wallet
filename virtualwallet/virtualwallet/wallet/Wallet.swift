@@ -15,7 +15,7 @@ class Wallet {
     init(currencies: [String: Double]) {
         self.currencies = currencies
     }
-    
+
     func hasAtLeast(funds: Double, ofCurrencyAcronym acronym: String) -> Bool {
         guard let walletCurrencyAmmount = self.currencies[acronym] else {
             return false
@@ -32,7 +32,7 @@ class Wallet {
         }
         self.currencies[acronym] = walletCurrencyAmmount + ammount
     }
-    
+
     func subtract(ammount: Double, ofCurrencyAcronym acronym: String) {
         self.add(ammount: ammount * -1, forCurrencyAcronym: acronym)
     }

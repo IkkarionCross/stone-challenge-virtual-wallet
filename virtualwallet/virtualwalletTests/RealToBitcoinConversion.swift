@@ -58,4 +58,20 @@ class RealToBitcoinConversion: XCTestCase {
             XCTFail("Transaction failed with error: \(error.localizedDescription)")
         }
     }
+
+    func test_ShouldThrowExcepetion_notEnoughFunds() {
+        let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
+                                                                       sellPrice: 1000.0, buyPrice: 1000.0,
+                                                                       basedOnAcronym: "BRL")
+        let currentWallet: Wallet = Wallet(currencies: [:])
+
+        let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
+        do {
+            let _: Wallet = try transaction.buy(ammount: 1.0, ofCurrency: bitcoinProperties)
+            XCTFail("Should throw exception")
+        } catch {
+            XCTAssertEqual(error as? TransactionError,
+                           TransactionError.notEnoughFunds(ofCurrency: bitcoinProperties.basedOnAcronym))
+        }
+    }
 }

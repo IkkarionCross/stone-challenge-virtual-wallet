@@ -19,7 +19,7 @@ struct CurrencyTransaction {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         guard self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
                                      ofCurrencyAcronym: buyingCurrency.basedOnAcronym) else {
-                                        throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.acronym)
+                                        throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.basedOnAcronym)
         }
 
         self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym)

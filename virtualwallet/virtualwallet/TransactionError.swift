@@ -25,3 +25,20 @@ enum TransactionError: AppError {
         }
     }
 }
+
+extension TransactionError: Equatable {
+    static func == (lhs: TransactionError, rhs: TransactionError) -> Bool {
+        return lhs.title == rhs.title &&
+            lhs.localizedDescription == rhs.localizedDescription
+    }
+
+    static func == (lhs: Error, rhs: TransactionError) -> Bool {
+        return lhs is AppError &&
+            lhs.localizedDescription == rhs.localizedDescription
+    }
+
+    static func == (lhs: TransactionError, rhs: Error) -> Bool {
+        return rhs is AppError &&
+            lhs.localizedDescription == rhs.localizedDescription
+    }
+}
