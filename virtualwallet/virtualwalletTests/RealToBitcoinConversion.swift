@@ -24,8 +24,8 @@ class RealToBitcoinConversion: XCTestCase {
     func test_BuyBitcoin() {
         let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
                                                                        sellPrice: 1000.0, buyPrice: 1000.0,
-                                                                       basedOnCurrencyAcronym: "BRL")
-        let currentWallet: Wallet = Wallet(currencies: [bitcoinProperties.basedOnCurrencyAcronym: 1000.0])
+                                                                       basedOnAcronym: "BRL")
+        let currentWallet: Wallet = Wallet(currencies: [bitcoinProperties.basedOnAcronym: 1000.0])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
@@ -43,8 +43,8 @@ class RealToBitcoinConversion: XCTestCase {
     func test_ExchangeBitcoinForReal() {
         let realProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BRL",
                                                                        sellPrice: 0.001, buyPrice: 0.001,
-                                                                       basedOnCurrencyAcronym: "BTC")
-        let currentWallet: Wallet = Wallet(currencies: [realProperties.basedOnCurrencyAcronym: 1.0])
+                                                                       basedOnAcronym: "BTC")
+        let currentWallet: Wallet = Wallet(currencies: [realProperties.basedOnAcronym: 1.0])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {

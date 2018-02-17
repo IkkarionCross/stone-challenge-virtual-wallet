@@ -7,16 +7,17 @@
 //
 
 import Foundation
-
+// TODO: Maybe change this name to something like "CapitalProperties" to make it more generic.
+// I think that currency seems to apply only to coins (virtual or not)
 struct CurrencyProperties {
     let acronym: String
     let sellPrice: Double
     let buyPrice: Double
-    let basedOnCurrencyAcronym: String
-    init(withAcronym acronym: String, sellPrice: Double, buyPrice: Double, basedOnCurrencyAcronym: String) {
+    let basedOnAcronym: String
+    init(withAcronym acronym: String, sellPrice: Double, buyPrice: Double, basedOnAcronym: String) {
         self.acronym = acronym
         self.sellPrice = sellPrice
         self.buyPrice = buyPrice
-        self.basedOnCurrencyAcronym = basedOnCurrencyAcronym
+        self.basedOnAcronym = basedOnAcronym
     }
 }

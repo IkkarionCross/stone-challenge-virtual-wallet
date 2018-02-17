@@ -18,13 +18,13 @@ struct CurrencyTransaction {
     func buy(ammount: Double, ofCurrency buyingCurrency: CurrencyProperties) throws -> Wallet {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         guard self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
-                                     ofCurrencyAcronym: buyingCurrency.basedOnCurrencyAcronym) else {
+                                     ofCurrencyAcronym: buyingCurrency.basedOnAcronym) else {
                                         throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.acronym)
         }
 
         self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym)
         self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
-                             ofCurrencyAcronym: buyingCurrency.basedOnCurrencyAcronym)
+                             ofCurrencyAcronym: buyingCurrency.basedOnAcronym)
 
         return self.wallet
     }
