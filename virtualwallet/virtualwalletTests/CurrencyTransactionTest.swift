@@ -9,7 +9,7 @@
 import XCTest
 @testable import virtualwallet
 
-class RealToBitcoinConversion: XCTestCase {
+class CurrencyTransactionTest: XCTestCase {
 
     override func setUp() {
         super.setUp()

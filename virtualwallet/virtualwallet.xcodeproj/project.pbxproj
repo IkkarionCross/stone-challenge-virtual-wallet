@@ -16,7 +16,7 @@
 		57764F322036316A00FFCE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57764F302036316A00FFCE08 /* LaunchScreen.storyboard */; };
 		57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */; };
 		57764F49203636F000FFCE08 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F48203636F000FFCE08 /* R.generated.swift */; };
-		57764F50203649D300FFCE08 /* RealToBitcoinConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */; };
+		57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F4F203649D300FFCE08 /* CurrencyTransactionTest.swift */; };
 		57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */; };
 		57764F562038C3B400FFCE08 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F552038C3B400FFCE08 /* Wallet.swift */; };
 		57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F582038C5E400FFCE08 /* CurrencyProperties.swift */; };
@@ -50,7 +50,7 @@
 		57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualwalletTests.swift; sourceTree = "<group>"; };
 		57764F3E2036316A00FFCE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57764F48203636F000FFCE08 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealToBitcoinConversion.swift; sourceTree = "<group>"; };
+		57764F4F203649D300FFCE08 /* CurrencyTransactionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTransactionTest.swift; sourceTree = "<group>"; };
 		57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTransaction.swift; sourceTree = "<group>"; };
 		57764F552038C3B400FFCE08 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		57764F582038C5E400FFCE08 /* CurrencyProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProperties.swift; sourceTree = "<group>"; };
@@ -123,19 +123,19 @@
 		57764F3B2036316A00FFCE08 /* virtualwalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				57764F4C2036499600FFCE08 /* Conversion */,
+				57764F4C2036499600FFCE08 /* transactions */,
 				57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */,
 				57764F3E2036316A00FFCE08 /* Info.plist */,
 			);
 			path = virtualwalletTests;
 			sourceTree = "<group>";
 		};
-		57764F4C2036499600FFCE08 /* Conversion */ = {
+		57764F4C2036499600FFCE08 /* transactions */ = {
 			isa = PBXGroup;
 			children = (
-				57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */,
+				57764F4F203649D300FFCE08 /* CurrencyTransactionTest.swift */,
 			);
-			name = Conversion;
+			name = transactions;
 			sourceTree = "<group>";
 		};
 		57764F512038C34C00FFCE08 /* transactions */ = {
@@ -452,7 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */,
-				57764F50203649D300FFCE08 /* RealToBitcoinConversion.swift in Sources */,
+				57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
