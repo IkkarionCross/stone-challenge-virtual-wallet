@@ -16,6 +16,12 @@
 		57764F322036316A00FFCE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57764F302036316A00FFCE08 /* LaunchScreen.storyboard */; };
 		57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */; };
 		57764F49203636F000FFCE08 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F48203636F000FFCE08 /* R.generated.swift */; };
+		57764F50203649D300FFCE08 /* RealToBitcoinConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */; };
+		57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */; };
+		57764F562038C3B400FFCE08 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F552038C3B400FFCE08 /* Wallet.swift */; };
+		57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F582038C5E400FFCE08 /* CurrencyProperties.swift */; };
+		57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F5B2038D35C00FFCE08 /* TransactionError.swift */; };
+		5784E0592038D3AA0096B151 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0582038D3AA0096B151 /* AppError.swift */; };
 		D107A30098519810DB6923E9 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +50,12 @@
 		57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualwalletTests.swift; sourceTree = "<group>"; };
 		57764F3E2036316A00FFCE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57764F48203636F000FFCE08 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealToBitcoinConversion.swift; sourceTree = "<group>"; };
+		57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTransaction.swift; sourceTree = "<group>"; };
+		57764F552038C3B400FFCE08 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		57764F582038C5E400FFCE08 /* CurrencyProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyProperties.swift; sourceTree = "<group>"; };
+		57764F5B2038D35C00FFCE08 /* TransactionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionError.swift; sourceTree = "<group>"; };
+		5784E0582038D3AA0096B151 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		8661E187FFB4532C6EBF522B /* Pods-virtualwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F7B6A320343AA12E77F807 /* Pods-virtualwalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +105,9 @@
 		57764F242036316A00FFCE08 /* virtualwallet */ = {
 			isa = PBXGroup;
 			children = (
+				57764F5A2038D34900FFCE08 /* errors */,
+				57764F542038C3A700FFCE08 /* wallet */,
+				57764F512038C34C00FFCE08 /* transactions */,
 				57764F48203636F000FFCE08 /* R.generated.swift */,
 				57764F252036316A00FFCE08 /* AppDelegate.swift */,
 				57764F272036316A00FFCE08 /* FirstViewController.swift */,
@@ -108,10 +123,53 @@
 		57764F3B2036316A00FFCE08 /* virtualwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				57764F4C2036499600FFCE08 /* Conversion */,
 				57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */,
 				57764F3E2036316A00FFCE08 /* Info.plist */,
 			);
 			path = virtualwalletTests;
+			sourceTree = "<group>";
+		};
+		57764F4C2036499600FFCE08 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				57764F4F203649D300FFCE08 /* RealToBitcoinConversion.swift */,
+			);
+			name = Conversion;
+			sourceTree = "<group>";
+		};
+		57764F512038C34C00FFCE08 /* transactions */ = {
+			isa = PBXGroup;
+			children = (
+				57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */,
+			);
+			name = transactions;
+			sourceTree = "<group>";
+		};
+		57764F542038C3A700FFCE08 /* wallet */ = {
+			isa = PBXGroup;
+			children = (
+				57764F572038C5D200FFCE08 /* currencies */,
+				57764F552038C3B400FFCE08 /* Wallet.swift */,
+			);
+			path = wallet;
+			sourceTree = "<group>";
+		};
+		57764F572038C5D200FFCE08 /* currencies */ = {
+			isa = PBXGroup;
+			children = (
+				57764F582038C5E400FFCE08 /* CurrencyProperties.swift */,
+			);
+			name = currencies;
+			sourceTree = "<group>";
+		};
+		57764F5A2038D34900FFCE08 /* errors */ = {
+			isa = PBXGroup;
+			children = (
+				57764F5B2038D35C00FFCE08 /* TransactionError.swift */,
+				5784E0582038D3AA0096B151 /* AppError.swift */,
+			);
+			name = errors;
 			sourceTree = "<group>";
 		};
 		7F8E0B406E5815A88FA47C88 /* Frameworks */ = {
@@ -377,6 +435,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
+				57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */,
+				5784E0592038D3AA0096B151 /* AppError.swift in Sources */,
+				57764F562038C3B400FFCE08 /* Wallet.swift in Sources */,
+				57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */,
 				57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,
 				57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */,
@@ -389,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */,
+				57764F50203649D300FFCE08 /* RealToBitcoinConversion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
