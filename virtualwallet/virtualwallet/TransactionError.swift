@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TransactionError: AppError {
+enum TransactionError: AppError, Equatable {
     case notEnoughFunds(ofCurrency: String)
 
     var title: String {
@@ -23,22 +23,5 @@ enum TransactionError: AppError {
         case .notEnoughFunds(let currency):
             return "Fundos para \(currency) não são suficientes para realizar a transação."
         }
-    }
-}
-
-extension TransactionError: Equatable {
-    static func == (lhs: TransactionError, rhs: TransactionError) -> Bool {
-        return lhs.title == rhs.title &&
-            lhs.localizedDescription == rhs.localizedDescription
-    }
-
-    static func == (lhs: Error, rhs: TransactionError) -> Bool {
-        return lhs is AppError &&
-            lhs.localizedDescription == rhs.localizedDescription
-    }
-
-    static func == (lhs: TransactionError, rhs: Error) -> Bool {
-        return rhs is AppError &&
-            lhs.localizedDescription == rhs.localizedDescription
     }
 }

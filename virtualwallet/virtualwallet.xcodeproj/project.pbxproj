@@ -131,6 +131,7 @@
 		574AC2E02039FABE006FFF97 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2E4203A0075006FFF97 /* mock */,
 			);
 			name = TestDoubles;
 			sourceTree = "<group>";
@@ -141,6 +142,13 @@
 				574AC2E22039FD60006FFF97 /* Service.swift */,
 			);
 			path = protocols;
+			sourceTree = "<group>";
+		};
+		574AC2E4203A0075006FFF97 /* mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mock;
 			sourceTree = "<group>";
 		};
 		57764F192036316A00FFCE08 = {
@@ -400,9 +408,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -9,6 +9,8 @@
 import Foundation
 
 enum BaseRouter {
-
-    static let baseBCDURL: String = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1"
+    static let baseBCDHost: String = "olinda.bcb.gov.br"
+    static var baseBCDURL: String {
+        return "https://\(BaseRouter.baseBCDHost)/olinda/servico/PTAX/versao/v1"
+    }
 }

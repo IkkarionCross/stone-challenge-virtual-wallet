@@ -12,5 +12,5 @@ target 'virtualwallet' do
 end
 
 target 'virtualwalletTests' do
-
+    pod 'OHHTTPStubs/Swift'
 end

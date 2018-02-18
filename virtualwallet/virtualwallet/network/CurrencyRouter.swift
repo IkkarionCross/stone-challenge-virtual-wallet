@@ -19,7 +19,7 @@ enum CurrencyRouter: URLRequestConvertible {
         }
     }
 
-    private var urlItems: (path: String, parameters: Parameters?) {
+    var urlItems: (path: String, parameters: Parameters?) {
         switch self {
         case .retrieveQuotationFor(let currencyAcronym, let date):
             return (path:
