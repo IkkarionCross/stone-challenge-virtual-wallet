@@ -10,17 +10,28 @@ import Foundation
 import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
-    private let service: RESTService<String>
+    private let service: RESTService<[String: Any]>
     
-    init(service: RESTService<String>) {
+    init(service: RESTService<[String: Any]>) {
         self.service = service
         super.init()
         self.title = "Atualizar valores monetários"
     }
-    
+
     override func main() {
         self.service.retrieveData { (jsonString, error) in
-            
+            if let error = error {
+                self.operationDidFinish?(error, nil)
+                self.finish()
+                return
+            }
+
+            guard let jsonString = jsonString else {
+                print("Fuck!")
+                return
+            }
+
+            print(jsonString)
         }
     }
 }

@@ -21,7 +21,7 @@ struct RESTService<T> {
     func retrieveData(completion: @escaping (_ data: T?, _ error: AppError?) -> Void) {
         Alamofire.request(self.urlRequest)
             .validate(statusCode: 200...299)
-            .responseJSON(queue: self.queue) { response in
+            .responseJSON(queue: self.queue, options: JSONSerialization.ReadingOptions.allowFragments) { response in
                 switch response.result {
                 case .success:
                     if let JSONData = response.result.value as? T {

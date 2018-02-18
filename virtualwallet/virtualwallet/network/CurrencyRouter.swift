@@ -23,9 +23,9 @@ enum CurrencyRouter: URLRequestConvertible {
         switch self {
         case .retrieveQuotationToday(let currencyAcronym):
             return (path:
-                "/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)", ["moeda": "\(currencyAcronym)",
-                               "dataCotacao": "\(Date().formattedWith(format: "MM-dd-yyyy"))",
-                               "format": "json"])
+                "/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)", ["@moeda": "'\(currencyAcronym)'",
+                               "@dataCotacao": "'\(Date().formattedWith(format: "MM-dd-yyyy"))'",
+                               "$format": "json"])
         }
     }
 

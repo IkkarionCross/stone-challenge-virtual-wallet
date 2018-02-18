@@ -9,9 +9,17 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    let operationQueue: OperationQueue = OperationQueue()
+    var updateOperation: UpdateCurrencyPropertiesOperation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationToday(currencyAcronym: "USD")
+        let service: RESTService<[String: Any]> = RESTService<[String: Any]>(request: urlRequest,
+                                                               queue: DispatchQueue.global())
+        updateOperation = UpdateCurrencyPropertiesOperation(service: service)
+
+        operationQueue.addOperation(updateOperation)
     }
 
     override func didReceiveMemoryWarning() {
