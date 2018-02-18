@@ -27,11 +27,11 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
             }
 
             guard let jsonString = jsonString else {
-                print("Fuck!")
+                self.operationDidFinish?(NetworkError.invalidDataReceived(requestDescription: ""), nil)
                 return
             }
-
-            print(jsonString)
+            self.operationDidFinish?(nil, ["data": jsonString])
+            self.finish()
         }
     }
 }

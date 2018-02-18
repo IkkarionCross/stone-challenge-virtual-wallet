@@ -12,6 +12,7 @@
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D7203914A8006FFF97 /* URLDescriptor.swift */; };
 		574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574AC2D92039F82E006FFF97 /* Default-568h@2x.png */; };
+		574AC2DF2039F9BC006FFF97 /* UpdateCurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2DE2039F9BC006FFF97 /* UpdateCurrencyTest.swift */; };
 		57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F252036316A00FFCE08 /* AppDelegate.swift */; };
 		57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F272036316A00FFCE08 /* FirstViewController.swift */; };
 		57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F292036316A00FFCE08 /* SecondViewController.swift */; };
@@ -50,6 +51,7 @@
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D7203914A8006FFF97 /* URLDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDescriptor.swift; sourceTree = "<group>"; };
 		574AC2D92039F82E006FFF97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		574AC2DE2039F9BC006FFF97 /* UpdateCurrencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrencyTest.swift; sourceTree = "<group>"; };
 		57764F222036316A00FFCE08 /* virtualwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtualwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57764F252036316A00FFCE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57764F272036316A00FFCE08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -119,8 +121,16 @@
 		574AC2DB2039F968006FFF97 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2DE2039F9BC006FFF97 /* UpdateCurrencyTest.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		574AC2E02039FABE006FFF97 /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TestDoubles;
 			sourceTree = "<group>";
 		};
 		57764F192036316A00FFCE08 = {
@@ -167,6 +177,7 @@
 		57764F3B2036316A00FFCE08 /* virtualwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2E02039FABE006FFF97 /* TestDoubles */,
 				574AC2DB2039F968006FFF97 /* Network */,
 				57764F4C2036499600FFCE08 /* transactions */,
 				57764F3E2036316A00FFCE08 /* Info.plist */,
@@ -533,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */,
+				574AC2DF2039F9BC006FFF97 /* UpdateCurrencyTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
