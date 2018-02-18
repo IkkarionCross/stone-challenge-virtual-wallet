@@ -31,8 +31,15 @@ struct RESTService {
                         }
                     }
                 case .failure:
-//                    let handlerError = DataHandlerError.serverError(statusCode: response.response?.statusCode ?? -1, message: message!)
-                    completion(nil, nil)
+                    let statusCode: String
+                    if let code = response.response?.statusCode {
+                        statusCode = String(code)
+                    } else {
+                        statusCode = ""
+                    }
+                    let message = response.error?.localizedDescription ?? ""
+                    let serverError = NetworkError.serverError(statusCode: statusCode, message: message)
+                    completion(nil, serverError)
                 }
         }
     }
