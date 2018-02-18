@@ -17,7 +17,7 @@ class FirstViewController: UIViewController {
         guard let currencyOnDate = Date().add(days: -2) else { return }
         let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD",
                                                                              date: currencyOnDate)
-        let service: RESTService<[String: Any]> = RESTService<[String: Any]>(request: urlRequest,
+        let service: RESTService = RESTService(request: urlRequest,
                                                                queue: DispatchQueue.global())
         updateOperation = UpdateCurrencyPropertiesOperation(service: service)
 

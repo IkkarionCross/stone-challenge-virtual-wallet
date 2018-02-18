@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
-    private let service: RESTService<[String: Any]>
+    private let service: RESTService
 
-    init(service: RESTService<[String: Any]>) {
+    init(service: RESTService) {
         self.service = service
         super.init()
         self.title = "Atualizar valores monetários"

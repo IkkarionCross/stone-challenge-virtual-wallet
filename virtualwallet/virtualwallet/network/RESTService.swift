@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-struct RESTService<T> {
+struct RESTService: Service {
+    typealias DataType = [String: Any]
     private let urlRequest: URLRequestConvertible
     private let queue: DispatchQueue?
 
@@ -18,13 +19,13 @@ struct RESTService<T> {
         self.queue = queue
     }
 
-    func retrieveData(completion: @escaping (_ data: T?, _ error: AppError?) -> Void) {
+    func retrieveData(completion: @escaping (_ data: DataType?, _ error: AppError?) -> Void) {
         Alamofire.request(self.urlRequest)
             .validate(statusCode: 200...299)
             .responseJSON(queue: self.queue, options: JSONSerialization.ReadingOptions.allowFragments) { response in
                 switch response.result {
                 case .success:
-                    if let JSONData = response.result.value as? T {
+                    if let JSONData = response.result.value as? DataType {
                         completion(JSONData, nil)
                     } else {
                         if let requestDescription = (self.urlRequest as? URLDescriptor)?.requestDescription {

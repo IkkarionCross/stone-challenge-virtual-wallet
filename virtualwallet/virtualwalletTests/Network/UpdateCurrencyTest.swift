@@ -13,11 +13,9 @@ class UpdateCurrencyTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
@@ -25,8 +23,8 @@ class UpdateCurrencyTest: XCTestCase {
         let updateExpectation = expectation(description: "Update Currency")
 
         let path: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD", date: Date())
-        let service: RESTService<[String: Any]> = RESTService<[String: Any]>(request: path,
-                                                                             queue: DispatchQueue.global())
+        let service: RESTService = RESTService(request: path,
+                                               queue: DispatchQueue.global())
         let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
 
         operation.operationDidFinish = { error, info in
