@@ -18,7 +18,6 @@
 		57764F2D2036316A00FFCE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57764F2B2036316A00FFCE08 /* Main.storyboard */; };
 		57764F2F2036316A00FFCE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57764F2E2036316A00FFCE08 /* Assets.xcassets */; };
 		57764F322036316A00FFCE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57764F302036316A00FFCE08 /* LaunchScreen.storyboard */; };
-		57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */; };
 		57764F49203636F000FFCE08 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F48203636F000FFCE08 /* R.generated.swift */; };
 		57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F4F203649D300FFCE08 /* CurrencyTransactionTest.swift */; };
 		57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F522038C35D00FFCE08 /* CurrencyTransaction.swift */; };
@@ -60,7 +59,6 @@
 		57764F312036316A00FFCE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57764F332036316A00FFCE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57764F382036316A00FFCE08 /* virtualwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = virtualwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualwalletTests.swift; sourceTree = "<group>"; };
 		57764F3E2036316A00FFCE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57764F48203636F000FFCE08 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		57764F4F203649D300FFCE08 /* CurrencyTransactionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTransactionTest.swift; sourceTree = "<group>"; };
@@ -118,6 +116,13 @@
 			name = Router;
 			sourceTree = "<group>";
 		};
+		574AC2DB2039F968006FFF97 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		57764F192036316A00FFCE08 = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +167,8 @@
 		57764F3B2036316A00FFCE08 /* virtualwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2DB2039F968006FFF97 /* Network */,
 				57764F4C2036499600FFCE08 /* transactions */,
-				57764F3C2036316A00FFCE08 /* VirtualwalletTests.swift */,
 				57764F3E2036316A00FFCE08 /* Info.plist */,
 			);
 			path = virtualwalletTests;
@@ -527,7 +532,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57764F3D2036316A00FFCE08 /* VirtualwalletTests.swift in Sources */,
 				57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
