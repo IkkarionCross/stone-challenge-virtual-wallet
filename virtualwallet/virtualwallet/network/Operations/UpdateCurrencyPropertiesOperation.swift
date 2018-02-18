@@ -10,16 +10,16 @@ import Foundation
 import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
-    private let service: RESTService
+    private let service: RESTService<String>
     
-    init(service: RESTService) {
+    init(service: RESTService<String>) {
         self.service = service
         super.init()
         self.title = "Atualizar valores monetários"
     }
     
     override func main() {
-        self.service.retrieveData(queue: DispatchQueue.global()) { (jsonString, error) in
+        self.service.retrieveData { (jsonString, error) in
             
         }
     }

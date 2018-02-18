@@ -9,20 +9,22 @@
 import Foundation
 import Alamofire
 
-struct RESTService {
-    private var urlRequest: URLRequestConvertible
-    
-    init(request: URLRequestConvertible) {
+struct RESTService<T> {
+    private let urlRequest: URLRequestConvertible
+    private let queue: DispatchQueue?
+
+    init(request: URLRequestConvertible, queue: DispatchQueue?) {
         self.urlRequest = request
+        self.queue = queue
     }
-    
-    func retrieveData(queue: DispatchQueue?, completion: @escaping (_ jsonString: String?, _ error: AppError?) -> Void) {
+
+    func retrieveData(completion: @escaping (_ data: T?, _ error: AppError?) -> Void) {
         Alamofire.request(self.urlRequest)
             .validate(statusCode: 200...299)
-            .responseJSON(queue: queue) { response in
+            .responseJSON(queue: self.queue) { response in
                 switch response.result {
                 case .success:
-                    if let JSONData = response.result.value as? String {
+                    if let JSONData = response.result.value as? T {
                         completion(JSONData, nil)
                     } else {
                         if let requestDescription = (self.urlRequest as? URLDescriptor)?.requestDescription {
