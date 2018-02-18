@@ -14,7 +14,7 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationToday(currencyAcronym: "USD")
+        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD", date: Date())
         let service: RESTService<[String: Any]> = RESTService<[String: Any]>(request: urlRequest,
                                                                queue: DispatchQueue.global())
         updateOperation = UpdateCurrencyPropertiesOperation(service: service)

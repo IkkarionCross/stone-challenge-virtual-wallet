@@ -10,21 +10,21 @@ import Foundation
 import Alamofire
 
 enum CurrencyRouter: URLRequestConvertible {
-    case retrieveQuotationToday(currencyAcronym: String)
+    case retrieveQuotationFor(currencyAcronym: String, date: Date)
     
     var method: HTTPMethod {
         switch self {
-        case .retrieveQuotationToday:
+        case .retrieveQuotationFor:
             return .get
         }
     }
 
     private var urlItems: (path: String, parameters: Parameters?) {
         switch self {
-        case .retrieveQuotationToday(let currencyAcronym):
+        case .retrieveQuotationFor(let currencyAcronym, let date):
             return (path:
                 "/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)", ["@moeda": "'\(currencyAcronym)'",
-                               "@dataCotacao": "'\(Date().formattedWith(format: "MM-dd-yyyy"))'",
+                               "@dataCotacao": "'\(date.formattedWith(format: "MM-dd-yyyy"))'",
                                "$format": "json"])
         }
     }
@@ -43,7 +43,7 @@ enum CurrencyRouter: URLRequestConvertible {
 extension CurrencyRouter: URLDescriptor {
     var requestDescription: String {
         switch self {
-        case .retrieveQuotationToday(let currencyAcronym):
+        case .retrieveQuotationFor(let currencyAcronym):
             return "Cotação do(a) \(currencyAcronym)"
         }
     }
