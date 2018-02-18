@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1200753880DAA6E5B07DF5BC /* Pods_virtualwallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
+		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
+		574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D7203914A8006FFF97 /* URLDescriptor.swift */; };
 		57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F252036316A00FFCE08 /* AppDelegate.swift */; };
 		57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F272036316A00FFCE08 /* FirstViewController.swift */; };
 		57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F292036316A00FFCE08 /* SecondViewController.swift */; };
@@ -45,6 +47,8 @@
 		1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF34C4A8A5AE5EF548A87E0 /* Pods-virtualwallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.release.xcconfig"; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
+		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		574AC2D7203914A8006FFF97 /* URLDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDescriptor.swift; sourceTree = "<group>"; };
 		57764F222036316A00FFCE08 /* virtualwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtualwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57764F252036316A00FFCE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57764F272036316A00FFCE08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,16 @@
 				574AC2D2203911B9006FFF97 /* RESTService.swift */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		574AC2D62039143F006FFF97 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5784E05C2038FA6C0096B151 /* BaseRouter.swift */,
+				5784E05E2038FACD0096B151 /* CurrencyRouter.swift */,
+				574AC2D7203914A8006FFF97 /* URLDescriptor.swift */,
+			);
+			name = Router;
 			sourceTree = "<group>";
 		};
 		57764F192036316A00FFCE08 = {
@@ -190,6 +204,7 @@
 			children = (
 				57764F5B2038D35C00FFCE08 /* TransactionError.swift */,
 				5784E0582038D3AA0096B151 /* AppError.swift */,
+				574AC2D42039130A006FFF97 /* NetworkError.swift */,
 			);
 			name = errors;
 			sourceTree = "<group>";
@@ -197,10 +212,9 @@
 		5784E05B2038F7960096B151 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2D62039143F006FFF97 /* Router */,
 				574AC2CF20390DD7006FFF97 /* Service */,
 				5784E0632038FEB50096B151 /* Operations */,
-				5784E05C2038FA6C0096B151 /* BaseRouter.swift */,
-				5784E05E2038FACD0096B151 /* CurrencyRouter.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -485,7 +499,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */,
 				5784E0652038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift in Sources */,
+				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
 				5784E05F2038FACD0096B151 /* CurrencyRouter.swift in Sources */,
 				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
 				57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */,

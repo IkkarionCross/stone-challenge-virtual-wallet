@@ -11,7 +11,7 @@ import Alamofire
 
 enum CurrencyRouter: URLRequestConvertible {
     case retrieveQuotationToday(currencyAcronym: String)
-
+    
     var method: HTTPMethod {
         switch self {
         case .retrieveQuotationToday:
@@ -37,5 +37,14 @@ enum CurrencyRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
 
         return try URLEncoding.default.encode(urlRequest, with: urlItems.parameters)
+    }
+}
+
+extension CurrencyRouter: URLDescriptor {
+    var requestDescription: String {
+        switch self {
+        case .retrieveQuotationToday(let currencyAcronym):
+            return "Cotação do(a) \(currencyAcronym)"
+        }
     }
 }
