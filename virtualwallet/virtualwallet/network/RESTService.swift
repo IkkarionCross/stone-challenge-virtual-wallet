@@ -16,7 +16,7 @@ struct RESTService {
         self.urlRequest = request
     }
     
-    func makeRequest(queue: DispatchQueue?, completion: @escaping (_ jsonString: String?, _ error: AppError?) -> Void) {
+    func retrieveData(queue: DispatchQueue?, completion: @escaping (_ jsonString: String?, _ error: AppError?) -> Void) {
         Alamofire.request(self.urlRequest)
             .validate(statusCode: 200...299)
             .responseJSON(queue: queue) { response in

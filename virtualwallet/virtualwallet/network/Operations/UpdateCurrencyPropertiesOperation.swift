@@ -19,7 +19,7 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
     }
     
     override func main() {
-        self.service.makeRequest(queue: DispatchQueue.global()) { (jsonString, error) in
+        self.service.retrieveData(queue: DispatchQueue.global()) { (jsonString, error) in
             
         }
     }
