@@ -11,10 +11,12 @@ import UIKit
 class FirstViewController: UIViewController {
     let operationQueue: OperationQueue = OperationQueue()
     var updateOperation: UpdateCurrencyPropertiesOperation!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD", date: Date())
+        guard let currencyOnDate = Date().add(days: -2) else { return }
+        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD",
+                                                                             date: currencyOnDate)
         let service: RESTService<[String: Any]> = RESTService<[String: Any]>(request: urlRequest,
                                                                queue: DispatchQueue.global())
         updateOperation = UpdateCurrencyPropertiesOperation(service: service)

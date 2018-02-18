@@ -20,7 +20,7 @@ enum NetworkError: AppError {
             return "Erro ao realizar a requisição"
         }
     }
-    
+
     var errorDescription: String? {
         switch self {
         case .invalidDataReceived(let requestDescription):

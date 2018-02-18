@@ -11,7 +11,7 @@ import Alamofire
 
 enum CurrencyRouter: URLRequestConvertible {
     case retrieveQuotationFor(currencyAcronym: String, date: Date)
-    
+
     var method: HTTPMethod {
         switch self {
         case .retrieveQuotationFor:

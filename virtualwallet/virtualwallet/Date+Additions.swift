@@ -14,4 +14,10 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self as Date)
     }
+
+    func add(days: Int) -> Date? {
+        var component = DateComponents()
+        component.day = days
+        return Calendar.current.date(byAdding: component, to: self)
+    }
 }

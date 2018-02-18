@@ -11,6 +11,7 @@
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D7203914A8006FFF97 /* URLDescriptor.swift */; };
+		574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574AC2D92039F82E006FFF97 /* Default-568h@2x.png */; };
 		57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F252036316A00FFCE08 /* AppDelegate.swift */; };
 		57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F272036316A00FFCE08 /* FirstViewController.swift */; };
 		57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F292036316A00FFCE08 /* SecondViewController.swift */; };
@@ -49,6 +50,7 @@
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D7203914A8006FFF97 /* URLDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDescriptor.swift; sourceTree = "<group>"; };
+		574AC2D92039F82E006FFF97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		57764F222036316A00FFCE08 /* virtualwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtualwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57764F252036316A00FFCE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57764F272036316A00FFCE08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		57764F192036316A00FFCE08 = {
 			isa = PBXGroup;
 			children = (
+				574AC2D92039F82E006FFF97 /* Default-568h@2x.png */,
 				57764F242036316A00FFCE08 /* virtualwallet */,
 				57764F3B2036316A00FFCE08 /* virtualwalletTests */,
 				57764F232036316A00FFCE08 /* Products */,
@@ -348,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57764F322036316A00FFCE08 /* LaunchScreen.storyboard in Resources */,
+				574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */,
 				57764F2F2036316A00FFCE08 /* Assets.xcassets in Resources */,
 				57764F2D2036316A00FFCE08 /* Main.storyboard in Resources */,
 			);

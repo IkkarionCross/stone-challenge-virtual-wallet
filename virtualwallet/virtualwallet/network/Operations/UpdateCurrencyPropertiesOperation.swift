@@ -11,7 +11,7 @@ import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
     private let service: RESTService<[String: Any]>
-    
+
     init(service: RESTService<[String: Any]>) {
         self.service = service
         super.init()

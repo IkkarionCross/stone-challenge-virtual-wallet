@@ -16,7 +16,7 @@ class CustomOperation: Operation, ObservableOperation {
 
     var operationDidStart: ((_ id: String, _ operationInfo: [String: Any]?) -> Void)?
     var operationDidFinish: ((_ error: AppError?, _ operationInfo: [String: Any]?) -> Void)?
-    
+
     var title: String = ""
     var isRunning: Bool = false
     var isDone: Bool = false
@@ -24,11 +24,11 @@ class CustomOperation: Operation, ObservableOperation {
     override var isExecuting: Bool {
         return isRunning
     }
-    
+
     override var isFinished: Bool {
         return isDone
     }
-    
+
     override func start() {
         if self.isCancelled {
             self.finish()
