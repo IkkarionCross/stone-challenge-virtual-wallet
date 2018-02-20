@@ -32,6 +32,8 @@
 		5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0612038FDBC0096B151 /* Date+Additions.swift */; };
 		5784E0652038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0642038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift */; };
 		5784E067203906570096B151 /* CustomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E066203906570096B151 /* CustomOperation.swift */; };
+		57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */; };
+		57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F47203BABEA00B7CFE4 /* JSONError.swift */; };
 		D107A30098519810DB6923E9 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,8 @@
 		5784E0612038FDBC0096B151 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		5784E0642038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrencyPropertiesOperation.swift; sourceTree = "<group>"; };
 		5784E066203906570096B151 /* CustomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperation.swift; sourceTree = "<group>"; };
+		57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotation.swift; sourceTree = "<group>"; };
+		57881F47203BABEA00B7CFE4 /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		8661E187FFB4532C6EBF522B /* Pods-virtualwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F7B6A320343AA12E77F807 /* Pods-virtualwalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		57764F242036316A00FFCE08 /* virtualwallet */ = {
 			isa = PBXGroup;
 			children = (
+				57881F41203B9E4100B7CFE4 /* JSON */,
 				574AC2E12039FD52006FFF97 /* protocols */,
 				5784E0602038FDAC0096B151 /* additions */,
 				5784E05B2038F7960096B151 /* network */,
@@ -243,6 +248,7 @@
 				57764F5B2038D35C00FFCE08 /* TransactionError.swift */,
 				5784E0582038D3AA0096B151 /* AppError.swift */,
 				574AC2D42039130A006FFF97 /* NetworkError.swift */,
+				57881F47203BABEA00B7CFE4 /* JSONError.swift */,
 			);
 			name = errors;
 			sourceTree = "<group>";
@@ -272,6 +278,14 @@
 				5784E066203906570096B151 /* CustomOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		57881F41203B9E4100B7CFE4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 		7F8E0B406E5815A88FA47C88 /* Frameworks */ = {
@@ -551,9 +565,11 @@
 				5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */,
 				5784E0592038D3AA0096B151 /* AppError.swift in Sources */,
 				57764F562038C3B400FFCE08 /* Wallet.swift in Sources */,
+				57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */,
 				57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */,
 				57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,
+				57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */,
 				57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */,

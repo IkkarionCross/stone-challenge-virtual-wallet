@@ -14,7 +14,7 @@ class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currencyOnDate = Date().add(days: -2) else { return }
+        let currencyOnDate = Date()
         let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD",
                                                                              date: currencyOnDate)
         let service: RESTService = RESTService(request: urlRequest,
