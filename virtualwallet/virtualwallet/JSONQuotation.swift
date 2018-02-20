@@ -19,10 +19,10 @@ enum QuotationReportType: String, Codable {
 }
 
 struct JSONQuotation: Codable {
-    let buyParity: Float
-    let sellParity: Float
-    let buyQuotation: Float
-    let sellQuotation: Float
+    let buyParity: Double
+    let sellParity: Double
+    let buyQuotation: Double
+    let sellQuotation: Double
     let timeStamp: String
     let reportType: QuotationReportType
 

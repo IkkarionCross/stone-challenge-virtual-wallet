@@ -34,6 +34,7 @@
 		5784E067203906570096B151 /* CustomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E066203906570096B151 /* CustomOperation.swift */; };
 		57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */; };
 		57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F47203BABEA00B7CFE4 /* JSONError.swift */; };
+		57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */; };
 		D107A30098519810DB6923E9 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		5784E066203906570096B151 /* CustomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperation.swift; sourceTree = "<group>"; };
 		57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotation.swift; sourceTree = "<group>"; };
 		57881F47203BABEA00B7CFE4 /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
+		57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdditions.swift; sourceTree = "<group>"; };
 		8661E187FFB4532C6EBF522B /* Pods-virtualwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F7B6A320343AA12E77F807 /* Pods-virtualwalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				5784E0612038FDBC0096B151 /* Date+Additions.swift */,
+				57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */,
 			);
 			name = additions;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 			files = (
 				574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */,
 				5784E0652038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift in Sources */,
+				57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */,
 				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
 				5784E05F2038FACD0096B151 /* CurrencyRouter.swift in Sources */,
 				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
