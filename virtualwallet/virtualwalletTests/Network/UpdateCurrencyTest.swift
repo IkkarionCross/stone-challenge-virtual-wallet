@@ -30,7 +30,7 @@ class UpdateCurrencyTest: XCTestCase {
             CurrencyRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
-            return OHHTTPStubsResponse(jsonObject: [:],
+            return OHHTTPStubsResponse(jsonObject: [QuotationListKey.value.rawValue: []],
                                        statusCode: 200,
                                        headers: ["content-type": "application/json"])
         }
@@ -45,8 +45,8 @@ class UpdateCurrencyTest: XCTestCase {
         let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
 
         operation.operationDidFinish = { error, info in
-            updateExpectation.fulfill()
             XCTAssertNil(error)
+            updateExpectation.fulfill()
         }
         let queue: OperationQueue = OperationQueue()
         queue.addOperation(operation)
@@ -92,6 +92,66 @@ class UpdateCurrencyTest: XCTestCase {
 
         stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
             if let data = "[null]".data(using: String.Encoding.utf8) {
+                return OHHTTPStubsResponse(data: data, statusCode: 200, headers: ["content-type": "application/json"])
+            }
+            return OHHTTPStubsResponse()
+        }
+
+        let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
+        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+
+        operation.operationDidFinish = { error, info in
+            XCTAssertEqual(error as? NetworkError, expectedError)
+            updateExpectation.fulfill()
+        }
+        let queue: OperationQueue = OperationQueue()
+        queue.addOperation(operation)
+
+        wait(for: [updateExpectation], timeout: 5.0)
+    }
+
+    func test_TryParseJSONWithError_parseError() {
+        let updateExpectation = expectation(description: "Update Currency")
+
+        let urlCurrencyParam: String = "USD"
+        let urlDateParam: Date = Date()
+        let request: CurrencyRouter =
+            CurrencyRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+
+        let expectedError = JSONError.parseError
+
+        stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
+            if let data = "{\"value\":[{\"test\":[null]}]}".data(using: String.Encoding.utf8) {
+                return OHHTTPStubsResponse(data: data, statusCode: 200, headers: ["content-type": "application/json"])
+            }
+            return OHHTTPStubsResponse()
+        }
+
+        let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
+        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+
+        operation.operationDidFinish = { error, info in
+            XCTAssertEqual(error as? JSONError, expectedError)
+            updateExpectation.fulfill()
+        }
+        let queue: OperationQueue = OperationQueue()
+        queue.addOperation(operation)
+
+        wait(for: [updateExpectation], timeout: 5.0)
+    }
+
+    func test_ShouldNotParseJSONInvalidMainKey_invalidDataReceived() {
+        let updateExpectation = expectation(description: "Update Currency")
+
+        let urlCurrencyParam: String = "USD"
+        let urlDateParam: Date = Date()
+        let request: CurrencyRouter =
+            CurrencyRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+
+        let expectedError = NetworkError.invalidDataReceived(requestDescription: "")
+
+        stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
+            if let data = "{\"value\":[null]}".data(using: String.Encoding.utf8) {
                 return OHHTTPStubsResponse(data: data, statusCode: 200, headers: ["content-type": "application/json"])
             }
             return OHHTTPStubsResponse()

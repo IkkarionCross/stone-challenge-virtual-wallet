@@ -9,7 +9,7 @@
 import Foundation
 
 enum QuotationListKey: String {
-    case value = "value"
+    case value
 }
 
 enum QuotationReportType: String, Codable {

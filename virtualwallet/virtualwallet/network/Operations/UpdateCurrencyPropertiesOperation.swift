@@ -21,31 +21,22 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
     override func main() {
         self.service.retrieveData { (json, error) in
             if let error = error {
-                self.operationDidFinish?(error, nil)
-                self.finish()
+                self.finish(withError: error)
                 return
             }
 
-            guard let json = json else {
-                self.operationDidFinish?(NetworkError.invalidDataReceived(requestDescription: ""), nil)
-                self.finish()
-                return
-            }
-
-            guard let quotationList: [[String: Any]] = json[QuotationListKey.value.rawValue] as? [[String: Any]] else {
-                self.operationDidFinish?(NetworkError.invalidDataReceived(requestDescription: ""), nil)
-                self.finish()
+            guard let quotationList: [[String: Any]] = json?[QuotationListKey.value.rawValue] as? [[String: Any]] else {
+                self.finish(withError: NetworkError.invalidDataReceived(requestDescription: ""))
                 return
             }
 
             if let quotationListData = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
                 let parsedQuotations = try? JSONDecoder().decode([JSONQuotation].self, from: quotationListData) {
-                self.operationDidFinish?(nil, ["quotations": parsedQuotations])
-                self.finish()
+
+                self.finish(withInfo: ["quotations": parsedQuotations])
                 print(parsedQuotations)
             } else {
-                self.operationDidFinish?(JSONError.parseError, nil)
-                self.finish()
+                self.finish(withError: JSONError.parseError)
             }
         }
     }
