@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum QuotationListKey: String {
+    case value = "value"
+}
+
 enum QuotationReportType: String, Codable {
     case open = "Abertura"
     case intermediary = "Intermediário"

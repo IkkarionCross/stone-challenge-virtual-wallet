@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum JSONError: AppError {
-    case parseError(message: String)
+enum JSONError: AppError, Equatable {
+    case parseError
 
     var title: String {
         switch self {
@@ -20,8 +20,8 @@ enum JSONError: AppError {
 
     var errorDescription: String? {
         switch self {
-        case .parseError(let message):
-            return "O servidor respondeu com informações que este aplicativo não consegue ler. Erro: \(message)"
+        case .parseError:
+            return "O servidor respondeu com informações que este aplicativo não consegue ler."
         }
     }
 }

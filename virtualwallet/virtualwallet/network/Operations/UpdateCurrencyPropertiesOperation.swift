@@ -32,21 +32,19 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
                 return
             }
 
-            guard let quotationList: [[String: Any]] = json["value"] as? [[String: Any]] else {
+            guard let quotationList: [[String: Any]] = json[QuotationListKey.value.rawValue] as? [[String: Any]] else {
                 self.operationDidFinish?(NetworkError.invalidDataReceived(requestDescription: ""), nil)
                 self.finish()
                 return
             }
 
-            do {
-                let quotationListData = try JSONSerialization.data(withJSONObject: quotationList, options: [])
-                let parsedQuotations = try JSONDecoder().decode([JSONQuotation].self, from: quotationListData)
-
+            if let quotationListData = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
+                let parsedQuotations = try? JSONDecoder().decode([JSONQuotation].self, from: quotationListData) {
                 self.operationDidFinish?(nil, ["quotations": parsedQuotations])
                 self.finish()
                 print(parsedQuotations)
-            } catch {
-                self.operationDidFinish?(JSONError.parseError(message: error.localizedDescription), nil)
+            } else {
+                self.operationDidFinish?(JSONError.parseError, nil)
                 self.finish()
             }
         }
