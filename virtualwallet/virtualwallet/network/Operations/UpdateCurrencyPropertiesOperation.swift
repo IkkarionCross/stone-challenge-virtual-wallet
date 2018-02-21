@@ -30,8 +30,11 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
                 return
             }
 
-            if let quotationListData = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
-                let parsedQuotations = try? JSONDecoder().decode([JSONQuotation].self, from: quotationListData) {
+            let decoder: JSONDecoder = JSONDecoder()
+            decoder.dateDecodingStrategy = self.service.decodeDateStrategy()
+            if let quotationListData: Data = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
+                let parsedQuotations: [JSONQuotation] = try? decoder.decode([JSONQuotation].self,
+                                                                            from: quotationListData) {
 
                 self.finish(withInfo: ["quotations": parsedQuotations])
                 print(parsedQuotations)

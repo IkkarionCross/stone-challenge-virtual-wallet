@@ -46,7 +46,7 @@ class QuotationsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let quotation = quotations[indexPath.row]
-        
+
         let quotationCell: UITableViewCell
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
             quotationCell = cell

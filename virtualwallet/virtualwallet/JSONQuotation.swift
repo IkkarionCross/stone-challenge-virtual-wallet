@@ -23,7 +23,7 @@ struct JSONQuotation: Codable {
     let sellParity: Double
     let buyQuotation: Double
     let sellQuotation: Double
-    let timeStamp: String
+    let timeStamp: Date
     let reportType: QuotationReportType
 
     enum CodingKeys: String, CodingKey {
