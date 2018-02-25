@@ -21,14 +21,28 @@ class QuotationsViewModel {
     weak var delegate: QuotationsDelegate?
 
     private var USDRequest: CentralBankRouter {
-        let currencyOnDate = Date().add(days: -2) ?? Date()
         return CentralBankRouter.retrieveQuotationFor(currencyAcronym: supportedCurrencies[1],
-                                                                             date: currencyOnDate)
+                                                                             date: self.recentQuotationDate())
     }
 
     init(quotations: [JSONQuotation]) {
         self.quotations = quotations
         self.operationQueue = OperationQueue()
+    }
+
+    /*
+     Get a valid date for query quotations
+    */
+    private func recentQuotationDate() -> Date {
+        let calendar: Calendar = Calendar.current
+        let today: Date = Date()
+        guard calendar.isDateInWeekend(today) else {
+            return today
+        }
+        guard let lastFriday: Date = today.lastFriday() else {
+            return today
+        }
+        return lastFriday
     }
 
     func updateQuotationsFromNetwork() {

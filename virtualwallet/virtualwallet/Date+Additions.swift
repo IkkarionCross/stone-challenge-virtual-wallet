@@ -20,4 +20,11 @@ extension Date {
         component.day = days
         return Calendar.current.date(byAdding: component, to: self)
     }
+
+    func lastFriday() -> Date? {
+        let calendar = Calendar.current
+        let weekDay = calendar.component(Calendar.Component.weekday, from: self)
+        let goBackDays: Int = (weekDay + 1) * -1
+        return self.add(days: goBackDays)
+    }
 }
