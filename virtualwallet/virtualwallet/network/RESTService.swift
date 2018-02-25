@@ -49,14 +49,14 @@ struct RESTService: Service {
 
     private func RESTDateFormatter() -> DateFormatter {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd H:M:S.Z"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return formatter
     }
-    
+
     func decodeDateStrategy() -> JSONDecoder.DateDecodingStrategy {
         return .formatted(RESTDateFormatter())
     }
-    
+
     func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
         return .formatted(RESTDateFormatter())
     }

@@ -16,7 +16,7 @@ class QuotationsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currencyOnDate = Date()
+        let currencyOnDate = Date().add(days: -2) ?? Date()
         let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD",
                                                                              date: currencyOnDate)
         let service: RESTService = RESTService(request: urlRequest,
