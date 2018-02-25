@@ -10,23 +10,38 @@ import Foundation
 import Alamofire
 
 enum CentralBankRouter: URLRequestConvertible {
-    case retrieveQuotationFor(currencyAcronym: String, date: Date)
+    case recentQuotationFor(currencyAcronym: String)
 
     var method: HTTPMethod {
         switch self {
-        case .retrieveQuotationFor:
+        case .recentQuotationFor:
             return .get
         }
     }
 
     var urlItems: (path: String, parameters: Parameters?) {
         switch self {
-        case .retrieveQuotationFor(let currencyAcronym, let date):
+        case .recentQuotationFor(let currencyAcronym):
             return (path:
                 "/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)", ["@moeda": "'\(currencyAcronym)'",
-                               "@dataCotacao": "'\(date.formattedWith(format: "MM-dd-yyyy"))'",
+                               "@dataCotacao": "'\(recentQuotationDate().formattedWith(format: "MM-dd-yyyy"))'",
                                "$format": "json"])
         }
+    }
+    
+    /*
+     Get a valid date for query quotations
+     */
+    private func recentQuotationDate() -> Date {
+        let calendar: Calendar = Calendar.current
+        let today: Date = Date()
+        guard calendar.isDateInWeekend(today) else {
+            return today
+        }
+        guard let lastFriday: Date = today.lastFriday() else {
+            return today
+        }
+        return lastFriday
     }
 
     func asURLRequest() throws -> URLRequest {
@@ -43,7 +58,7 @@ enum CentralBankRouter: URLRequestConvertible {
 extension CentralBankRouter: URLDescriptor {
     var requestDescription: String {
         switch self {
-        case .retrieveQuotationFor(let currencyAcronym):
+        case .recentQuotationFor(let currencyAcronym):
             return "Cotação do(a) \(currencyAcronym)"
         }
     }

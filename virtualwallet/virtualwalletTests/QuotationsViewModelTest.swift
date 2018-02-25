@@ -41,6 +41,4 @@ class QuotationsViewModelTest: XCTestCase {
             XCTAssertNil(quotationsSpy.receivedError)
         }
     }
-    
-    func 
 }

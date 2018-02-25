@@ -27,7 +27,7 @@ class UpdateCurrencyTest: XCTestCase {
         let urlDateParam: Date = Date()
         let urlFormattedDateParam: String = Date().formattedWith(format: "MM-dd-yyyy")
         let request: CentralBankRouter =
-            CentralBankRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+            CentralBankRouter.recentQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
             return OHHTTPStubsResponse(jsonObject: [QuotationListKey.value.rawValue: []],
@@ -61,7 +61,7 @@ class UpdateCurrencyTest: XCTestCase {
         let urlCurrencyParam: String = "USD"
         let urlDateParam: Date = Date()
         let request: CentralBankRouter =
-            CentralBankRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+            CentralBankRouter.recentQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
             return OHHTTPStubsResponse(jsonObject: [:], statusCode: 500, headers: ["content-type": "application/json"])
@@ -86,7 +86,7 @@ class UpdateCurrencyTest: XCTestCase {
         let urlCurrencyParam: String = "USD"
         let urlDateParam: Date = Date()
         let request: CentralBankRouter =
-            CentralBankRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+            CentralBankRouter.recentQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         let expectedError = NetworkError.invalidDataReceived(requestDescription: request.requestDescription)
 
@@ -116,7 +116,7 @@ class UpdateCurrencyTest: XCTestCase {
         let urlCurrencyParam: String = "USD"
         let urlDateParam: Date = Date()
         let request: CentralBankRouter =
-            CentralBankRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+            CentralBankRouter.recentQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         let expectedError = JSONError.parseError
 
@@ -146,7 +146,7 @@ class UpdateCurrencyTest: XCTestCase {
         let urlCurrencyParam: String = "USD"
         let urlDateParam: Date = Date()
         let request: CentralBankRouter =
-            CentralBankRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
+            CentralBankRouter.recentQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
         let expectedError = NetworkError.invalidDataReceived(requestDescription: request.requestDescription)
 
