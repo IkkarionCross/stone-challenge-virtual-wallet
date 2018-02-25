@@ -9,30 +9,13 @@
 import UIKit
 
 class QuotationsViewController: UITableViewController {
-    let operationQueue: OperationQueue = OperationQueue()
-    var updateOperation: UpdateCurrencyPropertiesOperation!
-
-    var quotations: [JSONQuotation] = []
+    var quotationsViewModel: QuotationsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currencyOnDate = Date().add(days: -2) ?? Date()
-        let urlRequest: CurrencyRouter = CurrencyRouter.retrieveQuotationFor(currencyAcronym: "USD",
-                                                                             date: currencyOnDate)
-        let service: RESTService = RESTService(request: urlRequest,
-                                                               queue: DispatchQueue.global())
-        updateOperation = UpdateCurrencyPropertiesOperation(service: service)
-
-        updateOperation.operationDidFinish = { error, info in
-            DispatchQueue.main.async {
-                if let quotations: [JSONQuotation] = info?["quotations"] as? [JSONQuotation] {
-                    self.quotations = quotations
-                }
-                self.tableView.reloadData()
-            }
-        }
-
-        operationQueue.addOperation(updateOperation)
+        self.quotationsViewModel = QuotationsViewModel(quotations: [])
+        self.quotationsViewModel.delegate = self
+        self.quotationsViewModel.updateQuotationsFromNetwork()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,11 +24,11 @@ class QuotationsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quotations.count
+        return quotationsViewModel.allQuotations().count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let quotation = quotations[indexPath.row]
+        let quotation: JSONQuotation = quotationsViewModel.quotation(at: indexPath)
 
         let quotationCell: UITableViewCell
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
@@ -59,4 +42,14 @@ class QuotationsViewController: UITableViewController {
         return quotationCell
     }
 
+}
+
+extension QuotationsViewController: QuotationsDelegate {
+    func onQuotationsUpdated(error: AppError?) {
+        if let updateError = error {
+            self.show(appError: updateError)
+            return
+        }
+        self.tableView.reloadData()
+    }
 }

@@ -11,11 +11,11 @@ import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
     enum UpdateCurrencyInfoKeys: String {
-        case quotations = "quotations"
+        case quotations
     }
-    
+
     private let service: RESTService
-    
+
     private var invalidDataError: NetworkError {
         return NetworkError.invalidDataReceived(requestDescription: self.service.requestDescription())
     }
