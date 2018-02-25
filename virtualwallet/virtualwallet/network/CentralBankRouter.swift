@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum CurrencyRouter: URLRequestConvertible {
+enum CentralBankRouter: URLRequestConvertible {
     case retrieveQuotationFor(currencyAcronym: String, date: Date)
 
     var method: HTTPMethod {
@@ -40,7 +40,7 @@ enum CurrencyRouter: URLRequestConvertible {
     }
 }
 
-extension CurrencyRouter: URLDescriptor {
+extension CentralBankRouter: URLDescriptor {
     var requestDescription: String {
         switch self {
         case .retrieveQuotationFor(let currencyAcronym):

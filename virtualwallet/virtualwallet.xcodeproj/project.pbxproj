@@ -28,7 +28,7 @@
 		57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F5B2038D35C00FFCE08 /* TransactionError.swift */; };
 		5784E0592038D3AA0096B151 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0582038D3AA0096B151 /* AppError.swift */; };
 		5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E05C2038FA6C0096B151 /* BaseRouter.swift */; };
-		5784E05F2038FACD0096B151 /* CurrencyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E05E2038FACD0096B151 /* CurrencyRouter.swift */; };
+		5784E05F2038FACD0096B151 /* CentralBankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E05E2038FACD0096B151 /* CentralBankRouter.swift */; };
 		5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0612038FDBC0096B151 /* Date+Additions.swift */; };
 		5784E0652038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0642038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift */; };
 		5784E067203906570096B151 /* CustomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E066203906570096B151 /* CustomOperation.swift */; };
@@ -78,7 +78,7 @@
 		57764F5B2038D35C00FFCE08 /* TransactionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionError.swift; sourceTree = "<group>"; };
 		5784E0582038D3AA0096B151 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		5784E05C2038FA6C0096B151 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
-		5784E05E2038FACD0096B151 /* CurrencyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouter.swift; sourceTree = "<group>"; };
+		5784E05E2038FACD0096B151 /* CentralBankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankRouter.swift; sourceTree = "<group>"; };
 		5784E0612038FDBC0096B151 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		5784E0642038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrencyPropertiesOperation.swift; sourceTree = "<group>"; };
 		5784E066203906570096B151 /* CustomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperation.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				5784E05C2038FA6C0096B151 /* BaseRouter.swift */,
-				5784E05E2038FACD0096B151 /* CurrencyRouter.swift */,
+				5784E05E2038FACD0096B151 /* CentralBankRouter.swift */,
 				574AC2D7203914A8006FFF97 /* URLDescriptor.swift */,
 			);
 			name = Router;
@@ -587,7 +587,7 @@
 				5784E0652038FF170096B151 /* UpdateCurrencyPropertiesOperation.swift in Sources */,
 				57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */,
 				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
-				5784E05F2038FACD0096B151 /* CurrencyRouter.swift in Sources */,
+				5784E05F2038FACD0096B151 /* CentralBankRouter.swift in Sources */,
 				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
 				574AC2E32039FD60006FFF97 /* Service.swift in Sources */,
 				57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */,

@@ -20,9 +20,9 @@ class QuotationsViewModel {
 
     weak var delegate: QuotationsDelegate?
 
-    private var USDRequest: CurrencyRouter {
+    private var USDRequest: CentralBankRouter {
         let currencyOnDate = Date().add(days: -2) ?? Date()
-        return CurrencyRouter.retrieveQuotationFor(currencyAcronym: supportedCurrencies[1],
+        return CentralBankRouter.retrieveQuotationFor(currencyAcronym: supportedCurrencies[1],
                                                                              date: currencyOnDate)
     }
 
