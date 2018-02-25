@@ -10,7 +10,15 @@ import Foundation
 import Alamofire
 
 class UpdateCurrencyPropertiesOperation: CustomOperation {
+    enum UpdateCurrencyInfoKeys: String {
+        case quotations = "quotations"
+    }
+    
     private let service: RESTService
+    
+    private var invalidDataError: NetworkError {
+        return NetworkError.invalidDataReceived(requestDescription: self.service.requestDescription())
+    }
 
     init(service: RESTService) {
         self.service = service
@@ -26,7 +34,7 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
             }
 
             guard let quotationList: [[String: Any]] = json?[QuotationListKey.value.rawValue] as? [[String: Any]] else {
-                self.finish(withError: NetworkError.invalidDataReceived(requestDescription: ""))
+                self.finish(withError: self.invalidDataError)
                 return
             }
 
@@ -36,9 +44,7 @@ class UpdateCurrencyPropertiesOperation: CustomOperation {
             if let quotationListData: Data = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
                 let parsedQuotations: [JSONQuotation] = try? decoder.decode([JSONQuotation].self,
                                                                             from: quotationListData) {
-
-                self.finish(withInfo: ["quotations": parsedQuotations])
-                print(parsedQuotations)
+                self.finish(withInfo: [UpdateCurrencyInfoKeys.quotations.rawValue: parsedQuotations])
             } else {
                 self.finish(withError: JSONError.parseError)
             }

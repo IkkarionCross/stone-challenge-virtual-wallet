@@ -148,7 +148,7 @@ class UpdateCurrencyTest: XCTestCase {
         let request: CurrencyRouter =
             CurrencyRouter.retrieveQuotationFor(currencyAcronym: urlCurrencyParam, date: urlDateParam)
 
-        let expectedError = NetworkError.invalidDataReceived(requestDescription: "")
+        let expectedError = NetworkError.invalidDataReceived(requestDescription: request.requestDescription)
 
         stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
             if let data = "{\"value\":[null]}".data(using: String.Encoding.utf8) {

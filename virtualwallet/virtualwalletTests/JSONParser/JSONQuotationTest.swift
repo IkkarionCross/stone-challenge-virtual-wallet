@@ -28,7 +28,7 @@ class JSONQuotationTest: XCTestCase {
         let decoder: JSONDecoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(formatter)
 
-        let quotation1: [String: Any] = [JSONQuotation.CodingKeys.timeStamp.rawValue: "2018-02-23 14:08:49.444",
+        let quotation1: [String: Any] = [JSONQuotation.CodingKeys.timeStamp.rawValue: "2018-02-23 13:08:49.928",
                                             JSONQuotation.CodingKeys.buyParity.rawValue: 1.0,
                                             JSONQuotation.CodingKeys.sellParity.rawValue: 1.0,
                                             JSONQuotation.CodingKeys.sellQuotation.rawValue: 2.0,

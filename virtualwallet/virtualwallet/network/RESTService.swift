@@ -47,6 +47,13 @@ struct RESTService: Service {
         }
     }
 
+    func requestDescription() -> String {
+        guard let descriptor: URLDescriptor = self.urlRequest as? URLDescriptor else {
+            return ""
+        }
+        return descriptor.requestDescription
+    }
+
     private func RESTDateFormatter() -> DateFormatter {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
