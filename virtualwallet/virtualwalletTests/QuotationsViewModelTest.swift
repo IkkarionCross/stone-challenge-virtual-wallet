@@ -12,10 +12,17 @@ import OHHTTPStubs
 
 class QuotationsViewModelTest: XCTestCase {
     var quotationsViewModel: QuotationsViewModel!
+    var expectedQuotation: JSONQuotation!
 
     override func setUp() {
         super.setUp()
-        quotationsViewModel = QuotationsViewModel(quotations: [])
+        expectedQuotation = JSONQuotation(buyParity: 2.0,
+                                    sellParity: 2.0,
+                                    buyQuotation: 2.0,
+                                    sellQuotation: 2.0,
+                                    timeStamp: Date(),
+                                    reportType: QuotationReportType.intermediary)
+        quotationsViewModel = QuotationsViewModel(quotations: [expectedQuotation])
     }
 
     override func tearDown() {
@@ -59,5 +66,20 @@ class QuotationsViewModelTest: XCTestCase {
             XCTAssertTrue(quotationsSpy.onQuotationsUpdateCalled)
             XCTAssertEqual(quotationsSpy.receivedError?.localizedDescription, expectedError.localizedDescription)
         }
+    }
+
+    func test_ShouldReturnAllQuotations() {
+        let expectedCount = 1
+        XCTAssertEqual(quotationsViewModel.allQuotations().count, expectedCount)
+    }
+
+    func test_ShouldReturnQuotationForIndexPath() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let quotation: JSONQuotation = quotationsViewModel.quotation(at: indexPath)
+        XCTAssertEqual(quotation.buyParity, expectedQuotation.buyParity)
+        XCTAssertEqual(quotation.buyQuotation, expectedQuotation.buyQuotation)
+        XCTAssertEqual(quotation.timeStamp, expectedQuotation.timeStamp)
+        XCTAssertEqual(quotation.sellParity, expectedQuotation.sellParity)
+        XCTAssertEqual(quotation.sellQuotation, expectedQuotation.sellQuotation)
     }
 }
