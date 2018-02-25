@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1200753880DAA6E5B07DF5BC /* Pods_virtualwallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */; };
 		5725C91B204377E0001099E0 /* QuotationsDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91A204377E0001099E0 /* QuotationsDelegateSpy.swift */; };
+		5725C91D2043822E001099E0 /* SupportedCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91C2043822E001099E0 /* SupportedCurrencies.swift */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2D8203914A8006FFF97 /* URLDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D7203914A8006FFF97 /* URLDescriptor.swift */; };
@@ -58,6 +59,7 @@
 		1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF34C4A8A5AE5EF548A87E0 /* Pods-virtualwallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.release.xcconfig"; sourceTree = "<group>"; };
 		5725C91A204377E0001099E0 /* QuotationsDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsDelegateSpy.swift; sourceTree = "<group>"; };
+		5725C91C2043822E001099E0 /* SupportedCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrencies.swift; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D7203914A8006FFF97 /* URLDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLDescriptor.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */,
+				5725C91C2043822E001099E0 /* SupportedCurrencies.swift */,
 			);
 			path = Quotations;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				57764F562038C3B400FFCE08 /* Wallet.swift in Sources */,
 				57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */,
 				57764F532038C35D00FFCE08 /* CurrencyTransaction.swift in Sources */,
+				5725C91D2043822E001099E0 /* SupportedCurrencies.swift in Sources */,
 				57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */,
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,

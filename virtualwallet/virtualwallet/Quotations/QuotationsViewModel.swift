@@ -13,7 +13,6 @@ protocol QuotationsDelegate: class {
 }
 
 class QuotationsViewModel {
-    private let supportedCurrencies: [String] = ["BTC", "USD", "BRI"]
 
     private var quotations: [JSONQuotation]
     private let operationQueue: OperationQueue
@@ -21,7 +20,7 @@ class QuotationsViewModel {
     weak var delegate: QuotationsDelegate?
 
     private var USDRequest: CentralBankRouter {
-        return CentralBankRouter.recentQuotationFor(currencyAcronym: supportedCurrencies[1])
+        return CentralBankRouter.recentQuotationFor(currencyAcronym: SupportedCurrencies.USD.rawValue)
     }
 
     init(quotations: [JSONQuotation]) {
