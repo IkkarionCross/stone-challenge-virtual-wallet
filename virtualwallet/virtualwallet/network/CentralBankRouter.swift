@@ -28,11 +28,11 @@ enum CentralBankRouter: URLRequestConvertible {
                                "$format": "json"])
         }
     }
-    
+
     /*
      Get a valid date for query quotations
      */
-    private func recentQuotationDate() -> Date {
+    func recentQuotationDate() -> Date {
         let calendar: Calendar = Calendar.current
         let today: Date = Date()
         guard calendar.isDateInWeekend(today) else {
