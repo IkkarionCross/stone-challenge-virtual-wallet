@@ -39,7 +39,7 @@ class UpdateCentralBankCurrency: CustomOperation {
             }
 
             let decoder: JSONDecoder = JSONDecoder()
-            decoder.dateDecodingStrategy = self.service.decodeDateStrategy()
+            decoder.dateDecodingStrategy = JSONQuotation.decodeDateStrategy()
 
             if let quotationListData: Data = try? JSONSerialization.data(withJSONObject: quotationList, options: []),
                 let parsedQuotations: [JSONQuotation] = try? decoder.decode([JSONQuotation].self,

@@ -18,7 +18,7 @@ enum QuotationReportType: String, Codable {
     case close = "Fechamento PTAX"
 }
 
-struct JSONQuotation: Codable {
+struct JSONQuotation: Decodable, DateDecodable {
     let buyParity: Double
     let sellParity: Double
     let buyQuotation: Double
@@ -33,5 +33,19 @@ struct JSONQuotation: Codable {
         case sellQuotation = "cotacaoVenda"
         case timeStamp = "dataHoraCotacao"
         case reportType = "tipoBoletim"
+    }
+
+    private static func dateFormatter() -> DateFormatter {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        return formatter
+    }
+    
+    static func decodeDateStrategy() -> JSONDecoder.DateDecodingStrategy {
+        return .formatted(dateFormatter())
+    }
+    
+    static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
+        return .formatted(dateFormatter())
     }
 }

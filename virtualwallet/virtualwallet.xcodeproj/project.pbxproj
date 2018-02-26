@@ -15,6 +15,8 @@
 		5725C92320438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */; };
 		5725C92520438942001099E0 /* UpdateDigitalCurrencyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */; };
 		5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92620438B3F001099E0 /* JSONTicker.swift */; };
+		5725C92920438F60001099E0 /* DateDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92820438F60001099E0 /* DateDecodable.swift */; };
+		5725C92D20439104001099E0 /* JSONTickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92C20439104001099E0 /* JSONTickerTest.swift */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574AC2D92039F82E006FFF97 /* Default-568h@2x.png */; };
@@ -69,6 +71,8 @@
 		5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperationTest.swift; sourceTree = "<group>"; };
 		5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperation.swift; sourceTree = "<group>"; };
 		5725C92620438B3F001099E0 /* JSONTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTicker.swift; sourceTree = "<group>"; };
+		5725C92820438F60001099E0 /* DateDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodable.swift; sourceTree = "<group>"; };
+		5725C92C20439104001099E0 /* JSONTickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTickerTest.swift; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D92039F82E006FFF97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 			children = (
 				57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */,
 				5725C92620438B3F001099E0 /* JSONTicker.swift */,
+				5725C92820438F60001099E0 /* DateDecodable.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				57AEF91220434294001E77C8 /* JSONQuotationTest.swift */,
+				5725C92C20439104001099E0 /* JSONTickerTest.swift */,
 			);
 			path = JSONParser;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,
 				57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */,
+				5725C92920438F60001099E0 /* DateDecodable.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,
 				57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */,
@@ -652,6 +659,7 @@
 				57764F50203649D300FFCE08 /* CurrencyTransactionTest.swift in Sources */,
 				57AEF91E20435CFD001E77C8 /* DateAdditionsTest.swift in Sources */,
 				5725C91B204377E0001099E0 /* QuotationsDelegateSpy.swift in Sources */,
+				5725C92D20439104001099E0 /* JSONTickerTest.swift in Sources */,
 				5725C92320438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift in Sources */,
 				57AEF91320434294001E77C8 /* JSONQuotationTest.swift in Sources */,
 				574AC2DF2039F9BC006FFF97 /* UpdateCentralBankCurrencyTest.swift in Sources */,

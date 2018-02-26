@@ -37,6 +37,7 @@ class UpdateDigitalCurrencyOperation: CustomOperation {
             }
 
             let decoder: JSONDecoder = JSONDecoder()
+            decoder.dateDecodingStrategy = JSONTicker.decodeDateStrategy()
             if let tickerData: Data = try? JSONSerialization.data(withJSONObject: tickerJson, options: []),
                 let ticker: JSONTicker = try? decoder.decode(JSONTicker.self, from: tickerData) {
                 self.finish(withInfo: [UpdateDigitalCurrencyKeys.ticker.rawValue: ticker])
