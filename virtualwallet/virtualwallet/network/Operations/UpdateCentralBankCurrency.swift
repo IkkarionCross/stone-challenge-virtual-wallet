@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class UpdateCurrencyPropertiesOperation: CustomOperation {
+class UpdateCentralBankCurrency: CustomOperation {
     enum UpdateCurrencyInfoKeys: String {
         case quotations
     }

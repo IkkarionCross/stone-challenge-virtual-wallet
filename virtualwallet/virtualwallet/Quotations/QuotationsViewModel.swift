@@ -32,8 +32,8 @@ class QuotationsViewModel {
         let service: RESTService = RESTService(request: USDRequest,
                                                queue: DispatchQueue.global())
 
-        let updateCurrencyFromBC: UpdateCurrencyPropertiesOperation =
-            UpdateCurrencyPropertiesOperation(service: service)
+        let updateCurrencyFromBC: UpdateCentralBankCurrency =
+            UpdateCentralBankCurrency(service: service)
 
         updateCurrencyFromBC.operationDidFinish = { error, info in
             guard error == nil else {
@@ -43,7 +43,7 @@ class QuotationsViewModel {
                 return
             }
             if let retrievedQuotations: [JSONQuotation] =
-                info?[UpdateCurrencyPropertiesOperation.UpdateCurrencyInfoKeys.quotations.rawValue]
+                info?[UpdateCentralBankCurrency.UpdateCurrencyInfoKeys.quotations.rawValue]
                     as? [JSONQuotation] {
                 DispatchQueue.main.async {
                     self.delegate?.onQuotationsUpdated(error: nil)

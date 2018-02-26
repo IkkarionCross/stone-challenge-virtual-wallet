@@ -10,7 +10,7 @@ import XCTest
 import OHHTTPStubs
 @testable import virtualwallet
 
-class UpdateCurrencyTest: XCTestCase {
+class UpdateCentralBankCurrencyTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -41,7 +41,7 @@ class UpdateCurrencyTest: XCTestCase {
         XCTAssertEqual(try request.asURLRequest().url?.absoluteString, expectedURLString)
 
         let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
-        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+        let operation: UpdateCentralBankCurrency = UpdateCentralBankCurrency(service: service)
 
         operation.operationDidFinish = { error, info in
             XCTAssertNil(error)
@@ -66,7 +66,7 @@ class UpdateCurrencyTest: XCTestCase {
         }
 
         let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
-        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+        let operation: UpdateCentralBankCurrency = UpdateCentralBankCurrency(service: service)
 
         operation.operationDidFinish = { error, info in
             XCTAssertEqual(error as? NetworkError, expectedError)
@@ -95,7 +95,7 @@ class UpdateCurrencyTest: XCTestCase {
         }
 
         let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
-        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+        let operation: UpdateCentralBankCurrency = UpdateCentralBankCurrency(service: service)
 
         operation.operationDidFinish = { error, info in
             XCTAssertEqual(error as? NetworkError, expectedError)
@@ -124,7 +124,7 @@ class UpdateCurrencyTest: XCTestCase {
         }
 
         let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
-        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+        let operation: UpdateCentralBankCurrency = UpdateCentralBankCurrency(service: service)
 
         operation.operationDidFinish = { error, info in
             XCTAssertEqual(error as? JSONError, expectedError)
@@ -153,7 +153,7 @@ class UpdateCurrencyTest: XCTestCase {
         }
 
         let service: RESTService = RESTService(request: request, queue: DispatchQueue.global())
-        let operation: UpdateCurrencyPropertiesOperation = UpdateCurrencyPropertiesOperation(service: service)
+        let operation: UpdateCentralBankCurrency = UpdateCentralBankCurrency(service: service)
 
         operation.operationDidFinish = { error, info in
             XCTAssertEqual(error as? NetworkError, expectedError)
