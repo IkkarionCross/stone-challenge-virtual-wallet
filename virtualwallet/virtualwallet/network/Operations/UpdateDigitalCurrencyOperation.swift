@@ -23,7 +23,10 @@ class UpdateDigitalCurrencyOperation: CustomOperation {
 
     override func main() {
         self.service.retrieveData { (json, error) in
-
+            if let error = error {
+                self.finish(withError: error)
+                return
+            }
         }
     }
 }
