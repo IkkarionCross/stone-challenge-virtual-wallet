@@ -44,4 +44,29 @@ class UpdateDigitalCurrencyOperationTest: XCTestCase {
 
         wait(for: [updateExpectation], timeout: 5.0)
     }
+
+    func test_ShouldReturnJSON() {
+        let updateExpectation = expectation(description: "update digital currency")
+
+        stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
+            return OHHTTPStubsResponse(jsonObject: [JSONTickerKey.ticker.rawValue: [:]],
+                                       statusCode: 200,
+                                       headers: ["content-type": "application/json"])
+        }
+        let bitcoinRequest: BitcoinMarketRouter = BitcoinMarketRouter.recentQuotationFor(currency:
+            SupportedCurrencies.BTC.rawValue)
+        let service: RESTService = RESTService(request: bitcoinRequest, queue: DispatchQueue.global())
+
+        let operation: UpdateDigitalCurrencyOperation = UpdateDigitalCurrencyOperation(service: service)
+
+        operation.operationDidFinish = { error, info in
+            XCTAssertNil(error)
+            updateExpectation.fulfill()
+        }
+
+        let queue: OperationQueue = OperationQueue()
+        queue.addOperation(operation)
+
+        wait(for: [updateExpectation], timeout: 5.0)
+    }
 }

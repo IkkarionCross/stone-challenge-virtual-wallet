@@ -9,6 +9,9 @@
 import Foundation
 
 class UpdateDigitalCurrencyOperation: CustomOperation {
+    enum UpdateDigitalCurrencyKeys: String {
+        case ticker
+    }
     private let service: RESTService
 
     private var invalidDataError: NetworkError {
@@ -26,6 +29,19 @@ class UpdateDigitalCurrencyOperation: CustomOperation {
             if let error = error {
                 self.finish(withError: error)
                 return
+            }
+
+            guard let tickerJson: [String: Any] = json?[JSONTickerKey.ticker.rawValue] as? [String: Any] else {
+                self.finish(withError: self.invalidDataError)
+                return
+            }
+
+            let decoder: JSONDecoder = JSONDecoder()
+            if let tickerData: Data = try? JSONSerialization.data(withJSONObject: tickerJson, options: []),
+                let ticker: JSONTicker = try? decoder.decode(JSONTicker.self, from: tickerData) {
+                self.finish(withInfo: [UpdateDigitalCurrencyKeys.ticker.rawValue: ticker])
+            } else {
+                self.finish(withError: JSONError.parseError)
             }
         }
     }

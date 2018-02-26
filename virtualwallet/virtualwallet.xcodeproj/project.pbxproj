@@ -14,6 +14,7 @@
 		5725C921204384D6001099E0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C920204384D6001099E0 /* Router.swift */; };
 		5725C92320438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */; };
 		5725C92520438942001099E0 /* UpdateDigitalCurrencyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */; };
+		5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92620438B3F001099E0 /* JSONTicker.swift */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574AC2D92039F82E006FFF97 /* Default-568h@2x.png */; };
@@ -67,6 +68,7 @@
 		5725C920204384D6001099E0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperationTest.swift; sourceTree = "<group>"; };
 		5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperation.swift; sourceTree = "<group>"; };
+		5725C92620438B3F001099E0 /* JSONTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTicker.swift; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D92039F82E006FFF97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */,
+				5725C92620438B3F001099E0 /* JSONTicker.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,
 				57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */,
 				5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */,
+				5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */,
 				57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */,
 				5784E067203906570096B151 /* CustomOperation.swift in Sources */,
 				57764F49203636F000FFCE08 /* R.generated.swift in Sources */,
