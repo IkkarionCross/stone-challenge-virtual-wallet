@@ -13,4 +13,9 @@ enum BaseRouter {
     static var baseBCDURL: String {
         return "https://\(BaseRouter.baseBCDHost)/olinda/servico/PTAX/versao/v1"
     }
+
+    static let bitcoinMarketHost: String = "www.mercadobitcoin.net"
+    static var baseBitcoinMarketURL: String {
+        return "https://\(BaseRouter.bitcoinMarketHost)/api/"
+    }
 }
