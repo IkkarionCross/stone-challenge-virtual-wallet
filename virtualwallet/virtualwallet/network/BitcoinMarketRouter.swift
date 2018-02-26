@@ -9,16 +9,16 @@
 import Foundation
 import Alamofire
 
-enum BitcoinMarketRouter: URLRequestConvertible {
+enum BitcoinMarketRouter: Router {
     case recentQuotationFor(currency: String)
-    
+
     var method: HTTPMethod {
         switch self {
         case .recentQuotationFor:
             return .get
         }
     }
-    
+
     var urlItems: (path: String, parameters: Parameters?) {
         switch self {
         case .recentQuotationFor(let currency):
@@ -26,14 +26,16 @@ enum BitcoinMarketRouter: URLRequestConvertible {
                 "/\(currency)/ticker", [:])
         }
     }
-    
+
+    var requestDescription: String {
+        switch self {
+        case .recentQuotationFor(let currencyAcronym):
+            return "Cotação do(a) \(currencyAcronym)"
+        }
+    }
+
     func asURLRequest() throws -> URLRequest {
-        let urlItems = self.urlItems
-        
         let url = try BaseRouter.baseBitcoinMarketURL.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(urlItems.path))
-        urlRequest.httpMethod = method.rawValue
-        
-        return try URLEncoding.default.encode(urlRequest, with: urlItems.parameters)
+        return try self.buildRequest(fromBaseURL: url)
     }
 }

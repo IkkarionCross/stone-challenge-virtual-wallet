@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum CentralBankRouter: URLRequestConvertible {
+enum CentralBankRouter: Router {
     case recentQuotationFor(currencyAcronym: String)
 
     var method: HTTPMethod {
@@ -29,6 +29,13 @@ enum CentralBankRouter: URLRequestConvertible {
         }
     }
 
+    var requestDescription: String {
+        switch self {
+        case .recentQuotationFor(let currencyAcronym):
+            return "Cotação do(a) \(currencyAcronym)"
+        }
+    }
+
     /*
      Get a valid date for query quotations
      */
@@ -45,21 +52,7 @@ enum CentralBankRouter: URLRequestConvertible {
     }
 
     func asURLRequest() throws -> URLRequest {
-        let urlItems = self.urlItems
-
         let url = try BaseRouter.baseBCDURL.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(urlItems.path))
-        urlRequest.httpMethod = method.rawValue
-
-        return try URLEncoding.default.encode(urlRequest, with: urlItems.parameters)
-    }
-}
-
-extension CentralBankRouter: URLDescriptor {
-    var requestDescription: String {
-        switch self {
-        case .recentQuotationFor(let currencyAcronym):
-            return "Cotação do(a) \(currencyAcronym)"
-        }
+        return try self.buildRequest(fromBaseURL: url)
     }
 }

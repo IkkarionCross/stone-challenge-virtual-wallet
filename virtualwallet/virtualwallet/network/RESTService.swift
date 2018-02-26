@@ -28,7 +28,7 @@ struct RESTService: Service {
                     if let JSONData = response.result.value as? DataType {
                         completion(JSONData, nil)
                     } else {
-                        if let requestDescription = (self.urlRequest as? URLDescriptor)?.requestDescription {
+                        if let requestDescription = (self.urlRequest as? Router)?.requestDescription {
                             completion(nil,
                                        NetworkError.invalidDataReceived(requestDescription: requestDescription))
                         }
@@ -48,7 +48,7 @@ struct RESTService: Service {
     }
 
     func requestDescription() -> String {
-        guard let descriptor: URLDescriptor = self.urlRequest as? URLDescriptor else {
+        guard let descriptor: Router = self.urlRequest as? Router else {
             return ""
         }
         return descriptor.requestDescription

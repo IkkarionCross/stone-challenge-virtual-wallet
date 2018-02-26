@@ -12,17 +12,16 @@ import Alamofire
 protocol Router: URLRequestConvertible {
     var urlItems: (path: String, parameters: Parameters?) {get}
     var method: HTTPMethod {get}
-    func encodeURL(fromBaseURL baseURL: String)
+    var requestDescription: String {get}
 }
 
 extension Router {
-    func buildRequest(fromBaseURL baseURL: String) throws -> URLRequest {
+    func buildRequest(fromBaseURL baseURL: URL) throws -> URLRequest {
         let urlItems = self.urlItems
-        
-        let url = try baseURL.asURL()
-        var urlRequest = URLRequest(url: url.appendingPathComponent(urlItems.path))
+
+        var urlRequest = URLRequest(url: baseURL.appendingPathComponent(urlItems.path))
         urlRequest.httpMethod = method.rawValue
-        
+
         return try URLEncoding.default.encode(urlRequest, with: urlItems.parameters)
     }
 }
