@@ -48,8 +48,15 @@ class UpdateDigitalCurrencyOperationTest: XCTestCase {
     func test_ShouldReturnJSON() {
         let updateExpectation = expectation(description: "update digital currency")
 
-        stub(condition: isHost(BaseRouter.baseBCDHost)) { _ in
-            return OHHTTPStubsResponse(jsonObject: [JSONTickerKey.ticker.rawValue: [:]],
+        stub(condition: isHost(BaseRouter.bitcoinMarketHost)) { _ in
+            return OHHTTPStubsResponse(jsonObject: [JSONTickerKey.ticker.rawValue:
+                [JSONTicker.CodingKeys.buy.rawValue: "200.0",
+                 JSONTicker.CodingKeys.sell.rawValue: "200.0",
+                 JSONTicker.CodingKeys.high.rawValue: "200.0",
+                 JSONTicker.CodingKeys.low.rawValue: "200.0",
+                 JSONTicker.CodingKeys.vol.rawValue: "200.0",
+                 JSONTicker.CodingKeys.last.rawValue: "200.0",
+                 JSONTicker.CodingKeys.date.rawValue: 1522888433]],
                                        statusCode: 200,
                                        headers: ["content-type": "application/json"])
         }

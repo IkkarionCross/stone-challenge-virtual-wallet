@@ -22,12 +22,12 @@ class JSONTickerTest: XCTestCase {
     }
 
     func test_ShouldParseJSON() throws {
-        let tickerJSON: [String: Any] = [JSONTicker.CodingKeys.buy.rawValue: 2.0,
-                                         JSONTicker.CodingKeys.sell.rawValue: 2.0,
-                                         JSONTicker.CodingKeys.low.rawValue: 2.0,
-                                         JSONTicker.CodingKeys.high.rawValue: 2.0,
-                                         JSONTicker.CodingKeys.vol.rawValue: 2.0,
-                                         JSONTicker.CodingKeys.last.rawValue: 2.0,
+        let tickerJSON: [String: Any] = [JSONTicker.CodingKeys.buy.rawValue: "2.0",
+                                         JSONTicker.CodingKeys.sell.rawValue: "2.0",
+                                         JSONTicker.CodingKeys.low.rawValue: "2.0",
+                                         JSONTicker.CodingKeys.high.rawValue: "2.0",
+                                         JSONTicker.CodingKeys.vol.rawValue: "2.0",
+                                         JSONTicker.CodingKeys.last.rawValue: "2.0",
                                          JSONTicker.CodingKeys.date.rawValue: 1502977646]
 
         let decoder: JSONDecoder = JSONDecoder()
