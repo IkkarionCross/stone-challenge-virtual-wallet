@@ -40,11 +40,11 @@ struct JSONQuotation: Decodable, DateDecodable {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return formatter
     }
-    
+
     static func decodeDateStrategy() -> JSONDecoder.DateDecodingStrategy {
         return .formatted(dateFormatter())
     }
-    
+
     static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
         return .formatted(dateFormatter())
     }

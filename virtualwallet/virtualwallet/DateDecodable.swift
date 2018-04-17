@@ -12,4 +12,3 @@ protocol DateDecodable {
     static func decodeDateStrategy() -> JSONDecoder.DateDecodingStrategy
     static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy
 }
-

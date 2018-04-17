@@ -14,7 +14,7 @@ extension Double {
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         formatter.numberStyle = NumberFormatter.Style.currency
-        formatter.locale = NSLocale(localeIdentifier: "pt_BR") as Locale!
+        formatter.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         return formatter.string(from: NSNumber(floatLiteral: Double(self))) ?? "\(self)"
     }
 }
