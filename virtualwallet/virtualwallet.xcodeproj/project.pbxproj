@@ -23,7 +23,7 @@
 		574AC2DF2039F9BC006FFF97 /* UpdateCentralBankCurrencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2DE2039F9BC006FFF97 /* UpdateCentralBankCurrencyTest.swift */; };
 		574AC2E32039FD60006FFF97 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2E22039FD60006FFF97 /* Service.swift */; };
 		57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F252036316A00FFCE08 /* AppDelegate.swift */; };
-		57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F272036316A00FFCE08 /* FirstViewController.swift */; };
+		57764F282036316A00FFCE08 /* QuotationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F272036316A00FFCE08 /* QuotationsViewController.swift */; };
 		57764F2A2036316A00FFCE08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57764F292036316A00FFCE08 /* SecondViewController.swift */; };
 		57764F2D2036316A00FFCE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57764F2B2036316A00FFCE08 /* Main.storyboard */; };
 		57764F2F2036316A00FFCE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57764F2E2036316A00FFCE08 /* Assets.xcassets */; };
@@ -48,6 +48,8 @@
 		57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF9172043512F001E77C8 /* UIViewController+Additions.swift */; };
 		57AEF91B2043589E001E77C8 /* QuotationsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91A2043589E001E77C8 /* QuotationsViewModelTest.swift */; };
 		57AEF91E20435CFD001E77C8 /* DateAdditionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91D20435CFD001E77C8 /* DateAdditionsTest.swift */; };
+		57B296B5208581C800751A0F /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B296B4208581C800751A0F /* WalletTableViewController.swift */; };
+		57B296B72085825000751A0F /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B296B62085825000751A0F /* WalletViewModel.swift */; };
 		D107A30098519810DB6923E9 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +82,7 @@
 		574AC2E22039FD60006FFF97 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		57764F222036316A00FFCE08 /* virtualwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = virtualwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57764F252036316A00FFCE08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57764F272036316A00FFCE08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		57764F272036316A00FFCE08 /* QuotationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsViewController.swift; sourceTree = "<group>"; };
 		57764F292036316A00FFCE08 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		57764F2C2036316A00FFCE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57764F2E2036316A00FFCE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,8 @@
 		57AEF9172043512F001E77C8 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		57AEF91A2043589E001E77C8 /* QuotationsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsViewModelTest.swift; sourceTree = "<group>"; };
 		57AEF91D20435CFD001E77C8 /* DateAdditionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAdditionsTest.swift; sourceTree = "<group>"; };
+		57B296B4208581C800751A0F /* WalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
+		57B296B62085825000751A0F /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		8661E187FFB4532C6EBF522B /* Pods-virtualwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F7B6A320343AA12E77F807 /* Pods-virtualwalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwalletTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,17 +206,16 @@
 		57764F242036316A00FFCE08 /* virtualwallet */ = {
 			isa = PBXGroup;
 			children = (
+				57764F542038C3A700FFCE08 /* wallet */,
 				57AEF91420434BB2001E77C8 /* Quotations */,
 				57881F41203B9E4100B7CFE4 /* JSON */,
 				574AC2E12039FD52006FFF97 /* protocols */,
 				5784E0602038FDAC0096B151 /* additions */,
 				5784E05B2038F7960096B151 /* network */,
 				57764F5A2038D34900FFCE08 /* errors */,
-				57764F542038C3A700FFCE08 /* wallet */,
 				57764F512038C34C00FFCE08 /* transactions */,
 				57764F48203636F000FFCE08 /* R.generated.swift */,
 				57764F252036316A00FFCE08 /* AppDelegate.swift */,
-				57764F272036316A00FFCE08 /* FirstViewController.swift */,
 				57764F292036316A00FFCE08 /* SecondViewController.swift */,
 				57764F2B2036316A00FFCE08 /* Main.storyboard */,
 				57764F2E2036316A00FFCE08 /* Assets.xcassets */,
@@ -256,6 +259,8 @@
 			children = (
 				57764F572038C5D200FFCE08 /* currencies */,
 				57764F552038C3B400FFCE08 /* Wallet.swift */,
+				57B296B4208581C800751A0F /* WalletTableViewController.swift */,
+				57B296B62085825000751A0F /* WalletViewModel.swift */,
 			);
 			path = wallet;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 		57AEF91420434BB2001E77C8 /* Quotations */ = {
 			isa = PBXGroup;
 			children = (
+				57764F272036316A00FFCE08 /* QuotationsViewController.swift */,
 				57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */,
 				5725C91C2043822E001099E0 /* SupportedCurrencies.swift */,
 			);
@@ -643,10 +649,12 @@
 				5725C92920438F60001099E0 /* DateDecodable.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,
+				57B296B5208581C800751A0F /* WalletTableViewController.swift in Sources */,
 				57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */,
 				5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */,
 				5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */,
-				57764F282036316A00FFCE08 /* FirstViewController.swift in Sources */,
+				57764F282036316A00FFCE08 /* QuotationsViewController.swift in Sources */,
+				57B296B72085825000751A0F /* WalletViewModel.swift in Sources */,
 				5784E067203906570096B151 /* CustomOperation.swift in Sources */,
 				57764F49203636F000FFCE08 /* R.generated.swift in Sources */,
 			);

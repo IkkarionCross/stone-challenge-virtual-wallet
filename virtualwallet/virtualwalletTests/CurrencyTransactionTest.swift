@@ -25,15 +25,19 @@ class CurrencyTransactionTest: XCTestCase {
         let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
                                                                        sellPrice: 1000.0, buyPrice: 1000.0,
                                                                        basedOnAcronym: "BRL")
-        let currentWallet: Wallet = Wallet(currencies: [bitcoinProperties.basedOnAcronym: 1000.0])
+        let currentCurrency = Wallet.CurrencyValue(name: bitcoinProperties.basedOnAcronym,
+                                            value: 1000.0)
+        let currentWallet: Wallet = Wallet(currencies: [currentCurrency])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
             let newWallet: Wallet = try transaction.buy(ammount: 1.0, ofCurrency: bitcoinProperties)
-            let expectedWallet: Wallet = Wallet(currencies: [bitcoinProperties.acronym: 1.0])
+            let expectedCurrency = Wallet.CurrencyValue(name: bitcoinProperties.acronym,
+                                                        value: 1.0)
+            let expectedWallet: Wallet = Wallet(currencies: [expectedCurrency])
 
-            XCTAssertEqual(newWallet.currencies[bitcoinProperties.acronym],
-                           expectedWallet.currencies[bitcoinProperties.acronym],
+            XCTAssertEqual(newWallet.currency(forAcronym: bitcoinProperties.acronym)?.value,
+                           expectedWallet.currency(forAcronym: bitcoinProperties.acronym)?.value,
                            "Should have same ammount of \(bitcoinProperties.acronym)")
         } catch {
             XCTFail("Transaction failed with error: \(error.localizedDescription)")
@@ -44,15 +48,19 @@ class CurrencyTransactionTest: XCTestCase {
         let realProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BRL",
                                                                        sellPrice: 0.001, buyPrice: 0.001,
                                                                        basedOnAcronym: "BTC")
-        let currentWallet: Wallet = Wallet(currencies: [realProperties.basedOnAcronym: 1.0])
+        let currenCurrency = Wallet.CurrencyValue(name: realProperties.basedOnAcronym,
+                                                  value: 1.0)
+        let currentWallet: Wallet = Wallet(currencies: [currenCurrency])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
             let newWallet: Wallet = try transaction.buy(ammount: 1000.0, ofCurrency: realProperties)
-            let expectedWallet: Wallet = Wallet(currencies: [realProperties.acronym: 1000.0])
+            let expectedCurrency = Wallet.CurrencyValue(name: realProperties.acronym,
+                                                        value: 1000.0)
+            let expectedWallet: Wallet = Wallet(currencies: [expectedCurrency])
 
-            XCTAssertEqual(newWallet.currencies[realProperties.acronym],
-                           expectedWallet.currencies[realProperties.acronym],
+            XCTAssertEqual(newWallet.currency(forAcronym: realProperties.acronym)?.value,
+                           expectedWallet.currency(forAcronym: realProperties.acronym)?.value,
                            "Should have same ammount of \(realProperties.acronym)")
         } catch {
             XCTFail("Transaction failed with error: \(error.localizedDescription)")
@@ -63,7 +71,7 @@ class CurrencyTransactionTest: XCTestCase {
         let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
                                                                        sellPrice: 1000.0, buyPrice: 1000.0,
                                                                        basedOnAcronym: "BRL")
-        let currentWallet: Wallet = Wallet(currencies: [:])
+        let currentWallet: Wallet = Wallet(currencies: [])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
