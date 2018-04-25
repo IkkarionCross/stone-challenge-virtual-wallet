@@ -15,7 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        let wallet: Wallet = Wallet(currencies: [Wallet.CurrencyValue(acronym: "BTC", value: 0.0, name: "Bitcoin"),
+                                                 Wallet.CurrencyValue(acronym: "USD", value: 100.0, name: "Dólar"),
+                                                 Wallet.CurrencyValue(acronym: "BRL", value: 2000.0, name: "Real")])
+
+        let viewModel = WalletViewModel(wallet: wallet)
+        let rootViewController = WalletTableViewController(viewModel: viewModel)
+
+        let navViewController: UINavigationController = UINavigationController(rootViewController: rootViewController)
+        navViewController.navigationBar.backgroundColor = UIColor.white
+
+        window?.rootViewController = navViewController
+        window?.makeKeyAndVisible()
+
         return true
     }
 

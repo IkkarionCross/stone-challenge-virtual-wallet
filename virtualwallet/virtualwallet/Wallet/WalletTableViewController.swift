@@ -18,10 +18,18 @@ class WalletTableViewController: UITableViewController {
     init(viewModel: WalletViewModel) {
         self.viewModel = viewModel
         super.init(style: UITableViewStyle.plain)
+        self.tableView.allowsSelection = false
+        setupNavigationBar()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupNavigationBar() {
+        self.title = "Carteira"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
+                                                                 target: self, action: #selector(addTransaction))
     }
 
     override func viewDidLoad() {
@@ -32,6 +40,10 @@ class WalletTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+
+    @objc func addTransaction() {
+        print("transaction created!") // call transaction viewController
     }
 
     // MARK: - Table view data source
