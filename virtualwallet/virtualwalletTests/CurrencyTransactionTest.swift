@@ -22,18 +22,18 @@ class CurrencyTransactionTest: XCTestCase {
     }
 
     func test_BuyBitcoin() {
-        let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
+        let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC", name: "Bitcoin",
                                                                        sellPrice: 1000.0, buyPrice: 1000.0,
-                                                                       basedOnAcronym: "BRL")
-        let currentCurrency = Wallet.CurrencyValue(name: bitcoinProperties.basedOnAcronym,
-                                            value: 1000.0)
+                                                                       basedOnAcronym: "BRL", basedOnName: "Real")
+        let currentCurrency = Wallet.CurrencyValue(acronym: bitcoinProperties.basedOnAcronym,
+                                            value: 1000.0, name: "Bitcoin")
         let currentWallet: Wallet = Wallet(currencies: [currentCurrency])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
             let newWallet: Wallet = try transaction.buy(ammount: 1.0, ofCurrency: bitcoinProperties)
-            let expectedCurrency = Wallet.CurrencyValue(name: bitcoinProperties.acronym,
-                                                        value: 1.0)
+            let expectedCurrency = Wallet.CurrencyValue(acronym: bitcoinProperties.acronym,
+                                                        value: 1.0, name: "Bitcoin")
             let expectedWallet: Wallet = Wallet(currencies: [expectedCurrency])
 
             XCTAssertEqual(newWallet.currency(forAcronym: bitcoinProperties.acronym)?.value,
@@ -45,18 +45,18 @@ class CurrencyTransactionTest: XCTestCase {
     }
 
     func test_ExchangeBitcoinForReal() {
-        let realProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BRL",
+        let realProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BRL", name: "Real",
                                                                        sellPrice: 0.001, buyPrice: 0.001,
-                                                                       basedOnAcronym: "BTC")
-        let currenCurrency = Wallet.CurrencyValue(name: realProperties.basedOnAcronym,
-                                                  value: 1.0)
+                                                                       basedOnAcronym: "BTC", basedOnName: "Bitcoin")
+        let currenCurrency = Wallet.CurrencyValue(acronym: realProperties.basedOnAcronym,
+                                                  value: 1.0, name: "Real")
         let currentWallet: Wallet = Wallet(currencies: [currenCurrency])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
         do {
             let newWallet: Wallet = try transaction.buy(ammount: 1000.0, ofCurrency: realProperties)
-            let expectedCurrency = Wallet.CurrencyValue(name: realProperties.acronym,
-                                                        value: 1000.0)
+            let expectedCurrency = Wallet.CurrencyValue(acronym: realProperties.acronym,
+                                                        value: 1000.0, name: "Real")
             let expectedWallet: Wallet = Wallet(currencies: [expectedCurrency])
 
             XCTAssertEqual(newWallet.currency(forAcronym: realProperties.acronym)?.value,
@@ -69,8 +69,9 @@ class CurrencyTransactionTest: XCTestCase {
 
     func test_ShouldThrowExcepetion_notEnoughFunds() {
         let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC",
+                                                                       name: "Bitcoin",
                                                                        sellPrice: 1000.0, buyPrice: 1000.0,
-                                                                       basedOnAcronym: "BRL")
+                                                                       basedOnAcronym: "BRL", basedOnName: "Real")
         let currentWallet: Wallet = Wallet(currencies: [])
 
         let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)

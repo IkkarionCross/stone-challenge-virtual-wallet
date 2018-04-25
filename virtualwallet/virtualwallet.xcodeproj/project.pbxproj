@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1200753880DAA6E5B07DF5BC /* Pods_virtualwallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */; };
+		5720311920900AB500425EDD /* WalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5720311820900AB500425EDD /* WalletError.swift */; };
 		5725C91B204377E0001099E0 /* QuotationsDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91A204377E0001099E0 /* QuotationsDelegateSpy.swift */; };
 		5725C91D2043822E001099E0 /* SupportedCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91C2043822E001099E0 /* SupportedCurrencies.swift */; };
 		5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91E204383B2001099E0 /* BitcoinMarketRouter.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF34C4A8A5AE5EF548A87E0 /* Pods-virtualwallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.release.xcconfig"; sourceTree = "<group>"; };
+		5720311820900AB500425EDD /* WalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletError.swift; sourceTree = "<group>"; };
 		5725C91A204377E0001099E0 /* QuotationsDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsDelegateSpy.swift; sourceTree = "<group>"; };
 		5725C91C2043822E001099E0 /* SupportedCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrencies.swift; sourceTree = "<group>"; };
 		5725C91E204383B2001099E0 /* BitcoinMarketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMarketRouter.swift; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5720311720900AA400425EDD /* errors */ = {
+			isa = PBXGroup;
+			children = (
+				5720311820900AB500425EDD /* WalletError.swift */,
+			);
+			path = errors;
+			sourceTree = "<group>";
+		};
 		5725C919204377C7001099E0 /* spies */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +216,7 @@
 		57764F242036316A00FFCE08 /* virtualwallet */ = {
 			isa = PBXGroup;
 			children = (
-				57764F542038C3A700FFCE08 /* wallet */,
+				57764F542038C3A700FFCE08 /* Wallet */,
 				57AEF91420434BB2001E77C8 /* Quotations */,
 				57881F41203B9E4100B7CFE4 /* JSON */,
 				574AC2E12039FD52006FFF97 /* protocols */,
@@ -254,15 +264,16 @@
 			name = transactions;
 			sourceTree = "<group>";
 		};
-		57764F542038C3A700FFCE08 /* wallet */ = {
+		57764F542038C3A700FFCE08 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				5720311720900AA400425EDD /* errors */,
 				57764F572038C5D200FFCE08 /* currencies */,
 				57764F552038C3B400FFCE08 /* Wallet.swift */,
 				57B296B4208581C800751A0F /* WalletTableViewController.swift */,
 				57B296B62085825000751A0F /* WalletViewModel.swift */,
 			);
-			path = wallet;
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		57764F572038C5D200FFCE08 /* currencies */ = {
@@ -646,6 +657,7 @@
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,
 				57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */,
+				5720311920900AB500425EDD /* WalletError.swift in Sources */,
 				5725C92920438F60001099E0 /* DateDecodable.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,

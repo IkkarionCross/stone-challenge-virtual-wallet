@@ -10,13 +10,18 @@ import Foundation
 
 struct CurrencyProperties {
     let acronym: String
+    let name: String
     let sellPrice: Double
     let buyPrice: Double
     let basedOnAcronym: String
-    init(withAcronym acronym: String, sellPrice: Double, buyPrice: Double, basedOnAcronym: String) {
+    let basedOnName: String
+    init(withAcronym acronym: String, name: String, sellPrice: Double,
+         buyPrice: Double, basedOnAcronym: String, basedOnName: String) {
         self.acronym = acronym
+        self.name = name
         self.sellPrice = sellPrice
         self.buyPrice = buyPrice
         self.basedOnAcronym = basedOnAcronym
+        self.basedOnName = basedOnName
     }
 }
