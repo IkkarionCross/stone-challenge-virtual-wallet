@@ -9,12 +9,12 @@
 import Foundation
 
 struct WalletViewModel {
-    struct CurrencyViewModel {
+    struct CurrencyViewModel: AccumulatableMoney {
         var name: String {
             return "\(currency.acronym) - \(currency.name)"
         }
 
-        var value: String {
+        var amount: String {
             return "\(currency.acronym) \(currency.value)"
         }
 
@@ -23,7 +23,7 @@ struct WalletViewModel {
             self.currency = currency
         }
     }
-    
+
     private(set) var wallet: Wallet
 
     var currenciesCount: Int {

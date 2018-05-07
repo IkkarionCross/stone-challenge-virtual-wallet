@@ -13,9 +13,9 @@ import UIKit
 class WalletTableViewController: UITableViewController {
     private let cellIdentifier: String = "currency"
 
-    private var viewModel: WalletViewModel
+    private var viewModel: MainViewModel
 
-    init(viewModel: WalletViewModel) {
+    init(viewModel: MainViewModel) {
         self.viewModel = viewModel
         super.init(style: UITableViewStyle.plain)
         self.tableView.allowsSelection = false
@@ -53,7 +53,7 @@ class WalletTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currenciesCount
+        return viewModel.rows(forSection: section)
     }
 
     override func tableView(_ tableView: UITableView,
@@ -62,14 +62,15 @@ class WalletTableViewController: UITableViewController {
         if currencyCell == nil {
             currencyCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: cellIdentifier)
         }
-        guard let currencyValue: WalletViewModel.CurrencyViewModel = viewModel.currency(forIndexPath: indexPath) else {
+        guard let money: AccumulatableMoney =
+            viewModel.money(forIndexPath: indexPath) as? AccumulatableMoney else {
             fatalError("Wallet invalid state there is a missing currency!")
         }
         guard let cell = currencyCell else {
             fatalError("Invalid cell! It was not created or recovered")
         }
-        cell.textLabel?.text = currencyValue.name
-        cell.detailTextLabel?.text = currencyValue.value
+        cell.textLabel?.text = money.name
+        cell.detailTextLabel?.text = money.amount
 
         return cell
     }

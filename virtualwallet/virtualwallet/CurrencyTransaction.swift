@@ -22,14 +22,13 @@ struct CurrencyTransaction {
                                         throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.basedOnAcronym)
         }
 
-        try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
+        self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
                             withName: buyingCurrency.name)
-        try self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
+        self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
                              ofCurrencyAcronym: buyingCurrency.basedOnAcronym,
                              withName: buyingCurrency.basedOnName)
 
         return self.wallet
     }
-    
-    // criar um metodo para dar rollback na transacao
+
 }

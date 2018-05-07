@@ -17,7 +17,7 @@ enum WalletError: AppError, Equatable {
             return "Moeda não encontrada"
         }
     }
-    
+
     var errorDescription: String? {
         switch self {
         case .currencyNotFound(let acronym):

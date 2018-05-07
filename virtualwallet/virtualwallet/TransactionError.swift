@@ -10,7 +10,7 @@ import Foundation
 
 enum TransactionError: AppError, Equatable {
     case notEnoughFunds(ofCurrency: String)
-    
+
     var title: String {
         switch self {
         case .notEnoughFunds:
