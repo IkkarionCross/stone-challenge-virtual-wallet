@@ -18,15 +18,14 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var exchangeTypeTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
 
+    private var currencyDelegate: CurrencyFieldDelegate?
     private var currencyTypePicker: UIPickerView
-
     private var activeTextField: UITextField?
-
     private var viewModel: TransactionViewModel
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.currencyTypePicker = UIPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        viewModel = TransactionViewModel()
+        self.viewModel = TransactionViewModel()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.currencyTypePicker.delegate = self
         self.currencyTypePicker.dataSource = self
@@ -44,7 +43,9 @@ class TransactionViewController: UIViewController {
         self.exchangeTypeTextField.delegate = self
         self.currencyTypeTextField.tag = FieldTag.currencyType.rawValue
         self.exchangeTypeTextField.tag = FieldTag.exchangeType.rawValue
-        
+        self.currencyDelegate = CurrencyFieldDelegate(currencySymbol: "BTC")
+        self.amountTextField.delegate = self.currencyDelegate
+
         setupNavigationBar()
     }
 
