@@ -19,6 +19,7 @@ class WalletTableViewController: UITableViewController {
         self.viewModel = viewModel
         super.init(style: UITableViewStyle.plain)
         self.tableView.allowsSelection = false
+        self.modalPresentationStyle = .formSheet
         setupNavigationBar()
     }
 
@@ -43,7 +44,12 @@ class WalletTableViewController: UITableViewController {
     }
 
     @objc func addTransaction() {
-        print("transaction created!") // call transaction viewController
+        let transactionViewController: UIViewController = TransactionViewController.instantianteViewController()
+//            TransactionViewController(nibName: "TransactionViewController",
+//                                      bundle: Bundle.main)
+
+        self.present(transactionViewController, animated: true, completion: nil)
+//        self.show(transactionViewController, sender: nil)
     }
 
     // MARK: - Table view data source

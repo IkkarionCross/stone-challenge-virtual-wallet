@@ -22,6 +22,7 @@
 		5725C92D20439104001099E0 /* JSONTickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92C20439104001099E0 /* JSONTickerTest.swift */; };
 		573140A0209FD4FE000C1574 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731409F209FD4FE000C1574 /* MainViewModel.swift */; };
 		573140A3209FD9E9000C1574 /* DisplayableMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573140A2209FD9E9000C1574 /* DisplayableMoney.swift */; };
+		5738E50820B4E8A9004FDA88 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
 		574AC2DA2039F82E006FFF97 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574AC2D92039F82E006FFF97 /* Default-568h@2x.png */; };
@@ -84,6 +85,7 @@
 		5725C92C20439104001099E0 /* JSONTickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTickerTest.swift; sourceTree = "<group>"; };
 		5731409F209FD4FE000C1574 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		573140A2209FD9E9000C1574 /* DisplayableMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableMoney.swift; sourceTree = "<group>"; };
+		5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		574AC2D92039F82E006FFF97 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				57B296B62085825000751A0F /* WalletViewModel.swift */,
+				5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */,
 				57764F282036316A00FFCE08 /* QuotationsViewController.swift in Sources */,
 				57B296B72085825000751A0F /* WalletViewModel.swift in Sources */,
+				5738E50820B4E8A9004FDA88 /* TransactionViewModel.swift in Sources */,
 				5784E067203906570096B151 /* CustomOperation.swift in Sources */,
 				57764F49203636F000FFCE08 /* R.generated.swift in Sources */,
 				5720311E2090199300425EDD /* TransactionViewController.swift in Sources */,
