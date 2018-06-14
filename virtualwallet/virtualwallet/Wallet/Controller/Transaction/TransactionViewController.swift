@@ -101,8 +101,14 @@ extension TransactionViewController: UITextFieldDelegate {
         } else {
             selectedRow = viewModel.exchangeCurrencySelectedIndex
         }
-        self.currencyTypePicker.selectRow(selectedRow, inComponent: 0, animated: true)
         self.activeTextField = textField
+        self.currencyTypePicker.selectRow(selectedRow, inComponent: 0, animated: true)
+        self.pickerView(self.currencyTypePicker, didSelectRow: selectedRow, inComponent: 0)
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        return false
     }
 }
 
