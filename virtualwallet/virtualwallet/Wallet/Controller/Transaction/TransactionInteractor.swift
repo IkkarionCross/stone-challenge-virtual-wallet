@@ -22,6 +22,13 @@ class TransactionInteractor: NSObject {
         self.currencyTypePicker.removeFromSuperview()
         viewController.dismiss(animated: true, completion: nil)
     }
+    
+    func transactionTypeChanged(newIndex: Int) throws {
+        guard let newTransactiontype = TransactionType(rawValue: newIndex) else {
+            throw TransactionError.unrecognezedTransactiontype
+        }
+        self.viewModel.transactionType = newTransactiontype
+    }
 }
 
 extension TransactionInteractor: UITextFieldDelegate {

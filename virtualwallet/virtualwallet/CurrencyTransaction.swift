@@ -8,6 +8,19 @@
 
 import Foundation
 
+enum TransactionType: Int {
+    case buy = 0, sell = 1
+
+    var description: String {
+        switch self {
+        case .buy:
+            return "Comprar"
+        case .sell:
+            return "Vender"
+        }
+    }
+}
+
 struct CurrencyTransaction {
     private var wallet: Wallet
 

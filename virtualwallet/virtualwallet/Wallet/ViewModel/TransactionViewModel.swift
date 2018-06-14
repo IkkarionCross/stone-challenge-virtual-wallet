@@ -10,9 +10,11 @@ import Foundation
 protocol TransactionDelegate: class {
     func didExchangeCurrencyTypeChanged()
     func didBuyCurrencyTypeChanged()
+    func didTransactionTypeChanged()
 }
 
 class TransactionViewModel {
+
     var acceptedCurrenciesCount: Int {
         return acceptedCurrencies.count
     }
@@ -43,6 +45,16 @@ class TransactionViewModel {
         }
     }
 
+    var transactionType: TransactionType {
+        didSet {
+            self.delegate?.didTransactionTypeChanged()
+        }
+    }
+    
+    var buyCurrencyDescription: String {
+        return "\(transactionType.description) com"
+    }
+
     private(set) var exchangeCurrencySelectedIndex: Int
 
     private(set) var buyCurrencySelectedIndex: Int
@@ -55,6 +67,7 @@ class TransactionViewModel {
         self.buyCurrency = acceptedCurrencies[1]
         self.exchangeCurrencySelectedIndex = 0
         self.buyCurrencySelectedIndex = 1
+        self.transactionType = TransactionType.buy
     }
 
     func acceptedCurrency(forRow row: Int) -> String? {

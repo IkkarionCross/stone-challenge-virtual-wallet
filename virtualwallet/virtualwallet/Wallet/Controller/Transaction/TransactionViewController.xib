@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController" customModule="virtualwallet" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="8d7-xs-2CI" id="LYc-lm-PAr"/>
+                <outlet property="buyCurrencyLabel" destination="Qw6-Jo-buN" id="iK6-i2-FOK"/>
                 <outlet property="currencyTypeTextField" destination="5Qv-j2-35T" id="Ukm-Kd-Qqd"/>
                 <outlet property="exchangeTypeTextField" destination="0Pq-N1-Zv6" id="971-VD-Hf8"/>
                 <outlet property="transactionTypeSegmented" destination="s7h-tu-yWB" id="84Q-HE-ImS"/>

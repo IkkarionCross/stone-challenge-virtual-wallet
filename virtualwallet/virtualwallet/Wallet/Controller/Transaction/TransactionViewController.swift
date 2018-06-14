@@ -17,6 +17,7 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var currencyTypeTextField: UITextField!
     @IBOutlet weak var exchangeTypeTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var buyCurrencyLabel: UILabel!
 
     private var currencyDelegate: CurrencyFieldDelegate?
     private var currencyTypePicker: UIPickerView
@@ -87,7 +88,11 @@ class TransactionViewController: UIViewController {
 
     // MARK: ViewController Actions
     @IBAction func onTransactiontypeChanged(_ sender: Any) {
-
+        do {
+            try interactor.transactionTypeChanged(newIndex: transactionTypeSegmented.selectedSegmentIndex)
+        } catch {
+            self.show(appError: (error as? AppError) ?? TransactionError.unrecognezedTransactiontype)
+        }
     }
 
     // MARK: Instantiate
@@ -105,6 +110,10 @@ class TransactionViewController: UIViewController {
 }
 
 extension TransactionViewController: TransactionDelegate {
+    func didTransactionTypeChanged() {
+        self.buyCurrencyLabel.text = self.viewModel.buyCurrencyDescription
+    }
+
     func didExchangeCurrencyTypeChanged() {
         self.setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
     }
