@@ -71,6 +71,7 @@ class TransactionViewController: UIViewController {
     }
 
     @objc func onCancelBarButtonTouch() {
+        self.currencyTypePicker.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)
     }
 
