@@ -10,7 +10,7 @@ import Foundation
 
 enum WalletError: AppError, Equatable {
     case currencyNotFound(forAcronym: String)
-    
+
     var title: String {
         switch self {
         case .currencyNotFound:

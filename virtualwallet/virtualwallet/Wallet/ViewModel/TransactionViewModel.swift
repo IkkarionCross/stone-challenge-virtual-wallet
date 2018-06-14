@@ -13,22 +13,28 @@ struct TransactionViewModel {
         return acceptedCurrencies.count
     }
 
-    var exchangeForCurrency: String
-    var buyCurrency: String
-
-    var exchangeCurrencySelectedIndex: Int {
-        return acceptedCurrencies.index(of: exchangeForCurrency) ?? 0
+    var exchangeForCurrency: String {
+        didSet {
+            self.exchangeCurrencySelectedIndex = acceptedCurrencies.index(of: exchangeForCurrency) ?? 0
+        }
+    }
+    var buyCurrency: String {
+        didSet {
+            self.buyCurrencySelectedIndex = acceptedCurrencies.index(of: buyCurrency) ?? 0
+        }
     }
 
-    var buyCurrencySelectedIndex: Int {
-        return acceptedCurrencies.index(of: buyCurrency) ?? 0
-    }
+    private(set) var exchangeCurrencySelectedIndex: Int
+
+    private(set) var buyCurrencySelectedIndex: Int
 
     private let acceptedCurrencies: [String] = ["BTC", "USD", "BRL", "BRITAS"]
 
     init() {
-        self.exchangeForCurrency = ""
-        self.buyCurrency = ""
+        self.exchangeForCurrency = acceptedCurrencies[0]
+        self.buyCurrency = acceptedCurrencies[1]
+        self.exchangeCurrencySelectedIndex = 0
+        self.buyCurrencySelectedIndex = 1
     }
 
     func acceptedCurrency(forRow row: Int) -> String? {
