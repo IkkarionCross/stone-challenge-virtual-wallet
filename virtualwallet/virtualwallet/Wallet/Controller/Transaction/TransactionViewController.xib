@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,6 +79,23 @@
                         </textField>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UmE-O5-nMf">
+                    <rect key="frame" x="8" y="198" width="359" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total da transação" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXn-IP-19T">
+                            <rect key="frame" x="0.0" y="0.5" width="141" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 0,00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G2G-ki-tdD">
+                            <rect key="frame" x="149" y="0.0" width="210" height="21"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                    </subviews>
+                </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-3s-0GD">
                     <rect key="frame" x="8" y="72" width="359" height="30"/>
                     <subviews>
@@ -100,6 +117,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IPG-3s-0GD" secondAttribute="trailing" constant="8" id="1aw-S3-8fh"/>
+                <constraint firstItem="UmE-O5-nMf" firstAttribute="top" secondItem="dc3-s4-Pyd" secondAttribute="bottom" constant="20" id="DHt-9t-kPb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dc3-s4-Pyd" secondAttribute="trailing" constant="8" id="Dzj-zc-2y4"/>
                 <constraint firstItem="TEY-EM-OLS" firstAttribute="top" secondItem="IPG-3s-0GD" secondAttribute="bottom" constant="8" id="IqO-J6-jg4"/>
                 <constraint firstItem="TEY-EM-OLS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="NEF-Xj-X2F"/>
@@ -109,8 +127,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mxl-gG-9Fc" secondAttribute="trailing" constant="8" id="aCD-3a-29N"/>
                 <constraint firstItem="Mxl-gG-9Fc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="hgo-OK-Skx"/>
                 <constraint firstItem="Mxl-gG-9Fc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="l5I-Sl-nqX"/>
+                <constraint firstItem="UmE-O5-nMf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="l6r-rC-spT"/>
                 <constraint firstItem="dc3-s4-Pyd" firstAttribute="top" secondItem="TEY-EM-OLS" secondAttribute="bottom" constant="8" id="pha-C5-SXJ"/>
                 <constraint firstItem="IPG-3s-0GD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="ve0-Vy-Ob0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UmE-O5-nMf" secondAttribute="trailing" constant="8" id="xB2-rz-PmZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="-179"/>
