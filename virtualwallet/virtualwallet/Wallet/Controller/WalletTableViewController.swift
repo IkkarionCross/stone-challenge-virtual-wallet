@@ -45,11 +45,7 @@ class WalletTableViewController: UITableViewController {
 
     @objc func addTransaction() {
         let transactionViewController: UIViewController = TransactionViewController.instantianteViewController()
-//            TransactionViewController(nibName: "TransactionViewController",
-//                                      bundle: Bundle.main)
-
         self.present(transactionViewController, animated: true, completion: nil)
-//        self.show(transactionViewController, sender: nil)
     }
 
     // MARK: - Table view data source
