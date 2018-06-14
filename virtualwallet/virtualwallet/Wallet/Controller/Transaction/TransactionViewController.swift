@@ -20,7 +20,6 @@ class TransactionViewController: UIViewController {
 
     private var currencyDelegate: CurrencyFieldDelegate?
     private var currencyTypePicker: UIPickerView
-    private var activeTextField: UITextField?
     private var viewModel: TransactionViewModel
     private var interactor: TransactionInteractor
 
@@ -39,14 +38,10 @@ class TransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel.delegate = self
         setupCurrencyTextFields()
-        setupAmountTextField()
+        setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
         setupNavigationBar()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func setupInputView(forTextField textField: UITextField) {
@@ -64,9 +59,10 @@ class TransactionViewController: UIViewController {
         self.exchangeTypeTextField.text = viewModel.exchangeForCurrency
     }
 
-    func setupAmountTextField() {
-        self.currencyDelegate = CurrencyFieldDelegate(currencySymbol: "BTC")
+    func setupAmountTextField(withCurrencySymbol symbol: String) {
+        self.currencyDelegate = CurrencyFieldDelegate(currencySymbol: symbol)
         self.amountTextField.delegate = self.currencyDelegate
+        self.amountTextField.text = viewModel.exchangeAmount
     }
 
     func setupNavigationBar() {
@@ -105,5 +101,15 @@ class TransactionViewController: UIViewController {
         navController.modalTransitionStyle = .coverVertical
 
         return navController
+    }
+}
+
+extension TransactionViewController: TransactionDelegate {
+    func didExchangeCurrencyTypeChanged() {
+        self.setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
+    }
+
+    func didBuyCurrencyTypeChanged() {
+        self.amountTextField.text = viewModel.exchangeAmount
     }
 }

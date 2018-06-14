@@ -7,20 +7,39 @@
 //
 
 import Foundation
+protocol TransactionDelegate: class {
+    func didExchangeCurrencyTypeChanged()
+    func didBuyCurrencyTypeChanged()
+}
 
-struct TransactionViewModel {
+class TransactionViewModel {
     var acceptedCurrenciesCount: Int {
         return acceptedCurrencies.count
     }
 
     var exchangeForCurrency: String {
         didSet {
-            self.exchangeCurrencySelectedIndex = acceptedCurrencies.index(of: exchangeForCurrency) ?? 0
+            if oldValue != exchangeForCurrency {
+                self.exchangeCurrencySelectedIndex = acceptedCurrencies.index(of: exchangeForCurrency) ?? 0
+                self.delegate?.didExchangeCurrencyTypeChanged()
+            }
         }
     }
     var buyCurrency: String {
         didSet {
-            self.buyCurrencySelectedIndex = acceptedCurrencies.index(of: buyCurrency) ?? 0
+            if oldValue != buyCurrency {
+                self.buyCurrencySelectedIndex = acceptedCurrencies.index(of: buyCurrency) ?? 0
+                self.delegate?.didBuyCurrencyTypeChanged()
+            }
+        }
+    }
+
+    var exchangeAmount: String {
+        get {
+            return "\(self.exchangeForCurrency)0.00"
+        }
+        set {
+
         }
     }
 
@@ -29,6 +48,7 @@ struct TransactionViewModel {
     private(set) var buyCurrencySelectedIndex: Int
 
     private let acceptedCurrencies: [String] = ["BTC", "USD", "BRL", "BRITAS"]
+    weak var delegate: TransactionDelegate?
 
     init() {
         self.exchangeForCurrency = acceptedCurrencies[0]
