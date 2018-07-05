@@ -96,6 +96,6 @@ class CurrencyTransactionTest: XCTestCase {
 
         let converted: Double = transaction.convert(amount: 2.0, toCurrency: bitcoinProperties)
 
-        XCTAssertEqual(converted, 0.00002)
+        XCTAssertEqual(converted, 0.002)
     }
 }
