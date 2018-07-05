@@ -83,4 +83,19 @@ class CurrencyTransactionTest: XCTestCase {
                            TransactionError.notEnoughFunds(ofCurrency: bitcoinProperties.basedOnAcronym))
         }
     }
+
+    func test_ShouldConvertUSDToBTC() {
+        let bitcoinProperties: CurrencyProperties = CurrencyProperties(withAcronym: "BTC", name: "Bitcoin",
+                                                                       sellPrice: 1000.0, buyPrice: 1000.0,
+                                                                       basedOnAcronym: "BRL", basedOnName: "Real")
+        let currentCurrency = Wallet.CurrencyValue(acronym: bitcoinProperties.basedOnAcronym,
+                                                   value: 1000.0, name: "Bitcoin")
+        let currentWallet: Wallet = Wallet(currencies: [currentCurrency])
+
+        let transaction: CurrencyTransaction = CurrencyTransaction(withWallet: currentWallet)
+
+        let converted: Double = transaction.convert(amount: 2.0, toCurrency: bitcoinProperties)
+
+        XCTAssertEqual(converted, 0.00002)
+    }
 }

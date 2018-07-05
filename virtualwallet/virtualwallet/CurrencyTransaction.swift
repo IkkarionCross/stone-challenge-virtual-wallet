@@ -28,6 +28,10 @@ struct CurrencyTransaction {
         self.wallet = wallet
     }
 
+    func convert(amount: Double, toCurrency: CurrencyProperties) -> Double {
+        return amount / toCurrency.buyPrice
+    }
+
     func buy(ammount: Double, ofCurrency buyingCurrency: CurrencyProperties) throws -> Wallet {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         guard self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
