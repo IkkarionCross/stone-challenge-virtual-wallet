@@ -18,7 +18,8 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var exchangeTypeTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var buyCurrencyLabel: UILabel!
-
+    @IBOutlet weak var totalValueTextField: UITextField!
+    
     private var currencyDelegate: CurrencyFieldDelegate?
     private var currencyTypePicker: UIPickerView
     private var viewModel: TransactionViewModel

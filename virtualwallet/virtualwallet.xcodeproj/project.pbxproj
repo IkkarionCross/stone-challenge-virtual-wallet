@@ -474,7 +474,6 @@
 				57764F1F2036316A00FFCE08 /* Frameworks */,
 				57764F202036316A00FFCE08 /* Resources */,
 				3681C8B9F0E7035E10AA3DF0 /* [CP] Embed Pods Frameworks */,
-				5FA3C1EB5CE4B9A7902B6EB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -494,7 +493,6 @@
 				57764F352036316A00FFCE08 /* Frameworks */,
 				57764F362036316A00FFCE08 /* Resources */,
 				036D015455DCF68266F0558C /* [CP] Embed Pods Frameworks */,
-				1CB9405DEC3733B248252C95 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -587,21 +585,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1CB9405DEC3733B248252C95 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3681C8B9F0E7035E10AA3DF0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -649,21 +632,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-		};
-		5FA3C1EB5CE4B9A7902B6EB9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		A577BC2DDC3DD8FB652482AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

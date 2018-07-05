@@ -16,6 +16,7 @@
                 <outlet property="buyCurrencyLabel" destination="Qw6-Jo-buN" id="iK6-i2-FOK"/>
                 <outlet property="currencyTypeTextField" destination="5Qv-j2-35T" id="Ukm-Kd-Qqd"/>
                 <outlet property="exchangeTypeTextField" destination="0Pq-N1-Zv6" id="971-VD-Hf8"/>
+                <outlet property="totalValueTextField" destination="G2G-ki-tdD" id="Ce0-R2-ccg"/>
                 <outlet property="transactionTypeSegmented" destination="s7h-tu-yWB" id="84Q-HE-ImS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

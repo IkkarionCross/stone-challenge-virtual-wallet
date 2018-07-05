@@ -41,7 +41,7 @@ class TransactionViewModel {
             return "\(self.exchangeForCurrency)0.00"
         }
         set {
-
+            
         }
     }
 
@@ -50,9 +50,13 @@ class TransactionViewModel {
             self.delegate?.didTransactionTypeChanged()
         }
     }
-    
+
     var buyCurrencyDescription: String {
         return "\(transactionType.description) com"
+    }
+    
+    var totalValue: String {
+        return "\(self.buyCurrency)0.00"
     }
 
     private(set) var exchangeCurrencySelectedIndex: Int
