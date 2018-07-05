@@ -25,9 +25,9 @@ class TransactionViewController: UIViewController {
     private var viewModel: TransactionViewModel
     private var interactor: TransactionInteractor
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, viewModel: TransactionViewModel) {
         self.currencyTypePicker = UIPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        self.viewModel = TransactionViewModel()
+        self.viewModel = viewModel
         self.interactor = TransactionInteractor(viewModel: viewModel, currencyTypePicker: currencyTypePicker)
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.currencyTypePicker.delegate = interactor
@@ -100,7 +100,7 @@ class TransactionViewController: UIViewController {
     static func instantianteViewController() -> UIViewController {
         let transactionViewController: TransactionViewController =
             TransactionViewController(nibName: "TransactionViewController",
-                                      bundle: Bundle.main)
+                                      bundle: Bundle.main, viewModel: viewModel)
         let navController: UINavigationController =
             UINavigationController(rootViewController: transactionViewController)
         navController.modalPresentationStyle = .formSheet

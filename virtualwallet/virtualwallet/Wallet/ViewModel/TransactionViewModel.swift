@@ -41,7 +41,7 @@ class TransactionViewModel {
             return "\(self.exchangeForCurrency)0.00"
         }
         set {
-            
+
         }
     }
 
@@ -54,7 +54,7 @@ class TransactionViewModel {
     var buyCurrencyDescription: String {
         return "\(transactionType.description) com"
     }
-    
+
     var totalValue: String {
         return "\(self.buyCurrency)0.00"
     }
@@ -65,13 +65,17 @@ class TransactionViewModel {
 
     private let acceptedCurrencies: [String] = ["BTC", "USD", "BRL", "BRITAS"]
     weak var delegate: TransactionDelegate?
+    
+    private var transaction: CurrencyTransaction
 
-    init() {
+    init(wallet: Wallet) {
         self.exchangeForCurrency = acceptedCurrencies[0]
         self.buyCurrency = acceptedCurrencies[1]
         self.exchangeCurrencySelectedIndex = 0
         self.buyCurrencySelectedIndex = 1
         self.transactionType = TransactionType.buy
+        
+        self.transaction = CurrencyTransaction(withWallet: wallet)
     }
 
     func acceptedCurrency(forRow row: Int) -> String? {
