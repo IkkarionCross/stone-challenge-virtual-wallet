@@ -19,19 +19,20 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var buyCurrencyLabel: UILabel!
     @IBOutlet weak var totalValueTextField: UITextField!
-    
+
+    var activeTextField: UITextField?
     private var currencyDelegate: CurrencyFieldDelegate?
-    private var currencyTypePicker: UIPickerView
-    private var viewModel: TransactionViewModel
-    private var interactor: TransactionInteractor
+    private var controller: TransactionController!
+    private(set) var currencyTypePicker: UIPickerView
+    private(set) var viewModel: TransactionViewModel
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, viewModel: TransactionViewModel) {
         self.currencyTypePicker = UIPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         self.viewModel = viewModel
-        self.interactor = TransactionInteractor(viewModel: viewModel, currencyTypePicker: currencyTypePicker)
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.currencyTypePicker.delegate = interactor
-        self.currencyTypePicker.dataSource = interactor
+        self.currencyTypePicker.delegate = controller
+        self.currencyTypePicker.dataSource = controller
+        self.controller = TransactionController(transactionView: self)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +41,7 @@ class TransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.delegate = self
+        self.viewModel.delegate = self.controller
         setupCurrencyTextFields()
         setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
         setupNavigationBar()
@@ -48,7 +49,7 @@ class TransactionViewController: UIViewController {
 
     func setupInputView(forTextField textField: UITextField) {
         textField.inputView = currencyTypePicker
-        textField.delegate = interactor
+        textField.delegate = controller
     }
 
     func setupCurrencyTextFields() {
@@ -84,20 +85,21 @@ class TransactionViewController: UIViewController {
     }
 
     @objc func onCancelBarButtonTouch() {
-        self.interactor.dismiss(viewController: self)
+        self.currencyTypePicker.removeFromSuperview()
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: ViewController Actions
     @IBAction func onTransactiontypeChanged(_ sender: Any) {
         do {
-            try interactor.transactionTypeChanged(newIndex: transactionTypeSegmented.selectedSegmentIndex)
+            try controller.transactionTypeChanged(newIndex: transactionTypeSegmented.selectedSegmentIndex)
         } catch {
             self.show(appError: (error as? AppError) ?? TransactionError.unrecognezedTransactiontype)
         }
     }
 
     // MARK: Instantiate
-    static func instantianteViewController() -> UIViewController {
+    static func instantianteViewController(viewModel: TransactionViewModel) -> UIViewController {
         let transactionViewController: TransactionViewController =
             TransactionViewController(nibName: "TransactionViewController",
                                       bundle: Bundle.main, viewModel: viewModel)
@@ -110,16 +112,4 @@ class TransactionViewController: UIViewController {
     }
 }
 
-extension TransactionViewController: TransactionDelegate {
-    func didTransactionTypeChanged() {
-        self.buyCurrencyLabel.text = self.viewModel.buyCurrencyDescription
-    }
-
-    func didExchangeCurrencyTypeChanged() {
-        self.setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
-    }
-
-    func didBuyCurrencyTypeChanged() {
-        self.amountTextField.text = viewModel.exchangeAmount
-    }
-}
+extension TransactionViewController: TransactionView {}

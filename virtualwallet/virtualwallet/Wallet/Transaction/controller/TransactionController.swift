@@ -8,21 +8,29 @@
 
 import UIKit
 
-class TransactionInteractor: NSObject {
-    private var viewModel: TransactionViewModel
-    private var activeTextField: UITextField?
-    private var currencyTypePicker: UIPickerView
+class TransactionController: NSObject {
+    var view: TransactionView
 
-    init(viewModel: TransactionViewModel, currencyTypePicker: UIPickerView) {
-        self.viewModel = viewModel
-        self.currencyTypePicker = currencyTypePicker
+    private var viewModel: TransactionViewModel {
+        return view.viewModel
+    }
+    private var activeTextField: UITextField? {
+        get {
+            return view.activeTextField
+        }
+        set {
+            view.activeTextField = newValue
+        }
+    }
+    private var currencyTypePicker: UIPickerView {
+        return view.currencyTypePicker
     }
 
-    func dismiss(viewController: UIViewController) {
-        self.currencyTypePicker.removeFromSuperview()
-        viewController.dismiss(animated: true, completion: nil)
+    init(transactionView: TransactionView) {
+        self.view = transactionView
+        super.init()
     }
-    
+
     func transactionTypeChanged(newIndex: Int) throws {
         guard let newTransactiontype = TransactionType(rawValue: newIndex) else {
             throw TransactionError.unrecognezedTransactiontype
@@ -31,7 +39,7 @@ class TransactionInteractor: NSObject {
     }
 }
 
-extension TransactionInteractor: UITextFieldDelegate {
+extension TransactionController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var selectedRow: Int = 0
         if textField.tag == TransactionViewController.FieldTag.currencyType.rawValue {
@@ -41,7 +49,7 @@ extension TransactionInteractor: UITextFieldDelegate {
         }
         self.activeTextField = textField
         self.currencyTypePicker.selectRow(selectedRow, inComponent: 0, animated: true)
-        self.pickerView(self.currencyTypePicker, didSelectRow: selectedRow, inComponent: 0)
+        self.pickerView(currencyTypePicker, didSelectRow: selectedRow, inComponent: 0)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
@@ -50,7 +58,7 @@ extension TransactionInteractor: UITextFieldDelegate {
     }
 }
 
-extension TransactionInteractor: UIPickerViewDelegate {
+extension TransactionController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
             fatalError("Transaction Currency type not loaded correctly!")
@@ -67,7 +75,7 @@ extension TransactionInteractor: UIPickerViewDelegate {
     }
 }
 
-extension TransactionInteractor: UIPickerViewDataSource {
+extension TransactionController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -81,5 +89,19 @@ extension TransactionInteractor: UIPickerViewDataSource {
             fatalError("Transaction Currency type not loaded correctly!")
         }
         return currencyType
+    }
+}
+
+extension TransactionController: TransactionDelegate {
+    func didTransactionTypeChanged() {
+        self.view.buyCurrencyLabel.text = self.viewModel.buyCurrencyDescription
+    }
+
+    func didExchangeCurrencyTypeChanged() {
+        self.view.setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
+    }
+
+    func didBuyCurrencyTypeChanged() {
+        self.view.amountTextField.text = viewModel.exchangeAmount
     }
 }

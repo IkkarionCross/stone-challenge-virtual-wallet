@@ -44,7 +44,8 @@ class WalletTableViewController: UITableViewController {
     }
 
     @objc func addTransaction() {
-        let transactionViewController: UIViewController = TransactionViewController.instantianteViewController()
+        let transactionViewController: UIViewController = TransactionViewController.instantianteViewController(
+            viewModel: TransactionViewModel(wallet: Wallet(currencies: [])))
         self.present(transactionViewController, animated: true, completion: nil)
     }
 

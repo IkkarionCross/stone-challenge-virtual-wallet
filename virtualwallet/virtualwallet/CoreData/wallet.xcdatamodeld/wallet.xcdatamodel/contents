@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18A314h" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CurrencyEntity" representedClassName="CurrencyEntity" syncable="YES">
+        <attribute name="acronym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="quotation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="QuotationEntity" inverseName="currency" inverseEntity="QuotationEntity" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="WalletEntity" inverseName="currencies" inverseEntity="WalletEntity" syncable="YES"/>
+    </entity>
+    <entity name="QuotationEntity" representedClassName="QuotationEntity" syncable="YES">
+        <attribute name="acronym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buyParity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="buyPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reportType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sellParity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sellPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="currency" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CurrencyEntity" inverseName="quotation" inverseEntity="CurrencyEntity" syncable="YES"/>
+        <relationship name="transaction" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="TransactionEntity" inverseName="quotationUsed" inverseEntity="TransactionEntity" syncable="YES"/>
+    </entity>
+    <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES">
+        <attribute name="fromCurrencyAcronym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toCurrencyAcronym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="quotationUsed" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="QuotationEntity" inverseName="transaction" inverseEntity="QuotationEntity" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="WalletEntity" inverseName="transactions" inverseEntity="WalletEntity" syncable="YES"/>
+    </entity>
+    <entity name="WalletEntity" representedClassName="WalletEntity" syncable="YES">
+        <relationship name="currencies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CurrencyEntity" inverseName="wallet" inverseEntity="CurrencyEntity" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TransactionEntity" inverseName="wallet" inverseEntity="TransactionEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WalletEntity" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="CurrencyEntity" positionX="-54" positionY="0" width="128" height="120"/>
+        <element name="TransactionEntity" positionX="-45" positionY="45" width="128" height="120"/>
+        <element name="QuotationEntity" positionX="-36" positionY="72" width="128" height="180"/>
+    </elements>
+</model>
