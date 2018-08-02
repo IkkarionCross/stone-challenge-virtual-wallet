@@ -65,16 +65,16 @@ class TransactionViewModel {
 
     private let acceptedCurrencies: [String] = ["BTC", "USD", "BRL", "BRITAS"]
     weak var delegate: TransactionDelegate?
-    
+
     private var transaction: CurrencyTransaction
 
-    init(wallet: Wallet) {
+    init(saveTransactionsInWallet wallet: Wallet) {
         self.exchangeForCurrency = acceptedCurrencies[0]
         self.buyCurrency = acceptedCurrencies[1]
         self.exchangeCurrencySelectedIndex = 0
         self.buyCurrencySelectedIndex = 1
         self.transactionType = TransactionType.buy
-        
+
         self.transaction = CurrencyTransaction(withWallet: wallet)
     }
 
