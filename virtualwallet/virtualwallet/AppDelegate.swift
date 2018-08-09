@@ -12,10 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy var container: WalletDataContainer = {
+        return WalletDataContainer(modelName: "wallet")
+    }()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         let mainViewModel: MainViewModel = MainViewModel()

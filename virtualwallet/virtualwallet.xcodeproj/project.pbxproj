@@ -66,7 +66,10 @@
 		57B508A92112854600C29E70 /* CurrencyEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B508A12112854600C29E70 /* CurrencyEntity+CoreDataProperties.swift */; };
 		57B508AA2112854600C29E70 /* WalletEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B508A22112854600C29E70 /* WalletEntity+CoreDataClass.swift */; };
 		57B508AB2112854600C29E70 /* WalletEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B508A32112854600C29E70 /* WalletEntity+CoreDataProperties.swift */; };
+		57B508BA21128AE000C29E70 /* WalletDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B508B921128AE000C29E70 /* WalletDataContainer.swift */; };
+		57B508BC2112951900C29E70 /* NSManagedObjectContext+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B508BB2112951900C29E70 /* NSManagedObjectContext+Additions.swift */; };
 		57BD36A720EDB10A00AE2AFC /* wallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57BD36A520EDB10900AE2AFC /* wallet.xcdatamodeld */; };
+		57D74AD6211BC5A700C5AB8D /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D74AD5211BC5A700C5AB8D /* DataContainer.swift */; };
 		57DB92252106A9F500E66717 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB92242106A9F500E66717 /* TransactionView.swift */; };
 		D107A30098519810DB6923E9 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEA10AB6DD3C043122ACA91 /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
@@ -146,7 +149,10 @@
 		57B508A12112854600C29E70 /* CurrencyEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57B508A22112854600C29E70 /* WalletEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57B508A32112854600C29E70 /* WalletEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57B508B921128AE000C29E70 /* WalletDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataContainer.swift; sourceTree = "<group>"; };
+		57B508BB2112951900C29E70 /* NSManagedObjectContext+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Additions.swift"; sourceTree = "<group>"; };
 		57BD36A620EDB10900AE2AFC /* wallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wallet.xcdatamodel; sourceTree = "<group>"; };
+		57D74AD5211BC5A700C5AB8D /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		57DB92242106A9F500E66717 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		8661E187FFB4532C6EBF522B /* Pods-virtualwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwallet/Pods-virtualwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		8E97E907831AD4A73621D554 /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,6 +451,7 @@
 				5738E50920B4F9B4004FDA88 /* UITextField+Additions.swift */,
 				57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */,
 				57AEF9172043512F001E77C8 /* UIViewController+Additions.swift */,
+				57B508BB2112951900C29E70 /* NSManagedObjectContext+Additions.swift */,
 			);
 			path = additions;
 			sourceTree = "<group>";
@@ -511,6 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				57BD36A520EDB10900AE2AFC /* wallet.xcdatamodeld */,
+				57B508B921128AE000C29E70 /* WalletDataContainer.swift */,
+				57D74AD5211BC5A700C5AB8D /* DataContainer.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -791,17 +800,20 @@
 				5738E50E20B4FBB9004FDA88 /* CurrencyFieldDelegate.swift in Sources */,
 				57BD36A720EDB10A00AE2AFC /* wallet.xcdatamodeld in Sources */,
 				5725C92520438942001099E0 /* UpdateDigitalCurrencyOperation.swift in Sources */,
+				57D74AD6211BC5A700C5AB8D /* DataContainer.swift in Sources */,
 				57DB92252106A9F500E66717 /* TransactionView.swift in Sources */,
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,
 				57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */,
 				57B508A82112854600C29E70 /* CurrencyEntity+CoreDataClass.swift in Sources */,
 				5720311920900AB500425EDD /* WalletError.swift in Sources */,
+				57B508BA21128AE000C29E70 /* WalletDataContainer.swift in Sources */,
 				57B508A72112854600C29E70 /* QuotationEntity+CoreDataProperties.swift in Sources */,
 				5725C92920438F60001099E0 /* DateDecodable.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,
 				57B296B5208581C800751A0F /* WalletTableViewController.swift in Sources */,
+				57B508BC2112951900C29E70 /* NSManagedObjectContext+Additions.swift in Sources */,
 				57B508AB2112854600C29E70 /* WalletEntity+CoreDataProperties.swift in Sources */,
 				57B508A92112854600C29E70 /* CurrencyEntity+CoreDataProperties.swift in Sources */,
 				57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */,

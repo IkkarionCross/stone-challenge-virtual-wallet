@@ -25,6 +25,7 @@ class TransactionViewController: UIViewController {
     private var controller: TransactionController!
     private(set) var currencyTypePicker: UIPickerView
     private(set) var viewModel: TransactionViewModel
+    var dataContainer: DataContainer?
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, viewModel: TransactionViewModel) {
         self.currencyTypePicker = UIPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
@@ -113,3 +114,4 @@ class TransactionViewController: UIViewController {
 }
 
 extension TransactionViewController: TransactionView {}
+extension TransactionViewController: Persistable {}

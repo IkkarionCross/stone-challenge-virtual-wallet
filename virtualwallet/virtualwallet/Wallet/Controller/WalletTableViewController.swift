@@ -12,8 +12,8 @@ import UIKit
  */
 class WalletTableViewController: UITableViewController {
     private let cellIdentifier: String = "currency"
-
     private var viewModel: MainViewModel
+    var dataContainer: DataContainer?
 
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -78,3 +78,5 @@ class WalletTableViewController: UITableViewController {
         return cell
     }
 }
+
+extension WalletTableViewController: Persistable {}
