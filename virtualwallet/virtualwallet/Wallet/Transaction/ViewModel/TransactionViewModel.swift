@@ -68,6 +68,8 @@ class TransactionViewModel {
 
     private var transaction: CurrencyTransaction
 
+    var dataContainer: DataContainer?
+
     init(saveTransactionsInWallet wallet: Wallet) {
         self.exchangeForCurrency = acceptedCurrencies[0]
         self.buyCurrency = acceptedCurrencies[1]
@@ -85,3 +87,5 @@ class TransactionViewModel {
         return acceptedCurrencies[row]
     }
 }
+
+extension TransactionViewModel: Persistable {}

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let mainViewModel: MainViewModel = MainViewModel()
         let rootViewController = WalletTableViewController(viewModel: mainViewModel)
+        rootViewController.dataContainer = container
 
         let navViewController: UINavigationController = UINavigationController(rootViewController: rootViewController)
         navViewController.navigationBar.backgroundColor = UIColor.white
