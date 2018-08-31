@@ -34,7 +34,7 @@ class QuotationsViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
             quotationCell = cell
         } else {
-            quotationCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
+            quotationCell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell")
         }
 
         quotationCell.textLabel?.text = quotation.acronym?.uppercased()

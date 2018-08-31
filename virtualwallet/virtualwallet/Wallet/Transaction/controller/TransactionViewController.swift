@@ -71,11 +71,11 @@ class TransactionViewController: UIViewController {
     func setupNavigationBar() {
         self.navigationItem.title = "Transação"
         self.navigationItem.rightBarButtonItem =
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done,
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
                             target: self, action: #selector(onOkBarButtonTouch))
 
         self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel,
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel,
                             target: self, action: #selector(onCancelBarButtonTouch))
     }
 

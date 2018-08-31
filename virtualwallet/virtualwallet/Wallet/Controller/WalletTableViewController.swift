@@ -17,7 +17,7 @@ class WalletTableViewController: UITableViewController {
 
     init(viewModel: WalletViewModel) {
         self.viewModel = viewModel
-        super.init(style: UITableViewStyle.plain)
+        super.init(style: UITableView.Style.plain)
         self.tableView.allowsSelection = false
         self.modalPresentationStyle = .formSheet
         setupNavigationBar()
@@ -29,7 +29,7 @@ class WalletTableViewController: UITableViewController {
 
     func setupNavigationBar() {
         self.title = "Carteira"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add,
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add,
                                                                  target: self, action: #selector(addTransaction))
     }
 
@@ -65,7 +65,7 @@ class WalletTableViewController: UITableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var currencyCell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if currencyCell == nil {
-            currencyCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: cellIdentifier)
+            currencyCell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: cellIdentifier)
         }
         guard let money: WalletViewModel.CurrencyViewModel =
             viewModel.currency(forIndexPath: indexPath) else {
