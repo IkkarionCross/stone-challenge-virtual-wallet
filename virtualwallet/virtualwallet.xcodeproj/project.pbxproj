@@ -306,8 +306,7 @@
 			children = (
 				57260A02212E41AE00A44D77 /* utils */,
 				57B508B22112860400C29E70 /* additions */,
-				57B5089B2112850C00C29E70 /* Entities */,
-				57BD36A420EDB0E900AE2AFC /* CoreData */,
+				57921E582138C3BB0069E029 /* Storage */,
 				5738E50C20B4FB8F004FDA88 /* FieldMask */,
 				5731409E209FD4D1000C1574 /* MainViewController */,
 				57764F542038C3A700FFCE08 /* Wallet */,
@@ -365,6 +364,14 @@
 				57764F582038C5E400FFCE08 /* CurrencyProperties.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		57921E582138C3BB0069E029 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				57BD36A420EDB0E900AE2AFC /* CoreData */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		57AEF9112043427E001E77C8 /* JSONParser */ = {
@@ -537,6 +544,7 @@
 		57BD36A420EDB0E900AE2AFC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				57B5089B2112850C00C29E70 /* Entities */,
 				57BD36A520EDB10900AE2AFC /* wallet.xcdatamodeld */,
 				57B508B921128AE000C29E70 /* WalletDataContainer.swift */,
 				57D74AD5211BC5A700C5AB8D /* DataContainer.swift */,
