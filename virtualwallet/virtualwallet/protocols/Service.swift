@@ -10,5 +10,5 @@ import Foundation
 
 protocol Service {
     associatedtype DataType
-    func retrieveData(completion: @escaping (_ data: DataType?, _ error: AppError?) -> Void)
+    func retrieveData(completion: @escaping (_ result: Completion<DataType>) -> Void)
 }

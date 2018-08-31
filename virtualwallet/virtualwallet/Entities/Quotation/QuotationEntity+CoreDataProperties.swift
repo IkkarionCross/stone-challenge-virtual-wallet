@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension QuotationEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<QuotationEntity> {
@@ -23,7 +22,7 @@ extension QuotationEntity {
     @NSManaged public var reportType: String?
     @NSManaged public var sellParity: Double
     @NSManaged public var sellPrice: Double
-    @NSManaged public var timeStamp: NSDate?
+    @NSManaged public var timeStamp: Date?
     @NSManaged public var currency: CurrencyEntity?
     @NSManaged public var transaction: NSSet?
 

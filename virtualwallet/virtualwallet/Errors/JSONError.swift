@@ -10,7 +10,7 @@ import Foundation
 
 enum JSONError: AppError, Equatable {
     case parseError
-
+    
     var title: String {
         switch self {
         case .parseError:

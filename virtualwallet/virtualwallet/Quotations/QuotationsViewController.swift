@@ -28,7 +28,7 @@ class QuotationsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let quotation: JSONQuotation = quotationsViewModel.quotation(at: indexPath)
+        let quotation: QuotationEntity = quotationsViewModel.quotation(at: indexPath)
 
         let quotationCell: UITableViewCell
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") {
@@ -37,8 +37,8 @@ class QuotationsViewController: UITableViewController {
             quotationCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
         }
 
-        quotationCell.textLabel?.text = "USD"
-        quotationCell.detailTextLabel?.text = quotation.buyQuotation.currencyString()
+        quotationCell.textLabel?.text = quotation.acronym?.uppercased()
+        quotationCell.detailTextLabel?.text = quotation.buyPrice.currencyString()
         return quotationCell
     }
 

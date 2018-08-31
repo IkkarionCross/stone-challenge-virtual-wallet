@@ -7,14 +7,8 @@
 //
 
 import Foundation
-protocol ObservableOperation {
-    var operationDidStart: ((_ id: String, _ operationInfo: [String: Any]?) -> Void)? { get set }
-    var operationDidFinish: ((_ error: AppError?, _ operationInfo: [String: Any]?) -> Void)? { get set }
-}
 
-class CustomOperation: Operation, ObservableOperation {
-    var operationDidStart: ((_ id: String, _ operationInfo: [String: Any]?) -> Void)?
-    var operationDidFinish: ((_ error: AppError?, _ operationInfo: [String: Any]?) -> Void)?
+class CustomOperation: Operation {
 
     var title: String = ""
     var isRunning: Bool = false
@@ -37,7 +31,7 @@ class CustomOperation: Operation, ObservableOperation {
         }
     }
 
-    private func finish () {
+    func finish () {
         self.willChangeValue(forKey: "isExecuting")
         isRunning = false
         self.didChangeValue(forKey: "isExecuting")
@@ -45,15 +39,5 @@ class CustomOperation: Operation, ObservableOperation {
         self.willChangeValue(forKey: "isFinished")
         isDone = true
         self.didChangeValue(forKey: "isFinished")
-    }
-
-    func finish(withError error: AppError) {
-        self.operationDidFinish?(error, nil)
-        self.finish()
-    }
-
-    func finish(withInfo info: [String: Any]?) {
-        self.operationDidFinish?(nil, info)
-        self.finish()
     }
 }

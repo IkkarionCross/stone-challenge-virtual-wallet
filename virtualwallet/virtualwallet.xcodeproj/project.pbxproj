@@ -16,10 +16,12 @@
 		5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C91E204383B2001099E0 /* BitcoinMarketRouter.swift */; };
 		5725C921204384D6001099E0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C920204384D6001099E0 /* Router.swift */; };
 		5725C92320438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */; };
-		5725C92520438942001099E0 /* UpdateDigitalCurrencyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */; };
+		5725C92520438942001099E0 /* FetchDigitalCurrencyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92420438942001099E0 /* FetchDigitalCurrencyOperation.swift */; };
 		5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92620438B3F001099E0 /* JSONTicker.swift */; };
 		5725C92920438F60001099E0 /* DateDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92820438F60001099E0 /* DateDecodable.swift */; };
 		5725C92D20439104001099E0 /* JSONTickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725C92C20439104001099E0 /* JSONTickerTest.swift */; };
+		57260A04212E41C300A44D77 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A03212E41C300A44D77 /* Completion.swift */; };
+		57260A06212E49A700A44D77 /* ObservableOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57260A05212E49A700A44D77 /* ObservableOperation.swift */; };
 		573140A0209FD4FE000C1574 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731409F209FD4FE000C1574 /* MainViewModel.swift */; };
 		573140A3209FD9E9000C1574 /* DisplayableMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573140A2209FD9E9000C1574 /* DisplayableMoney.swift */; };
 		5738E50820B4E8A9004FDA88 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */; };
@@ -45,11 +47,12 @@
 		5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E05C2038FA6C0096B151 /* BaseRouter.swift */; };
 		5784E05F2038FACD0096B151 /* CentralBankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E05E2038FACD0096B151 /* CentralBankRouter.swift */; };
 		5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0612038FDBC0096B151 /* Date+Additions.swift */; };
-		5784E0652038FF170096B151 /* UpdateCentralBankCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0642038FF170096B151 /* UpdateCentralBankCurrency.swift */; };
+		5784E0652038FF170096B151 /* FetchCentralBankCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E0642038FF170096B151 /* FetchCentralBankCurrency.swift */; };
 		5784E067203906570096B151 /* CustomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784E066203906570096B151 /* CustomOperation.swift */; };
 		57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */; };
 		57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F47203BABEA00B7CFE4 /* JSONError.swift */; };
 		57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */; };
+		57921E552138B78B0069E029 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E542138B78B0069E029 /* OperationError.swift */; };
 		57ABBC9520D1F0C700834EDE /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ABBC9420D1F0C700834EDE /* TransactionController.swift */; };
 		57AEF91320434294001E77C8 /* JSONQuotationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91220434294001E77C8 /* JSONQuotationTest.swift */; };
 		57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */; };
@@ -95,10 +98,12 @@
 		5725C91E204383B2001099E0 /* BitcoinMarketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinMarketRouter.swift; sourceTree = "<group>"; };
 		5725C920204384D6001099E0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5725C92220438884001099E0 /* UpdateDigitalCurrencyOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperationTest.swift; sourceTree = "<group>"; };
-		5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDigitalCurrencyOperation.swift; sourceTree = "<group>"; };
+		5725C92420438942001099E0 /* FetchDigitalCurrencyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDigitalCurrencyOperation.swift; sourceTree = "<group>"; };
 		5725C92620438B3F001099E0 /* JSONTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTicker.swift; sourceTree = "<group>"; };
 		5725C92820438F60001099E0 /* DateDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodable.swift; sourceTree = "<group>"; };
 		5725C92C20439104001099E0 /* JSONTickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTickerTest.swift; sourceTree = "<group>"; };
+		57260A03212E41C300A44D77 /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
+		57260A05212E49A700A44D77 /* ObservableOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableOperation.swift; sourceTree = "<group>"; };
 		5731409F209FD4FE000C1574 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		573140A2209FD9E9000C1574 /* DisplayableMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableMoney.swift; sourceTree = "<group>"; };
 		5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
@@ -128,11 +133,12 @@
 		5784E05C2038FA6C0096B151 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		5784E05E2038FACD0096B151 /* CentralBankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralBankRouter.swift; sourceTree = "<group>"; };
 		5784E0612038FDBC0096B151 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
-		5784E0642038FF170096B151 /* UpdateCentralBankCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCentralBankCurrency.swift; sourceTree = "<group>"; };
+		5784E0642038FF170096B151 /* FetchCentralBankCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCentralBankCurrency.swift; sourceTree = "<group>"; };
 		5784E066203906570096B151 /* CustomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperation.swift; sourceTree = "<group>"; };
 		57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotation.swift; sourceTree = "<group>"; };
 		57881F47203BABEA00B7CFE4 /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdditions.swift; sourceTree = "<group>"; };
+		57921E542138B78B0069E029 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		57ABBC9420D1F0C700834EDE /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		57AEF91220434294001E77C8 /* JSONQuotationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotationTest.swift; sourceTree = "<group>"; };
 		57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsViewModel.swift; sourceTree = "<group>"; };
@@ -222,6 +228,14 @@
 			path = spies;
 			sourceTree = "<group>";
 		};
+		57260A02212E41AE00A44D77 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				57260A03212E41C300A44D77 /* Completion.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		5731409E209FD4D1000C1574 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +302,7 @@
 		57764F242036316A00FFCE08 /* virtualwallet */ = {
 			isa = PBXGroup;
 			children = (
+				57260A02212E41AE00A44D77 /* utils */,
 				57B508B22112860400C29E70 /* additions */,
 				57B5089B2112850C00C29E70 /* Entities */,
 				57BD36A420EDB0E900AE2AFC /* CoreData */,
@@ -440,6 +455,7 @@
 				5784E0582038D3AA0096B151 /* AppError.swift */,
 				574AC2D42039130A006FFF97 /* NetworkError.swift */,
 				57881F47203BABEA00B7CFE4 /* JSONError.swift */,
+				57921E542138B78B0069E029 /* OperationError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -507,9 +523,10 @@
 		57B508B82112869800C29E70 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				5784E0642038FF170096B151 /* UpdateCentralBankCurrency.swift */,
-				5725C92420438942001099E0 /* UpdateDigitalCurrencyOperation.swift */,
+				5784E0642038FF170096B151 /* FetchCentralBankCurrency.swift */,
+				5725C92420438942001099E0 /* FetchDigitalCurrencyOperation.swift */,
 				5784E066203906570096B151 /* CustomOperation.swift */,
+				57260A05212E49A700A44D77 /* ObservableOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -779,7 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5784E0652038FF170096B151 /* UpdateCentralBankCurrency.swift in Sources */,
+				5784E0652038FF170096B151 /* FetchCentralBankCurrency.swift in Sources */,
 				57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */,
 				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
 				5784E05F2038FACD0096B151 /* CentralBankRouter.swift in Sources */,
@@ -797,9 +814,10 @@
 				5725C91D2043822E001099E0 /* SupportedCurrencies.swift in Sources */,
 				57B508A52112854600C29E70 /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				57ABBC9520D1F0C700834EDE /* TransactionController.swift in Sources */,
+				57921E552138B78B0069E029 /* OperationError.swift in Sources */,
 				5738E50E20B4FBB9004FDA88 /* CurrencyFieldDelegate.swift in Sources */,
 				57BD36A720EDB10A00AE2AFC /* wallet.xcdatamodeld in Sources */,
-				5725C92520438942001099E0 /* UpdateDigitalCurrencyOperation.swift in Sources */,
+				5725C92520438942001099E0 /* FetchDigitalCurrencyOperation.swift in Sources */,
 				57D74AD6211BC5A700C5AB8D /* DataContainer.swift in Sources */,
 				57DB92252106A9F500E66717 /* TransactionView.swift in Sources */,
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
@@ -809,6 +827,8 @@
 				5720311920900AB500425EDD /* WalletError.swift in Sources */,
 				57B508BA21128AE000C29E70 /* WalletDataContainer.swift in Sources */,
 				57B508A72112854600C29E70 /* QuotationEntity+CoreDataProperties.swift in Sources */,
+				57260A06212E49A700A44D77 /* ObservableOperation.swift in Sources */,
+				57260A04212E41C300A44D77 /* Completion.swift in Sources */,
 				5725C92920438F60001099E0 /* DateDecodable.swift in Sources */,
 				574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */,
 				5725C91F204383B2001099E0 /* BitcoinMarketRouter.swift in Sources */,

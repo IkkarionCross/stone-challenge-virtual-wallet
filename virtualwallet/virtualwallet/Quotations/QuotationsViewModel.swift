@@ -14,52 +14,42 @@ protocol QuotationsDelegate: class {
 
 class QuotationsViewModel {
 
-    private var quotations: [JSONQuotation]
+    private var quotations: [QuotationEntity]
     private let operationQueue: OperationQueue
 
     weak var delegate: QuotationsDelegate?
 
-    private var USDRequest: CentralBankRouter {
-        return CentralBankRouter.recentQuotationFor(currencyAcronym: SupportedCurrencies.USD.rawValue)
-    }
-
-    init(quotations: [JSONQuotation]) {
+    init(quotations: [QuotationEntity]) {
         self.quotations = quotations
         self.operationQueue = OperationQueue()
     }
 
     func updateQuotationsFromNetwork() {
-        let service: RESTService = RESTService(request: USDRequest,
-                                               queue: DispatchQueue.global())
+        let updateCurrencyFromBC: FetchCentralBankCurrency =
+            FetchCentralBankCurrency(currencyType: SupportedCurrencies.USD)
 
-        let updateCurrencyFromBC: UpdateCentralBankCurrency =
-            UpdateCentralBankCurrency(service: service)
-
-        updateCurrencyFromBC.operationDidFinish = { error, info in
-            guard error == nil else {
+        updateCurrencyFromBC.operationDidFinish = { result in
+            switch result {
+            case let .failure(error):
                 DispatchQueue.main.async {
                     self.delegate?.onQuotationsUpdated(error: error)
                 }
-                return
-            }
-            if let retrievedQuotations: [JSONQuotation] =
-                info?[UpdateCentralBankCurrency.UpdateCurrencyInfoKeys.quotations.rawValue]
-                    as? [JSONQuotation] {
+            case let .success(quotations):
                 DispatchQueue.main.async {
                     self.delegate?.onQuotationsUpdated(error: nil)
                 }
-                self.quotations.append(contentsOf: retrievedQuotations)
+                self.quotations.append(contentsOf: quotations)
             }
         }
 
         operationQueue.addOperation(updateCurrencyFromBC)
     }
 
-    func allQuotations() -> [JSONQuotation] {
+    func allQuotations() -> [QuotationEntity] {
         return self.quotations
     }
 
-    func quotation(at indexPath: IndexPath) -> JSONQuotation {
+    func quotation(at indexPath: IndexPath) -> QuotationEntity {
         return self.quotations[indexPath.row]
     }
 }

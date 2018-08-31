@@ -19,18 +19,18 @@ struct RESTService: Service {
         self.queue = queue
     }
 
-    func retrieveData(completion: @escaping (_ data: DataType?, _ error: AppError?) -> Void) {
+    func retrieveData(completion: @escaping (_ result: Completion<DataType>) -> Void) {
         Alamofire.request(self.urlRequest)
             .validate(statusCode: 200...299)
             .responseJSON(queue: self.queue, options: JSONSerialization.ReadingOptions.allowFragments) { response in
                 switch response.result {
                 case .success:
                     if let JSONData = response.result.value as? DataType {
-                        completion(JSONData, nil)
+                        completion(Completion.success(JSONData))
                     } else {
                         if let requestDescription = (self.urlRequest as? Router)?.requestDescription {
-                            completion(nil,
-                                       NetworkError.invalidDataReceived(requestDescription: requestDescription))
+                            completion(Completion.failure(
+                                       NetworkError.invalidDataReceived(requestDescription: requestDescription)))
                         }
                     }
                 case .failure:
@@ -42,7 +42,7 @@ struct RESTService: Service {
                     }
                     let message = response.error?.localizedDescription ?? ""
                     let serverError = NetworkError.serverError(statusCode: statusCode, message: message)
-                    completion(nil, serverError)
+                    completion(Completion.failure(serverError))
                 }
         }
     }

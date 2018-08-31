@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 enum QuotationListKey: String {
     case value
@@ -47,5 +48,29 @@ struct JSONQuotation: Decodable, DateDecodable {
 
     static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
         return .formatted(dateFormatter())
+    }
+
+    func toEntity(acronym: String, context: NSManagedObjectContext) -> QuotationEntity {
+        let quotation: QuotationEntity = QuotationEntity(context: context)
+        quotation.acronym = acronym
+        quotation.buyParity = buyParity
+        quotation.sellParity = sellParity
+        quotation.sellPrice = sellQuotation
+        quotation.buyPrice = buyQuotation
+        quotation.timeStamp = timeStamp
+        quotation.reportType = reportType.rawValue
+
+        return quotation
+    }
+}
+
+extension Array where Element == JSONQuotation {
+    func toEntity(acronym: String, context: NSManagedObjectContext) -> [QuotationEntity] {
+        var quotations: [QuotationEntity] = []
+        for jsonQuotation in self {
+            let quotation: QuotationEntity = jsonQuotation.toEntity(acronym: acronym, context: context)
+            quotations.append(quotation)
+        }
+        return quotations
     }
 }
