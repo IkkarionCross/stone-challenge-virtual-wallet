@@ -12,10 +12,10 @@ import UIKit
  */
 class WalletTableViewController: UITableViewController {
     private let cellIdentifier: String = "currency"
-    private var viewModel: MainViewModel
+    private var viewModel: WalletViewModel
     var dataContainer: DataContainer?
 
-    init(viewModel: MainViewModel) {
+    init(viewModel: WalletViewModel) {
         self.viewModel = viewModel
         super.init(style: UITableViewStyle.plain)
         self.tableView.allowsSelection = false
@@ -44,7 +44,7 @@ class WalletTableViewController: UITableViewController {
     }
 
     @objc func addTransaction() {
-        let viewModel: TransactionViewModel = TransactionViewModel(saveTransactionsInWallet: Wallet(currencies: []))
+        let viewModel: TransactionViewModel = TransactionViewModel(saveTransactionsInWallet: self.viewModel.wallet)
         viewModel.dataContainer = dataContainer
         let transactionViewController: UIViewController = TransactionViewController.instantianteViewController(
             viewModel: viewModel)
@@ -58,7 +58,7 @@ class WalletTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rows(forSection: section)
+        return viewModel.currenciesCount
     }
 
     override func tableView(_ tableView: UITableView,
@@ -67,8 +67,8 @@ class WalletTableViewController: UITableViewController {
         if currencyCell == nil {
             currencyCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: cellIdentifier)
         }
-        guard let money: AccumulatableMoney =
-            viewModel.money(forIndexPath: indexPath) as? AccumulatableMoney else {
+        guard let money: WalletViewModel.CurrencyViewModel =
+            viewModel.currency(forIndexPath: indexPath) else {
             fatalError("Wallet invalid state there is a missing currency!")
         }
         guard let cell = currencyCell else {

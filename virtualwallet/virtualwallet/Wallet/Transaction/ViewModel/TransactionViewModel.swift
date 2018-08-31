@@ -70,7 +70,7 @@ class TransactionViewModel {
 
     var dataContainer: DataContainer?
 
-    init(saveTransactionsInWallet wallet: Wallet) {
+    init(saveTransactionsInWallet wallet: WalletEntity) {
         self.exchangeForCurrency = acceptedCurrencies[0]
         self.buyCurrency = acceptedCurrencies[1]
         self.exchangeCurrencySelectedIndex = 0

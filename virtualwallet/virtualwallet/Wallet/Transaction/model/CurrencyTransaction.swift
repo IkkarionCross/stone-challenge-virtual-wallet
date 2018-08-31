@@ -22,9 +22,9 @@ enum TransactionType: Int {
 }
 
 struct CurrencyTransaction {
-    private var wallet: Wallet
+    private var wallet: WalletEntity
 
-    init(withWallet wallet: Wallet) {
+    init(withWallet wallet: WalletEntity) {
         self.wallet = wallet
     }
 
@@ -32,16 +32,16 @@ struct CurrencyTransaction {
         return amount / toCurrency.buyPrice
     }
 
-    func buy(ammount: Double, ofCurrency buyingCurrency: CurrencyProperties) throws -> Wallet {
+    func buy(ammount: Double, ofCurrency buyingCurrency: CurrencyProperties) throws -> WalletEntity {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         guard self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
                                      ofCurrencyAcronym: buyingCurrency.basedOnAcronym) else {
                                         throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.basedOnAcronym)
         }
 
-        self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
+        try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
                             withName: buyingCurrency.name)
-        self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
+        try self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
                              ofCurrencyAcronym: buyingCurrency.basedOnAcronym,
                              withName: buyingCurrency.basedOnName)
 

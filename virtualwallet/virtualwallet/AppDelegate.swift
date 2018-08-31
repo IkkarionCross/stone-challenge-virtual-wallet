@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         do {
-            let mainViewModel: MainViewModel = try MainViewModel(dataContainer: container)
-            let rootViewController = WalletTableViewController(viewModel: mainViewModel)
+            let rootViewController = try WalletTableViewController(viewModel: createWalletViewModel())
             rootViewController.dataContainer = container
 
             let navViewController: UINavigationController =
@@ -52,4 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
     }
 
+    func createWalletViewModel() throws -> WalletViewModel {
+        let wallet: WalletEntity = try WalletEntity.currentWallet(fromContext: container.walletDataContext) ??
+            InitialDataCreator.createDefaultWallet(inContainer: container)
+        try container.walletDataContext.save()
+        return WalletViewModel(wallet: wallet)
+    }
 }
