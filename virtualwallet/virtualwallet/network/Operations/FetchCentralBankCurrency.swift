@@ -30,7 +30,7 @@ class FetchCentralBankCurrency: CustomOperation {
         return RESTService(request: usdRequest,
                                    queue: DispatchQueue.global())
     }
-    
+
     private func decodeToJSONQuotation(quotationList: [[String: Any]]) throws -> [JSONQuotation] {
         let decoder: JSONDecoder = JSONDecoder()
         decoder.dateDecodingStrategy = JSONQuotation.decodeDateStrategy()
@@ -52,7 +52,8 @@ class FetchCentralBankCurrency: CustomOperation {
                     return
                 }
                 do {
-                    guard let parsedQuotations: [JSONQuotation] = try self?.decodeToJSONQuotation(quotationList: quotationList) else {
+                    guard let parsedQuotations: [JSONQuotation] =
+                        try self?.decodeToJSONQuotation(quotationList: quotationList) else {
                         self?.finish(withError: OperationError.failed(reason: "invalid currency type"))
                         return
                     }
@@ -64,8 +65,9 @@ class FetchCentralBankCurrency: CustomOperation {
                         self?.finish(withError: OperationError.failed(reason: "invalid data context"))
                         return
                     }
-                    
-                    let quotations: [QuotationEntity] = parsedQuotations.toEntity(acronym: currenyAcronym, context: context)
+
+                    let quotations: [QuotationEntity] =
+                        parsedQuotations.toEntity(acronym: currenyAcronym, context: context)
                     self?.finish(withInfo: quotations)
                 } catch {
                     self?.finish(withError: JSONError.parseError)

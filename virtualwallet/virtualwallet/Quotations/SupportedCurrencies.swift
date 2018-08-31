@@ -13,3 +13,8 @@ enum SupportedCurrencies: String {
          BTC,
          BRI
 }
+
+enum CurrencyProvider: Int {
+    case centralBank,
+         bitcoinMarket
+}

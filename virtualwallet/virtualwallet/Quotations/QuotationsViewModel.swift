@@ -15,34 +15,29 @@ protocol QuotationsDelegate: class {
 class QuotationsViewModel {
 
     private var quotations: [QuotationEntity]
-    private let operationQueue: OperationQueue
+    var service: QuotationServant
 
     weak var delegate: QuotationsDelegate?
 
     init(quotations: [QuotationEntity]) {
+        self.service = QuotationsService()
         self.quotations = quotations
-        self.operationQueue = OperationQueue()
     }
 
     func updateQuotationsFromNetwork() {
-        let updateCurrencyFromBC: FetchCentralBankCurrency =
-            FetchCentralBankCurrency(currencyType: SupportedCurrencies.USD)
-
-        updateCurrencyFromBC.operationDidFinish = { result in
+        self.service.fetchQuotations(fromCurrencyProvider: .centralBank, completion: { [weak self] result in
             switch result {
             case let .failure(error):
                 DispatchQueue.main.async {
-                    self.delegate?.onQuotationsUpdated(error: error)
+                    self?.delegate?.onQuotationsUpdated(error: error)
                 }
             case let .success(quotations):
                 DispatchQueue.main.async {
-                    self.delegate?.onQuotationsUpdated(error: nil)
+                    self?.delegate?.onQuotationsUpdated(error: nil)
                 }
-                self.quotations.append(contentsOf: quotations)
+                self?.quotations.append(contentsOf: quotations)
             }
-        }
-
-        operationQueue.addOperation(updateCurrencyFromBC)
+        })
     }
 
     func allQuotations() -> [QuotationEntity] {
