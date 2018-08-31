@@ -10,14 +10,14 @@ import Foundation
 
 enum OperationError: AppError {
     case failed(reason: String)
-    
+
     var title: String {
         switch self {
         case .failed:
             return "The operation has failed"
         }
     }
-    
+
     var errorDescription: String? {
         switch self {
         case let .failed(reason):

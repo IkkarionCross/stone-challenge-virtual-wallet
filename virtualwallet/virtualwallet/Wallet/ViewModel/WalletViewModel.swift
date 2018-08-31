@@ -11,33 +11,33 @@ import Foundation
 struct WalletViewModel {
     struct CurrencyViewModel: AccumulatableMoney {
         var name: String {
-            return "\(currency.acronym) - \(currency.name)"
+            return "\(currency.acronym ?? "") - \(currency.name ?? "")"
         }
 
         var amount: String {
-            return "\(currency.acronym) \(currency.value)"
+            return "\(currency.acronym ?? "") \(currency.value)"
         }
 
-        private var currency: Wallet.CurrencyValue
-        init(currency: Wallet.CurrencyValue) {
+        private var currency: CurrencyEntity
+        init(currency: CurrencyEntity) {
             self.currency = currency
         }
     }
 
-    private(set) var wallet: Wallet
+    private(set) var wallet: WalletEntity
 
     var currenciesCount: Int {
-        return self.wallet.currencies.count
+        return self.wallet.currencies?.count ?? 0
     }
 
-    init(wallet: Wallet) {
+    init(wallet: WalletEntity) {
         self.wallet = wallet
     }
 
     func currency(forIndexPath indexPath: IndexPath) -> CurrencyViewModel? {
-        guard let currency: Wallet.CurrencyValue = wallet.currency(forIndex: indexPath.row) else {
-            return nil
-        }
+        guard let startIndex = wallet.currencies?.startIndex else { return nil }
+        guard let currencyIndex = wallet.currencies?.index(startIndex, offsetBy: indexPath.row) else { return nil }
+        guard let currency: CurrencyEntity = wallet.currencies?[currencyIndex] else { return nil }
         return CurrencyViewModel(currency: currency)
     }
 }

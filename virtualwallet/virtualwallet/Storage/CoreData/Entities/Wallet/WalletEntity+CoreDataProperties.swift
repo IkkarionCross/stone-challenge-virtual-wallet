@@ -10,15 +10,14 @@
 import Foundation
 import CoreData
 
-
 extension WalletEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WalletEntity> {
         return NSFetchRequest<WalletEntity>(entityName: "WalletEntity")
     }
 
-    @NSManaged public var currencies: NSSet?
-    @NSManaged public var transactions: NSSet?
+    @NSManaged public var currencies: Set<CurrencyEntity>?
+    @NSManaged public var transactions: Set<TransactionEntity>?
 
 }
 

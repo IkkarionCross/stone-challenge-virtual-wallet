@@ -10,7 +10,7 @@ import Foundation
 
 protocol ObservableOperation {
     associatedtype CompletionType
-    
+
     var operationDidStart: ((_ title: String) -> Void)? { get set }
     var operationDidFinish: ((Completion<CompletionType>) -> Void)? { get set }
 }
@@ -20,7 +20,7 @@ extension ObservableOperation where Self: CustomOperation {
         self.operationDidFinish?(Completion.failure(error))
         self.finish()
     }
-    
+
     func finish(withInfo info: CompletionType) {
         self.operationDidFinish?(Completion.success(info))
         self.finish()

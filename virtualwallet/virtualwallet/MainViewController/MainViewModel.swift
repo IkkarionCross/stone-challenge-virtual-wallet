@@ -15,11 +15,10 @@ struct MainViewModel {
 
     private var walletViewModel: WalletViewModel
 
-    init() {
-        let wallet: Wallet = Wallet(currencies: [Wallet.CurrencyValue(acronym: "BTC", value: 0.0, name: "Bitcoin"),
-                                                 Wallet.CurrencyValue(acronym: "USD", value: 100.0, name: "Dólar"),
-                                                 Wallet.CurrencyValue(acronym: "BRL", value: 2000.0, name: "Real")])
-
+    init(dataContainer: DataContainer) throws {
+        let wallet: WalletEntity = try WalletEntity.currentWallet(fromContext: dataContainer.walletDataContext) ??
+            InitialDataCreator.createDefaultWallet(inContainer: dataContainer)
+        try dataContainer.walletDataContext.save()
         walletViewModel = WalletViewModel(wallet: wallet)
     }
 

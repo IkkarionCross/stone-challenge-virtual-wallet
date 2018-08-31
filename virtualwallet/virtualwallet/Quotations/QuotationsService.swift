@@ -10,23 +10,22 @@ import Foundation
 
 protocol QuotationServant {
     func fetchQuotations(fromCurrencyProvider provider: CurrencyProvider,
-                         completion: @escaping (_ result: Completion<[QuotationEntity]>)->Void)
+                         completion: @escaping (_ result: Completion<[QuotationEntity]>) -> Void)
 }
 
 class QuotationsService: QuotationServant {
     private var operationQueue: OperationQueue
-    
+
     init() {
         self.operationQueue = OperationQueue()
     }
-    
+
     func fetchQuotations(fromCurrencyProvider provider: CurrencyProvider,
-                         completion: @escaping (_ result: Completion<[QuotationEntity]>)->Void) {
+                         completion: @escaping (_ result: Completion<[QuotationEntity]>) -> Void) {
         let updateCurrencyFromBC: FetchCentralBankCurrency =
             FetchCentralBankCurrency(currencyType: SupportedCurrencies.USD)
-        
+
         updateCurrencyFromBC.operationDidFinish = completion
-        
         operationQueue.addOperation(updateCurrencyFromBC)
     }
 }

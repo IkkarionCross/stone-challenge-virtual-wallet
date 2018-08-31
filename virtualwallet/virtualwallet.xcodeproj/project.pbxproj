@@ -54,6 +54,7 @@
 		57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */; };
 		57921E552138B78B0069E029 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E542138B78B0069E029 /* OperationError.swift */; };
 		57921E572138BED20069E029 /* QuotationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E562138BED20069E029 /* QuotationsService.swift */; };
+		57921E5F2138C8320069E029 /* InitialDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E5E2138C8320069E029 /* InitialDataCreator.swift */; };
 		57ABBC9520D1F0C700834EDE /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ABBC9420D1F0C700834EDE /* TransactionController.swift */; };
 		57AEF91320434294001E77C8 /* JSONQuotationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91220434294001E77C8 /* JSONQuotationTest.swift */; };
 		57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */; };
@@ -141,6 +142,7 @@
 		57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdditions.swift; sourceTree = "<group>"; };
 		57921E542138B78B0069E029 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		57921E562138BED20069E029 /* QuotationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsService.swift; sourceTree = "<group>"; };
+		57921E5E2138C8320069E029 /* InitialDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDataCreator.swift; sourceTree = "<group>"; };
 		57ABBC9420D1F0C700834EDE /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		57AEF91220434294001E77C8 /* JSONQuotationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotationTest.swift; sourceTree = "<group>"; };
 		57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsViewModel.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				57BD36A420EDB0E900AE2AFC /* CoreData */,
+				57921E5E2138C8320069E029 /* InitialDataCreator.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				57BD36A720EDB10A00AE2AFC /* wallet.xcdatamodeld in Sources */,
 				5725C92520438942001099E0 /* FetchDigitalCurrencyOperation.swift in Sources */,
 				57D74AD6211BC5A700C5AB8D /* DataContainer.swift in Sources */,
+				57921E5F2138C8320069E029 /* InitialDataCreator.swift in Sources */,
 				57DB92252106A9F500E66717 /* TransactionView.swift in Sources */,
 				57AEF9182043512F001E77C8 /* UIViewController+Additions.swift in Sources */,
 				57764F262036316A00FFCE08 /* AppDelegate.swift in Sources */,

@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CurrencyEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CurrencyEntity> {

@@ -40,7 +40,7 @@ class Wallet {
         }
         return walletCurrencyAmmount >= funds
     }
-    
+
     func add(ammount: Double, forCurrencyAcronym acronym: String, withName name: String) {
         let walletCurrencyAmmount: Double
         if let currency = self.currency(forAcronym: acronym) {

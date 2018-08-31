@@ -19,16 +19,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        do {
+            let mainViewModel: MainViewModel = try MainViewModel(dataContainer: container)
+            let rootViewController = WalletTableViewController(viewModel: mainViewModel)
+            rootViewController.dataContainer = container
 
-        let mainViewModel: MainViewModel = MainViewModel()
-        let rootViewController = WalletTableViewController(viewModel: mainViewModel)
-        rootViewController.dataContainer = container
+            let navViewController: UINavigationController =
+                UINavigationController(rootViewController: rootViewController)
+            navViewController.navigationBar.backgroundColor = UIColor.white
 
-        let navViewController: UINavigationController = UINavigationController(rootViewController: rootViewController)
-        navViewController.navigationBar.backgroundColor = UIColor.white
-
-        window?.rootViewController = navViewController
-        window?.makeKeyAndVisible()
+            window?.rootViewController = navViewController
+            window?.makeKeyAndVisible()
+        } catch {
+            fatalError("Could not initialize the application")
+        }
 
         return true
     }

@@ -68,6 +68,7 @@ class FetchCentralBankCurrency: CustomOperation {
 
                     let quotations: [QuotationEntity] =
                         parsedQuotations.toEntity(acronym: currenyAcronym, context: context)
+                    try context.save()
                     self?.finish(withInfo: quotations)
                 } catch {
                     self?.finish(withError: JSONError.parseError)
