@@ -30,9 +30,9 @@ class TransactionViewController: UIViewController {
         self.currencyTypePicker = UIPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         self.viewModel = viewModel
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.currencyTypePicker.delegate = controller
-        self.currencyTypePicker.dataSource = controller
         self.controller = TransactionController(transactionView: self)
+        self.currencyTypePicker.delegate = controller
+        self.currencyTypePicker.dataSource = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -49,7 +49,7 @@ class TransactionViewController: UIViewController {
 
     func setupInputView(forTextField textField: UITextField) {
         textField.inputView = currencyTypePicker
-        textField.delegate = controller
+        textField.delegate = controller.currencyTypeDelegate
     }
 
     func setupCurrencyTextFields() {
@@ -109,6 +109,23 @@ class TransactionViewController: UIViewController {
         navController.modalTransitionStyle = .coverVertical
 
         return navController
+    }
+}
+
+extension TransactionViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.acceptedCurrenciesCount
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
+            fatalError("Transaction Currency type not loaded correctly!")
+        }
+        return currencyType
     }
 }
 

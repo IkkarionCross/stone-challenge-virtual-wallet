@@ -10,24 +10,20 @@ import UIKit
 
 class TransactionController: NSObject {
     var view: TransactionView
+    private(set) var currencyTypeDelegate: CurrencyTypeTextFieldDelegate
 
     private var viewModel: TransactionViewModel {
         return view.viewModel
     }
-    private var activeTextField: UITextField? {
-        get {
-            return view.activeTextField
-        }
-        set {
-            view.activeTextField = newValue
-        }
-    }
+
     private var currencyTypePicker: UIPickerView {
         return view.currencyTypePicker
     }
 
     init(transactionView: TransactionView) {
         self.view = transactionView
+        self.currencyTypeDelegate = CurrencyTypeTextFieldDelegate(viewModel: view.viewModel,
+                                                                  inputView: view.currencyTypePicker)
         super.init()
     }
 
@@ -39,31 +35,12 @@ class TransactionController: NSObject {
     }
 }
 
-extension TransactionController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        var selectedRow: Int = 0
-        if textField.tag == TransactionViewController.FieldTag.currencyType.rawValue {
-            selectedRow = viewModel.buyCurrencySelectedIndex
-        } else {
-            selectedRow = viewModel.exchangeCurrencySelectedIndex
-        }
-        self.activeTextField = textField
-        self.currencyTypePicker.selectRow(selectedRow, inComponent: 0, animated: true)
-        self.pickerView(currencyTypePicker, didSelectRow: selectedRow, inComponent: 0)
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        return false
-    }
-}
-
 extension TransactionController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
             fatalError("Transaction Currency type not loaded correctly!")
         }
-        guard let activeTextField: UITextField = self.activeTextField else {
+        guard let activeTextField: UITextField = currencyTypeDelegate.activeTextField else {
             fatalError("ActiveTextField not set correctly!")
         }
         activeTextField.text = currencyType
@@ -72,23 +49,6 @@ extension TransactionController: UIPickerViewDelegate {
         } else {
             viewModel.exchangeForCurrency = currencyType
         }
-    }
-}
-
-extension TransactionController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return viewModel.acceptedCurrenciesCount
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
-            fatalError("Transaction Currency type not loaded correctly!")
-        }
-        return currencyType
     }
 }
 

@@ -13,7 +13,7 @@ protocol TransactionDelegate: class {
     func didTransactionTypeChanged()
 }
 
-class TransactionViewModel {
+class TransactionViewModel: NSObject {
 
     var acceptedCurrenciesCount: Int {
         return acceptedCurrencies.count

@@ -48,7 +48,9 @@ class WalletTableViewController: UITableViewController {
         viewModel.dataContainer = dataContainer
         let transactionViewController: UIViewController = TransactionViewController.instantianteViewController(
             viewModel: viewModel)
-        self.present(transactionViewController, animated: true, completion: nil)
+        self.present(transactionViewController, animated: true, completion: {
+            self.tableView.reloadData()
+        })
     }
 
     // MARK: - Table view data source

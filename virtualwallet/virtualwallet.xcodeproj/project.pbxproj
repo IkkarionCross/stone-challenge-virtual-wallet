@@ -55,6 +55,7 @@
 		57921E552138B78B0069E029 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E542138B78B0069E029 /* OperationError.swift */; };
 		57921E572138BED20069E029 /* QuotationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E562138BED20069E029 /* QuotationsService.swift */; };
 		57921E5F2138C8320069E029 /* InitialDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E5E2138C8320069E029 /* InitialDataCreator.swift */; };
+		57A03285214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */; };
 		57ABBC9520D1F0C700834EDE /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ABBC9420D1F0C700834EDE /* TransactionController.swift */; };
 		57AEF91320434294001E77C8 /* JSONQuotationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91220434294001E77C8 /* JSONQuotationTest.swift */; };
 		57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */; };
@@ -143,6 +144,7 @@
 		57921E542138B78B0069E029 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		57921E562138BED20069E029 /* QuotationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsService.swift; sourceTree = "<group>"; };
 		57921E5E2138C8320069E029 /* InitialDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDataCreator.swift; sourceTree = "<group>"; };
+		57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTypeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		57ABBC9420D1F0C700834EDE /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		57AEF91220434294001E77C8 /* JSONQuotationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotationTest.swift; sourceTree = "<group>"; };
 		57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsViewModel.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		572031202090199A00425EDD /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				57A03283214B3DD7008C0795 /* view */,
 				57B508B32112863400C29E70 /* model */,
 				57DB92272106AA2E00E66717 /* ViewModel */,
 				57DB92262106AA2100E66717 /* controller */,
@@ -375,6 +378,17 @@
 				57921E5E2138C8320069E029 /* InitialDataCreator.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		57A03283214B3DD7008C0795 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				57DB92242106A9F500E66717 /* TransactionView.swift */,
+				5720311C2090199300425EDD /* TransactionViewController.swift */,
+				5720311D2090199300425EDD /* TransactionViewController.xib */,
+				57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		57AEF9112043427E001E77C8 /* JSONParser */ = {
@@ -558,10 +572,7 @@
 		57DB92262106AA2100E66717 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				5720311C2090199300425EDD /* TransactionViewController.swift */,
-				5720311D2090199300425EDD /* TransactionViewController.xib */,
 				57ABBC9420D1F0C700834EDE /* TransactionController.swift */,
-				57DB92242106A9F500E66717 /* TransactionView.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -817,6 +828,7 @@
 				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
 				574AC2E32039FD60006FFF97 /* Service.swift in Sources */,
 				57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */,
+				57A03285214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift in Sources */,
 				5738E50B20B4FB48004FDA88 /* UITextField+Additions.swift in Sources */,
 				573140A3209FD9E9000C1574 /* DisplayableMoney.swift in Sources */,
 				5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */,
