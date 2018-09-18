@@ -37,7 +37,7 @@ class QuotationsViewController: UITableViewController {
             quotationCell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell")
         }
 
-        quotationCell.textLabel?.text = quotation.acronym?.uppercased()
+        quotationCell.textLabel?.text = quotation.acronym.uppercased()
         quotationCell.detailTextLabel?.text = quotation.buyPrice.currencyString()
         return quotationCell
     }

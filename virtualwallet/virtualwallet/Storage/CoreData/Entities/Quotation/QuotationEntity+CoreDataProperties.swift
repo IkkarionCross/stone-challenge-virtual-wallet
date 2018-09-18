@@ -16,14 +16,14 @@ extension QuotationEntity {
         return NSFetchRequest<QuotationEntity>(entityName: "QuotationEntity")
     }
 
-    @NSManaged public var acronym: String?
+    @NSManaged public var acronym: String
     @NSManaged public var buyParity: Double
     @NSManaged public var buyPrice: Double
     @NSManaged public var reportType: String?
     @NSManaged public var sellParity: Double
     @NSManaged public var sellPrice: Double
     @NSManaged public var timeStamp: Date?
-    @NSManaged public var currency: CurrencyEntity?
+    @NSManaged public var currency: CurrencyEntity
     @NSManaged public var transaction: NSSet?
 
 }

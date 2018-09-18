@@ -63,7 +63,7 @@ class TransactionViewController: UIViewController {
     }
 
     func setupAmountTextField(withCurrencySymbol symbol: String) {
-        self.currencyDelegate = CurrencyFieldDelegate(currencySymbol: symbol)
+        self.currencyDelegate = CurrencyAmmountDelegate(viewModel: viewModel, currencySymbol: symbol)
         self.amountTextField.delegate = self.currencyDelegate
         self.amountTextField.text = viewModel.exchangeAmount
     }
@@ -119,13 +119,6 @@ extension TransactionViewController: UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return viewModel.acceptedCurrenciesCount
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
-            fatalError("Transaction Currency type not loaded correctly!")
-        }
-        return currencyType
     }
 }
 

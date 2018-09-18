@@ -37,11 +37,12 @@ class TransactionViewModel: NSObject {
     }
 
     var exchangeAmount: String {
-        get {
-            return "\(self.exchangeForCurrency)0.00"
-        }
-        set {
-
+        didSet {
+            let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
+            if let quotation = self.wallet.currencies?.filter({ $0.acronym == self.exchangeForCurrency }).first?.quotation {
+                let total: Double = self.transaction.convert(amount: value, toQuotation: quotation)
+                self.totalValue = "\(self.buyCurrency)\(total)"
+            }
         }
     }
 
@@ -55,9 +56,7 @@ class TransactionViewModel: NSObject {
         return "\(transactionType.description) com"
     }
 
-    var totalValue: String {
-        return "\(self.buyCurrency)0.00"
-    }
+    private(set) var totalValue: String
 
     private(set) var exchangeCurrencySelectedIndex: Int
 
@@ -67,10 +66,15 @@ class TransactionViewModel: NSObject {
     weak var delegate: TransactionDelegate?
 
     private var transaction: CurrencyTransaction
+    
+    private var wallet: WalletEntity
 
     var dataContainer: DataContainer?
 
     init(saveTransactionsInWallet wallet: WalletEntity) {
+        self.totalValue = "0.00"
+        self.wallet = wallet
+        self.exchangeAmount = "0.00"
         self.exchangeForCurrency = acceptedCurrencies[0]
         self.buyCurrency = acceptedCurrencies[1]
         self.exchangeCurrencySelectedIndex = 0

@@ -8,20 +8,11 @@
 
 import UIKit
 
-class CurrencyFieldDelegate: NSObject, UITextFieldDelegate {
+class CurrencyFieldDelegate: NSObject {
     private var symbol: String
 
     init(currencySymbol: String) {
         self.symbol = currencySymbol
-    }
-
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let oldText: String = textField.text ?? ""
-        textField.text = self.applyCurrencyFormat(oldText: oldText,
-                                 usingCurrencySymbol: self.symbol,
-                                 forRange: range, withNewString: string)
-        return false
     }
 
     private func applyCurrencyFormat(oldText: String, usingCurrencySymbol symbol: String,
@@ -47,5 +38,16 @@ class CurrencyFieldDelegate: NSObject, UITextFieldDelegate {
         let numberFromField = (NSString(string: digitText).doubleValue)/100
 
         return formatter.string(from: NSNumber(value: numberFromField))
+    }
+}
+
+extension CurrencyFieldDelegate: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let oldText: String = textField.text ?? ""
+        textField.text = self.applyCurrencyFormat(oldText: oldText,
+                                                  usingCurrencySymbol: self.symbol,
+                                                  forRange: range, withNewString: string)
+        return false
     }
 }

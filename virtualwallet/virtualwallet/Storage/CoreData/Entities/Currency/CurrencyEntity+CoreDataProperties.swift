@@ -16,8 +16,8 @@ extension CurrencyEntity {
         return NSFetchRequest<CurrencyEntity>(entityName: "CurrencyEntity")
     }
 
-    @NSManaged public var acronym: String?
-    @NSManaged public var name: String?
+    @NSManaged public var acronym: String
+    @NSManaged public var name: String
     @NSManaged public var value: Double
     @NSManaged public var quotation: QuotationEntity?
     @NSManaged public var wallet: WalletEntity?

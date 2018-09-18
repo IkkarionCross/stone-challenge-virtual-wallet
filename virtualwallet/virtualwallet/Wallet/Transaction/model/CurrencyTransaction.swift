@@ -28,22 +28,22 @@ struct CurrencyTransaction {
         self.wallet = wallet
     }
 
-    func convert(amount: Double, toCurrency: CurrencyProperties) -> Double {
-        return amount / toCurrency.buyPrice
+    func convert(amount: Double, toQuotation: QuotationEntity) -> Double {
+        return amount / toQuotation.buyPrice
     }
 
-    func buy(ammount: Double, ofCurrency buyingCurrency: CurrencyProperties) throws -> WalletEntity {
+    func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity, withCurrency givingCurrency: CurrencyEntity) throws -> WalletEntity {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
-        guard self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
-                                     ofCurrencyAcronym: buyingCurrency.basedOnAcronym) else {
-                                        throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.basedOnAcronym)
+        if !self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
+                                     ofCurrencyAcronym: givingCurrency.acronym) {
+            throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.acronym)
         }
 
         try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
-                            withName: buyingCurrency.name)
+                            withName: buyingCurrency.currency.name)
         try self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
-                             ofCurrencyAcronym: buyingCurrency.basedOnAcronym,
-                             withName: buyingCurrency.basedOnName)
+                             ofCurrencyAcronym: buyingCurrency.acronym,
+                             withName: buyingCurrency.currency.name)
 
         return self.wallet
     }

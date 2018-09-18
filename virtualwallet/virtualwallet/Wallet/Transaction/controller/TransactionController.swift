@@ -50,6 +50,13 @@ extension TransactionController: UIPickerViewDelegate {
             viewModel.exchangeForCurrency = currencyType
         }
     }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let currencyType: String = viewModel.acceptedCurrency(forRow: row) else {
+            fatalError("Transaction Currency type not loaded correctly!")
+        }
+        return currencyType
+    }
 }
 
 extension TransactionController: TransactionDelegate {

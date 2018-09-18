@@ -25,7 +25,6 @@
 		573140A0209FD4FE000C1574 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731409F209FD4FE000C1574 /* MainViewModel.swift */; };
 		573140A3209FD9E9000C1574 /* DisplayableMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573140A2209FD9E9000C1574 /* DisplayableMoney.swift */; };
 		5738E50820B4E8A9004FDA88 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */; };
-		5738E50B20B4FB48004FDA88 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738E50920B4F9B4004FDA88 /* UITextField+Additions.swift */; };
 		5738E50E20B4FBB9004FDA88 /* CurrencyFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738E50D20B4FBB9004FDA88 /* CurrencyFieldDelegate.swift */; };
 		574AC2D3203911BA006FFF97 /* RESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D2203911B9006FFF97 /* RESTService.swift */; };
 		574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AC2D42039130A006FFF97 /* NetworkError.swift */; };
@@ -77,6 +76,8 @@
 		57BD36A720EDB10A00AE2AFC /* wallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57BD36A520EDB10900AE2AFC /* wallet.xcdatamodeld */; };
 		57D74AD6211BC5A700C5AB8D /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D74AD5211BC5A700C5AB8D /* DataContainer.swift */; };
 		57DB92252106A9F500E66717 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB92242106A9F500E66717 /* TransactionView.swift */; };
+		57E48F2321507EF400B56D53 /* CurrencyAmmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E48F2221507EF400B56D53 /* CurrencyAmmountDelegate.swift */; };
+		57E48F27215083E200B56D53 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E48F26215083E200B56D53 /* String+Additions.swift */; };
 		D9F5964922C32E70417577B8 /* Pods_virtualwalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DCB61C3A0A8E0E68DE285D /* Pods_virtualwalletTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,7 +111,6 @@
 		5731409F209FD4FE000C1574 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		573140A2209FD9E9000C1574 /* DisplayableMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableMoney.swift; sourceTree = "<group>"; };
 		5738E50720B4E8A9004FDA88 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
-		5738E50920B4F9B4004FDA88 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		5738E50D20B4FBB9004FDA88 /* CurrencyFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFieldDelegate.swift; sourceTree = "<group>"; };
 		574AC2D2203911B9006FFF97 /* RESTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTService.swift; sourceTree = "<group>"; };
 		574AC2D42039130A006FFF97 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -166,6 +166,8 @@
 		57BD36A620EDB10900AE2AFC /* wallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wallet.xcdatamodel; sourceTree = "<group>"; };
 		57D74AD5211BC5A700C5AB8D /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		57DB92242106A9F500E66717 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		57E48F2221507EF400B56D53 /* CurrencyAmmountDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAmmountDelegate.swift; sourceTree = "<group>"; };
+		57E48F26215083E200B56D53 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		84620330BC53126CEA65007B /* Pods-virtualwalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-virtualwalletTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-virtualwalletTests/Pods-virtualwalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4DCB61C3A0A8E0E68DE285D /* Pods_virtualwalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83D4E8E0EF72807DE7F3C3D /* Pods_virtualwallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_virtualwallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,6 +389,7 @@
 				5720311C2090199300425EDD /* TransactionViewController.swift */,
 				5720311D2090199300425EDD /* TransactionViewController.xib */,
 				57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */,
+				57E48F2221507EF400B56D53 /* CurrencyAmmountDelegate.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -491,10 +494,10 @@
 			isa = PBXGroup;
 			children = (
 				5784E0612038FDBC0096B151 /* Date+Additions.swift */,
-				5738E50920B4F9B4004FDA88 /* UITextField+Additions.swift */,
 				57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */,
 				57AEF9172043512F001E77C8 /* UIViewController+Additions.swift */,
 				57B508BB2112951900C29E70 /* NSManagedObjectContext+Additions.swift */,
+				57E48F26215083E200B56D53 /* String+Additions.swift */,
 			);
 			path = additions;
 			sourceTree = "<group>";
@@ -824,12 +827,12 @@
 				5784E0652038FF170096B151 /* FetchCentralBankCurrency.swift in Sources */,
 				57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */,
 				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
+				57E48F2321507EF400B56D53 /* CurrencyAmmountDelegate.swift in Sources */,
 				5784E05F2038FACD0096B151 /* CentralBankRouter.swift in Sources */,
 				57764F592038C5E400FFCE08 /* CurrencyProperties.swift in Sources */,
 				574AC2E32039FD60006FFF97 /* Service.swift in Sources */,
 				57764F5C2038D35C00FFCE08 /* TransactionError.swift in Sources */,
 				57A03285214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift in Sources */,
-				5738E50B20B4FB48004FDA88 /* UITextField+Additions.swift in Sources */,
 				573140A3209FD9E9000C1574 /* DisplayableMoney.swift in Sources */,
 				5784E0622038FDBC0096B151 /* Date+Additions.swift in Sources */,
 				5784E0592038D3AA0096B151 /* AppError.swift in Sources */,
@@ -871,6 +874,7 @@
 				57B296B72085825000751A0F /* WalletViewModel.swift in Sources */,
 				5738E50820B4E8A9004FDA88 /* TransactionViewModel.swift in Sources */,
 				5784E067203906570096B151 /* CustomOperation.swift in Sources */,
+				57E48F27215083E200B56D53 /* String+Additions.swift in Sources */,
 				57764F49203636F000FFCE08 /* R.generated.swift in Sources */,
 				5720311E2090199300425EDD /* TransactionViewController.swift in Sources */,
 				57B508AA2112854600C29E70 /* WalletEntity+CoreDataClass.swift in Sources */,
