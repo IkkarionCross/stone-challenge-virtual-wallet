@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol TransactionView {
+protocol TransactionView: class {
     var currencyTypePicker: UIPickerView {get}
     var activeTextField: UITextField? {get set}
     var viewModel: TransactionViewModel {get}
     var buyCurrencyLabel: UILabel! {get set}
     var amountTextField: UITextField! {get set}
 
-    func setupAmountTextField(withCurrencySymbol symbol: String)
+    func setupAmountTextField(withDelegate delegate: CurrencyAmmountDelegate?)
 }

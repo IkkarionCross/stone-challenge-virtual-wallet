@@ -21,7 +21,6 @@ class TransactionViewController: UIViewController {
     @IBOutlet weak var totalValueTextField: UITextField!
 
     var activeTextField: UITextField?
-    private var currencyDelegate: CurrencyFieldDelegate?
     private var controller: TransactionController!
     private(set) var currencyTypePicker: UIPickerView
     private(set) var viewModel: TransactionViewModel
@@ -43,7 +42,7 @@ class TransactionViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel.delegate = self.controller
         setupCurrencyTextFields()
-        setupAmountTextField(withCurrencySymbol: viewModel.exchangeForCurrency)
+        setupAmountTextField(withDelegate: nil)
         setupNavigationBar()
     }
 
@@ -62,9 +61,8 @@ class TransactionViewController: UIViewController {
         self.exchangeTypeTextField.text = viewModel.exchangeForCurrency
     }
 
-    func setupAmountTextField(withCurrencySymbol symbol: String) {
-        self.currencyDelegate = CurrencyAmmountDelegate(viewModel: viewModel, currencySymbol: symbol)
-        self.amountTextField.delegate = self.currencyDelegate
+    func setupAmountTextField(withDelegate delegate: CurrencyAmmountDelegate?) {
+        self.amountTextField.delegate = delegate
         self.amountTextField.text = viewModel.exchangeAmount
     }
 

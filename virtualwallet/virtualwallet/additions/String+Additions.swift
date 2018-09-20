@@ -11,7 +11,7 @@ import Foundation
 extension String {
     func currencyStringToDouble(currencySymbol symbol: String) -> Double {
         if self == "" { return 0 }
-        
+
         let format: NumberFormatter = NumberFormatter()
         format.currencyDecimalSeparator = "."
         format.currencySymbol = symbol

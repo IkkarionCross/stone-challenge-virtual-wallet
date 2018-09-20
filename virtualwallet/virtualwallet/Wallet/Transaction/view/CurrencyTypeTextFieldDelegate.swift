@@ -12,7 +12,7 @@ class CurrencyTypeTextFieldDelegate: NSObject {
     private(set) var activeTextField: UITextField?
     private var viewModel: TransactionViewModel
     private var inputView: UIPickerView
-    
+
     init(viewModel: TransactionViewModel, inputView: UIPickerView) {
         self.viewModel = viewModel
         self.inputView = inputView
@@ -31,7 +31,7 @@ extension CurrencyTypeTextFieldDelegate: UITextFieldDelegate {
         self.inputView.selectRow(selectedRow, inComponent: 0, animated: true)
         self.inputView.delegate?.pickerView?(inputView, didSelectRow: selectedRow, inComponent: 0)
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         return false

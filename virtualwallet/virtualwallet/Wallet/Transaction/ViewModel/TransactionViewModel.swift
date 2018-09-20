@@ -39,7 +39,8 @@ class TransactionViewModel: NSObject {
     var exchangeAmount: String {
         didSet {
             let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
-            if let quotation = self.wallet.currencies?.filter({ $0.acronym == self.exchangeForCurrency }).first?.quotation {
+            if let quotation = self.wallet.currencies?.filter(
+                { $0.acronym == self.exchangeForCurrency }).first?.quotation {
                 let total: Double = self.transaction.convert(amount: value, toQuotation: quotation)
                 self.totalValue = "\(self.buyCurrency)\(total)"
             }
@@ -66,7 +67,7 @@ class TransactionViewModel: NSObject {
     weak var delegate: TransactionDelegate?
 
     private var transaction: CurrencyTransaction
-    
+
     private var wallet: WalletEntity
 
     var dataContainer: DataContainer?
