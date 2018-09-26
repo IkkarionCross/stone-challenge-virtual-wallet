@@ -11,6 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var service: QuotationsService?
     var window: UIWindow?
     lazy var container: WalletDataContainer = {
         return WalletDataContainer(modelName: "wallet")
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         do {
-            let rootViewController = try WalletTableViewController(viewModel: createWalletViewModel())
+            let rootViewController =
+                try WalletTableViewController(viewModel: createWalletViewModel(), dataContainer: container)
             rootViewController.dataContainer = container
 
             let navViewController: UINavigationController =
@@ -33,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Could not initialize the application")
         }
 
+        return true
+    }
+
+    func application(_ application: UIApplication,
+                     willFinishLaunchingWithOptions
+                     launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        initializeCurrencyQuotations()
         return true
     }
 
@@ -56,5 +65,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             InitialDataCreator.createDefaultWallet(inContainer: container)
         try container.walletDataContext.save()
         return WalletViewModel(wallet: wallet)
+    }
+
+    func initializeCurrencyQuotations() {
+        service = QuotationsService(dataContainer: self.container)
+        service?.fetchQuotations(fromCurrencyProvider: .centralBank) { result in
+            switch result {
+            case .success:
+                ()
+            case .failure: // if there is a failure it will be shown on the transactions screen
+                () // it should log on a analytics library
+            }
+        }
+        service?.fetchQuotations(fromCurrencyProvider: .bitcoinMarket) { result in
+            switch result {
+            case .success:
+                ()
+            case .failure: // if there is a failure it will be shown on the transactions screen
+                () // it should log on a analytics library
+            }
+        }
     }
 }

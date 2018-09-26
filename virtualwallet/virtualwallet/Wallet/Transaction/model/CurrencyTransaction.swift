@@ -32,7 +32,8 @@ struct CurrencyTransaction {
         return amount / toQuotation.buyPrice
     }
 
-    func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity, withCurrency givingCurrency: CurrencyEntity) throws -> WalletEntity {
+    func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity,
+             withCurrency givingCurrency: CurrencyEntity) throws -> WalletEntity {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         if !self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
                                      ofCurrencyAcronym: givingCurrency.acronym) {

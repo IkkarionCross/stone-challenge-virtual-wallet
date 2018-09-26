@@ -16,11 +16,13 @@ class QuotationsViewModel {
 
     private var quotations: [QuotationEntity]
     var service: QuotationServant
-
+    var dataContainer: DataContainer?
     weak var delegate: QuotationsDelegate?
 
-    init(quotations: [QuotationEntity]) {
-        self.service = QuotationsService()
+    init(quotations: [QuotationEntity], dataContainer: DataContainer) {
+        self.dataContainer = dataContainer
+
+        self.service = QuotationsService(dataContainer: dataContainer)
         self.quotations = quotations
     }
 
@@ -48,3 +50,5 @@ class QuotationsViewModel {
         return self.quotations[indexPath.row]
     }
 }
+
+extension QuotationsViewModel: Persistable {}

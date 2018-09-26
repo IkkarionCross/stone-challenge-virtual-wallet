@@ -18,7 +18,8 @@ class FetchCentralBankCurrency: CustomOperation {
     var dataContainer: DataContainer?
     private let currencyType: SupportedCurrencies
 
-    init(currencyType: SupportedCurrencies) {
+    init(currencyType: SupportedCurrencies, container: DataContainer? = nil) {
+        self.dataContainer = container
         self.currencyType = currencyType
         super.init()
         self.title = "Atualizar valores monetários"

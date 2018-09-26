@@ -15,7 +15,8 @@ class WalletTableViewController: UITableViewController {
     private var viewModel: WalletViewModel
     var dataContainer: DataContainer?
 
-    init(viewModel: WalletViewModel) {
+    init(viewModel: WalletViewModel, dataContainer: DataContainer) {
+        self.dataContainer = dataContainer
         self.viewModel = viewModel
         super.init(style: UITableView.Style.plain)
         self.tableView.allowsSelection = false
@@ -44,8 +45,11 @@ class WalletTableViewController: UITableViewController {
     }
 
     @objc func addTransaction() {
-        let viewModel: TransactionViewModel = TransactionViewModel(saveTransactionsInWallet: self.viewModel.wallet)
-        viewModel.dataContainer = dataContainer
+        guard let dataContainer = self.dataContainer else {
+            return // an error should be displayed here
+        }
+        let viewModel: TransactionViewModel = TransactionViewModel(saveTransactionsInWallet: self.viewModel.wallet,
+                                                                   dataContainer: dataContainer)
         let transactionViewController: UIViewController = TransactionViewController.instantianteViewController(
             viewModel: viewModel)
         self.present(transactionViewController, animated: true, completion: {

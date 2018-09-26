@@ -14,6 +14,7 @@ protocol TransactionDelegate: class {
 }
 
 class TransactionViewModel: NSObject {
+    var service: QuotationServant?
 
     var acceptedCurrenciesCount: Int {
         return acceptedCurrencies.count
@@ -38,12 +39,22 @@ class TransactionViewModel: NSObject {
 
     var exchangeAmount: String {
         didSet {
-            let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
-            if let quotation = self.wallet.currencies?.filter(
-                { $0.acronym == self.exchangeForCurrency }).first?.quotation {
-                let total: Double = self.transaction.convert(amount: value, toQuotation: quotation)
-                self.totalValue = "\(self.buyCurrency)\(total)"
-            }
+//            let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
+//            if !service.hasQuotations(inContext: wallet.managedObjectContext, forCurrency: self.exchangeForCurrency, inWallet: self.wallet) {
+//                    service.fetchQuotations(fromCurrencyProvider: .centralBank) { [weak self] result in
+//                        switch result {
+//                        case .success:
+//                            self?.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
+//                        case let .failure(error):
+//                            ()
+//                        }
+//
+//                }
+//            } else {
+//                if let quotation: QuotationEntity = self.wallet.currencies?.filter({ $0.acronym == self.exchangeForCurrency}).first {
+//                    self.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
+//                }
+//            }
         }
     }
 
@@ -72,7 +83,9 @@ class TransactionViewModel: NSObject {
 
     var dataContainer: DataContainer?
 
-    init(saveTransactionsInWallet wallet: WalletEntity) {
+    init(saveTransactionsInWallet wallet: WalletEntity, dataContainer: DataContainer) {
+        self.dataContainer = dataContainer
+        self.service = QuotationsService(dataContainer: dataContainer)
         self.totalValue = "0.00"
         self.wallet = wallet
         self.exchangeAmount = "0.00"
@@ -90,6 +103,11 @@ class TransactionViewModel: NSObject {
             return nil
         }
         return acceptedCurrencies[row]
+    }
+
+    private func calculateTotalValue(forExchangeAmount amount: Double, withQuotation quotation: QuotationEntity) {
+        let total: Double = self.transaction.convert(amount: amount, toQuotation: quotation)
+        self.totalValue = "\(self.buyCurrency)\(total)"
     }
 }
 

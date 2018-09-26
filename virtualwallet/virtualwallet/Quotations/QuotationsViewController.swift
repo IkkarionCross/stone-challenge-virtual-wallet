@@ -10,12 +10,15 @@ import UIKit
 
 class QuotationsViewController: UITableViewController {
     var quotationsViewModel: QuotationsViewModel!
+    var dataContainer: DataContainer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.quotationsViewModel = QuotationsViewModel(quotations: [])
-        self.quotationsViewModel.delegate = self
-        self.quotationsViewModel.updateQuotationsFromNetwork()
+        if let dataContainer = self.dataContainer {
+            self.quotationsViewModel = QuotationsViewModel(quotations: [], dataContainer: dataContainer)
+            self.quotationsViewModel.delegate = self
+            self.quotationsViewModel.updateQuotationsFromNetwork()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +46,8 @@ class QuotationsViewController: UITableViewController {
     }
 
 }
+
+extension QuotationsViewController: Persistable {}
 
 extension QuotationsViewController: QuotationsDelegate {
     func onQuotationsUpdated(error: AppError?) {

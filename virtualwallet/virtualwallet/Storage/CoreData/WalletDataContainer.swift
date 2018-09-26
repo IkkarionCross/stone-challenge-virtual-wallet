@@ -31,6 +31,7 @@ final class WalletDataContainer: DataContainer {
         let storeCoordinator: NSPersistentStoreCoordinator =
             NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         do {
+            print("Core Data location: \(self.storeLocation)")
             try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                               configurationName: nil,
                                                               at: self.storeLocation,
