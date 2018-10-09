@@ -11,6 +11,8 @@ import Foundation
 enum TransactionError: AppError, Equatable {
     case notEnoughFunds(ofCurrency: String)
     case unrecognezedTransactiontype
+    case noQuotations
+    case canNotCalculateTotalValue
 
     var title: String {
         switch self {
@@ -18,6 +20,10 @@ enum TransactionError: AppError, Equatable {
             return "Fundos insuficientes"
         case .unrecognezedTransactiontype:
             return "Tipo de Transação"
+        case .noQuotations:
+            return "Cotações"
+        case .canNotCalculateTotalValue:
+            return "Transação"
         }
     }
 
@@ -27,6 +33,10 @@ enum TransactionError: AppError, Equatable {
             return "Fundos para \(currency) não são suficientes para realizar a transação."
         case .unrecognezedTransactiontype:
             return "Tipo de transação selecionado não é suportado!"
+        case .noQuotations:
+            return "Não existem cotações salvas para entre a moeda de compra e a moeda de troca!"
+        case .canNotCalculateTotalValue:
+            return "Não foi possível efeturar a transação, o valor total não foi calculado."
         }
     }
 }

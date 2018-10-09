@@ -40,9 +40,11 @@ class TransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.delegate = self.controller
+        self.viewModel.delegate = self
         setupCurrencyTextFields()
-        setupAmountTextField(withDelegate: nil)
+        let delegate: CurrencyAmmountDelegate? =
+            controller.buildDelegate(forExchangeForCurrency: viewModel.exchangeForCurrency)
+        setupAmountTextField(withDelegate: delegate)
         setupNavigationBar()
     }
 
@@ -121,3 +123,4 @@ extension TransactionViewController: UIPickerViewDataSource {
 }
 
 extension TransactionViewController: TransactionView {}
+extension TransactionViewController: TransactionDelegate {}

@@ -10,10 +10,10 @@ import CoreData
 import Foundation
 
 protocol QuotationServant {
+    func lastQuotation(forCurrency currency: String) throws -> QuotationEntity?
     func fetchQuotations(fromCurrencyProvider provider: CurrencyProvider,
                          completion: @escaping (_ result: Completion<[QuotationEntity]>) -> Void)
-    func hasQuotations(inContext context: NSManagedObjectContext,
-                       forCurrency currency: String, inWallet wallet: WalletEntity?) throws -> Bool
+    func hasQuotations(forCurrency currency: String, inWallet wallet: WalletEntity?) throws -> Bool
 }
 
 class QuotationsService: QuotationServant {
@@ -40,8 +40,8 @@ class QuotationsService: QuotationServant {
         }
     }
 
-    func hasQuotations(inContext context: NSManagedObjectContext,
-                       forCurrency currency: String, inWallet wallet: WalletEntity? = nil) throws -> Bool {
+    func hasQuotations(forCurrency currency: String, inWallet wallet: WalletEntity? = nil) throws -> Bool {
+        let context: NSManagedObjectContext = self.dataContainer.walletDataContext
         let currencyPredicate: NSPredicate = NSPredicate(format: "currency.acronym = %@", currency)
 
         var subPredicates: [NSPredicate] =  [currencyPredicate]
@@ -55,5 +55,22 @@ class QuotationsService: QuotationServant {
         fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: subPredicates)
 
         return try !context.fetch(fetchRequest).isEmpty
+    }
+
+    func lastQuotation(forCurrency currency: String) throws -> QuotationEntity? {
+        let today: Date = Date()
+        guard let tomorrow: NSDate = today.tomorrow() as NSDate? else { return nil }
+        guard let yesterday: NSDate = today.yesterday() as NSDate? else { return nil }
+
+        let context: NSManagedObjectContext = self.dataContainer.walletDataContext
+        let currencyPredicate: NSPredicate =
+            NSPredicate(format: "acronym = %@ and (timeStamp > %@ and timeStamp < %@)",
+                        currency, yesterday, tomorrow)
+
+        let fetchRequest: NSFetchRequest<QuotationEntity> = NSFetchRequest(entityName: "QuotationEntity")
+        fetchRequest.predicate = currencyPredicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timeStamp", ascending: true)]
+
+        return try context.fetch(fetchRequest).first
     }
 }

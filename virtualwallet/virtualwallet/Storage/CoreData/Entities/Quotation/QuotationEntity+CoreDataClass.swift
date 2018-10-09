@@ -14,3 +14,9 @@ import CoreData
 public class QuotationEntity: NSManagedObject {
 
 }
+
+extension Array where Element == QuotationEntity {
+    func quotation(forCurrency acronym: String) -> QuotationEntity? {
+        return self.filter({ $0.acronym == acronym }).first
+    }
+}

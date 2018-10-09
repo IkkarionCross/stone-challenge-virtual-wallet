@@ -38,6 +38,18 @@ class TransactionController: NSObject {
         }
         self.viewModel?.transactionType = newTransactiontype
     }
+
+    func buildDelegate(forExchangeForCurrency exchangeForCurrency: String) -> CurrencyAmmountDelegate? {
+        guard let viewModel = viewModel else { return nil }
+        let delegate = CurrencyAmmountDelegate(viewModel: viewModel,
+                                                             currencySymbol: exchangeForCurrency)
+        return delegate
+    }
+
+    func exchangeCurrencyTypeChanged(exchangeForCurrency: String) {
+        self.currencyFieldDelegate = self.buildDelegate(forExchangeForCurrency: exchangeForCurrency)
+        self.view?.setupAmountTextField(withDelegate: self.currencyFieldDelegate)
+    }
 }
 
 extension TransactionController: UIPickerViewDelegate {
@@ -53,6 +65,7 @@ extension TransactionController: UIPickerViewDelegate {
             viewModel?.buyCurrency = currencyType
         } else {
             viewModel?.exchangeForCurrency = currencyType
+            exchangeCurrencyTypeChanged(exchangeForCurrency: currencyType)
         }
     }
 
@@ -61,22 +74,5 @@ extension TransactionController: UIPickerViewDelegate {
             fatalError("Transaction Currency type not loaded correctly!")
         }
         return currencyType
-    }
-}
-
-extension TransactionController: TransactionDelegate {
-    func didTransactionTypeChanged() {
-        self.view?.buyCurrencyLabel.text = self.viewModel?.buyCurrencyDescription
-    }
-
-    func didExchangeCurrencyTypeChanged() {
-        guard let viewModel = viewModel else { return }
-        self.currencyFieldDelegate = CurrencyAmmountDelegate(viewModel: viewModel,
-                                                             currencySymbol: viewModel.exchangeForCurrency)
-        self.view?.setupAmountTextField(withDelegate: self.currencyFieldDelegate)
-    }
-
-    func didBuyCurrencyTypeChanged() {
-        self.view?.amountTextField.text = viewModel?.exchangeAmount
     }
 }

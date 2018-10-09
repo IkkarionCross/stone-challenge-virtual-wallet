@@ -27,4 +27,12 @@ extension Date {
         let goBackDays: Int = (weekDay + 1) * -1
         return self.add(days: goBackDays)
     }
+
+    func yesterday() -> Date? {
+        return self.add(days: -1)
+    }
+
+    func tomorrow() -> Date? {
+        return self.add(days: 1)
+    }
 }

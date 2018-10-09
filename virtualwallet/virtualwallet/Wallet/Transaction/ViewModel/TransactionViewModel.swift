@@ -8,9 +8,9 @@
 
 import Foundation
 protocol TransactionDelegate: class {
-    func didExchangeCurrencyTypeChanged()
     func didBuyCurrencyTypeChanged()
     func didTransactionTypeChanged()
+    func didExchangeAmountChanged()
 }
 
 class TransactionViewModel: NSObject {
@@ -24,7 +24,6 @@ class TransactionViewModel: NSObject {
         didSet {
             if oldValue != exchangeForCurrency {
                 self.exchangeCurrencySelectedIndex = acceptedCurrencies.index(of: exchangeForCurrency) ?? 0
-                self.delegate?.didExchangeCurrencyTypeChanged()
             }
         }
     }
@@ -39,22 +38,7 @@ class TransactionViewModel: NSObject {
 
     var exchangeAmount: String {
         didSet {
-//            let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
-//            if !service.hasQuotations(inContext: wallet.managedObjectContext, forCurrency: self.exchangeForCurrency, inWallet: self.wallet) {
-//                    service.fetchQuotations(fromCurrencyProvider: .centralBank) { [weak self] result in
-//                        switch result {
-//                        case .success:
-//                            self?.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
-//                        case let .failure(error):
-//                            ()
-//                        }
-//
-//                }
-//            } else {
-//                if let quotation: QuotationEntity = self.wallet.currencies?.filter({ $0.acronym == self.exchangeForCurrency}).first {
-//                    self.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
-//                }
-//            }
+            delegate?.didExchangeAmountChanged()
         }
     }
 
@@ -67,8 +51,6 @@ class TransactionViewModel: NSObject {
     var buyCurrencyDescription: String {
         return "\(transactionType.description) com"
     }
-
-    private(set) var totalValue: String
 
     private(set) var exchangeCurrencySelectedIndex: Int
 
@@ -86,7 +68,6 @@ class TransactionViewModel: NSObject {
     init(saveTransactionsInWallet wallet: WalletEntity, dataContainer: DataContainer) {
         self.dataContainer = dataContainer
         self.service = QuotationsService(dataContainer: dataContainer)
-        self.totalValue = "0.00"
         self.wallet = wallet
         self.exchangeAmount = "0.00"
         self.exchangeForCurrency = acceptedCurrencies[0]
@@ -105,9 +86,18 @@ class TransactionViewModel: NSObject {
         return acceptedCurrencies[row]
     }
 
-    private func calculateTotalValue(forExchangeAmount amount: Double, withQuotation quotation: QuotationEntity) {
+    func totalValue() throws -> String {
+        let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
+        guard let quotation: QuotationEntity = try service?.lastQuotation(forCurrency: self.exchangeForCurrency) else {
+            throw TransactionError.noQuotations
+        }
+        return self.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
+    }
+
+    private func calculateTotalValue(forExchangeAmount amount: Double,
+                                     withQuotation quotation: QuotationEntity) -> String {
         let total: Double = self.transaction.convert(amount: amount, toQuotation: quotation)
-        self.totalValue = "\(self.buyCurrency)\(total)"
+        return "\(self.buyCurrency)\(total)"
     }
 }
 
