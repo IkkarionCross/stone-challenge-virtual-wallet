@@ -16,6 +16,6 @@ enum BaseRouter {
 
     static let bitcoinMarketHost: String = "www.mercadobitcoin.net"
     static var baseBitcoinMarketURL: String {
-        return "https://\(BaseRouter.bitcoinMarketHost)/api/"
+        return "https://\(BaseRouter.bitcoinMarketHost)/api"
     }
 }

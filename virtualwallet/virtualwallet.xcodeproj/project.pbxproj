@@ -51,6 +51,7 @@
 		57881F46203BA1F400B7CFE4 /* JSONQuotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */; };
 		57881F48203BABEA00B7CFE4 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F47203BABEA00B7CFE4 /* JSONError.swift */; };
 		57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */; };
+		57888848218132FB00EAB34C /* ReportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57888847218132FB00EAB34C /* ReportType.swift */; };
 		57921E552138B78B0069E029 /* OperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E542138B78B0069E029 /* OperationError.swift */; };
 		57921E572138BED20069E029 /* QuotationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E562138BED20069E029 /* QuotationsService.swift */; };
 		57921E5F2138C8320069E029 /* InitialDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E5E2138C8320069E029 /* InitialDataCreator.swift */; };
@@ -141,6 +142,7 @@
 		57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotation.swift; sourceTree = "<group>"; };
 		57881F47203BABEA00B7CFE4 /* JSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		57881F49203BBB0800B7CFE4 /* DoubleAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleAdditions.swift; sourceTree = "<group>"; };
+		57888847218132FB00EAB34C /* ReportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportType.swift; sourceTree = "<group>"; };
 		57921E542138B78B0069E029 /* OperationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationError.swift; sourceTree = "<group>"; };
 		57921E562138BED20069E029 /* QuotationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsService.swift; sourceTree = "<group>"; };
 		57921E5E2138C8320069E029 /* InitialDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDataCreator.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */,
 				5725C92620438B3F001099E0 /* JSONTicker.swift */,
 				5725C92820438F60001099E0 /* DateDecodable.swift */,
+				57888847218132FB00EAB34C /* ReportType.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5784E0652038FF170096B151 /* FetchCentralBankCurrency.swift in Sources */,
+				57888848218132FB00EAB34C /* ReportType.swift in Sources */,
 				57881F4A203BBB0800B7CFE4 /* DoubleAdditions.swift in Sources */,
 				574AC2D52039130A006FFF97 /* NetworkError.swift in Sources */,
 				57E48F2321507EF400B56D53 /* CurrencyAmmountDelegate.swift in Sources */,

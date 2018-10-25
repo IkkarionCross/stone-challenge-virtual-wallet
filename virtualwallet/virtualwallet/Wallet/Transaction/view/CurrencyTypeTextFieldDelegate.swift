@@ -32,6 +32,10 @@ extension CurrencyTypeTextFieldDelegate: UITextFieldDelegate {
         self.inputView.delegate?.pickerView?(inputView, didSelectRow: selectedRow, inComponent: 0)
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        inputView.resignFirstResponder()
+    }
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         return false

@@ -17,7 +17,8 @@ class QuotationsViewController: UITableViewController {
         if let dataContainer = self.dataContainer {
             self.quotationsViewModel = QuotationsViewModel(quotations: [], dataContainer: dataContainer)
             self.quotationsViewModel.delegate = self
-            self.quotationsViewModel.updateQuotationsFromNetwork()
+            self.quotationsViewModel.updateQuotationsFromNetwork(forCurrencyProvider: .centralBank)
+            self.quotationsViewModel.updateQuotationsFromNetwork(forCurrencyProvider: .bitcoinMarket)
         }
     }
 

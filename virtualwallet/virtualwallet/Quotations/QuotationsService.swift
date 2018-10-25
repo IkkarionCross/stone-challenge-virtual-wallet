@@ -35,8 +35,12 @@ class QuotationsService: QuotationServant {
 
             updateCurrencyFromBC.operationDidFinish = completion
             operationQueue.addOperation(updateCurrencyFromBC)
-        default:
-            completion(Completion.success([]))
+        case .bitcoinMarket:
+            let updateCurrencyFromBC: FetchDigitalCurrencyOperation =
+                FetchDigitalCurrencyOperation(currencyType: SupportedCurrencies.BTC,
+                                         container: dataContainer)
+            updateCurrencyFromBC.operationDidFinish = completion
+            operationQueue.addOperation(updateCurrencyFromBC)
         }
     }
 
@@ -58,14 +62,10 @@ class QuotationsService: QuotationServant {
     }
 
     func lastQuotation(forCurrency currency: String) throws -> QuotationEntity? {
-        let today: Date = Date()
-        guard let tomorrow: NSDate = today.tomorrow() as NSDate? else { return nil }
-        guard let yesterday: NSDate = today.yesterday() as NSDate? else { return nil }
-
         let context: NSManagedObjectContext = self.dataContainer.walletDataContext
         let currencyPredicate: NSPredicate =
-            NSPredicate(format: "acronym = %@ and (timeStamp > %@ and timeStamp < %@)",
-                        currency, yesterday, tomorrow)
+            NSPredicate(format: "acronym = %@",
+                        currency )
 
         let fetchRequest: NSFetchRequest<QuotationEntity> = NSFetchRequest(entityName: "QuotationEntity")
         fetchRequest.predicate = currencyPredicate

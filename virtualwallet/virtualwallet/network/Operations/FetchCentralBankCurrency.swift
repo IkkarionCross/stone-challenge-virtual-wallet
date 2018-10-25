@@ -22,7 +22,7 @@ class FetchCentralBankCurrency: CustomOperation {
         self.dataContainer = container
         self.currencyType = currencyType
         super.init()
-        self.title = "Atualizar valores monetários"
+        self.title = "Atualizar valores monetários para o Banco Central"
     }
 
     func buildRequest() -> RESTService {
@@ -67,12 +67,16 @@ class FetchCentralBankCurrency: CustomOperation {
                         return
                     }
 
-                    let quotations: [QuotationEntity] =
+                    var quotations: [QuotationEntity] =
                         parsedQuotations.toEntity(acronym: currenyAcronym, context: context)
+                    // same as dollar
+                    let briQuotations: [QuotationEntity] =
+                        parsedQuotations.toEntity(acronym: SupportedCurrencies.BRITAS.rawValue, context: context)
+                    quotations.append(contentsOf: briQuotations)
                     try context.save()
                     self?.finish(withInfo: quotations)
                 } catch {
-                    self?.finish(withError: JSONError.parseError)
+                    self?.finish(withError: OperationError.failed(reason: error.localizedDescription))
                 }
             }
         }

@@ -13,9 +13,10 @@ extension String {
         if self == "" { return 0 }
 
         let format: NumberFormatter = NumberFormatter()
+        format.numberStyle = .currency
         format.currencyDecimalSeparator = "."
-        format.currencySymbol = symbol
         format.currencyGroupingSeparator = ","
+        format.currencySymbol = symbol
         return format.number(from: self)?.doubleValue ?? 0
     }
 }

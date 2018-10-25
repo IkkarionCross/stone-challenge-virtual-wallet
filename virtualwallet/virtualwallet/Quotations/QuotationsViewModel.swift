@@ -26,8 +26,8 @@ class QuotationsViewModel {
         self.quotations = quotations
     }
 
-    func updateQuotationsFromNetwork() {
-        self.service.fetchQuotations(fromCurrencyProvider: .centralBank, completion: { [weak self] result in
+    func updateQuotationsFromNetwork(forCurrencyProvider provider: CurrencyProvider) {
+        self.service.fetchQuotations(fromCurrencyProvider: provider, completion: { [weak self] result in
             switch result {
             case let .failure(error):
                 DispatchQueue.main.async {

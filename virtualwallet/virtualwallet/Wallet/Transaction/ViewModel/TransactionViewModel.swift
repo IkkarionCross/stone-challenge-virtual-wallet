@@ -88,16 +88,27 @@ class TransactionViewModel: NSObject {
 
     func totalValue() throws -> String {
         let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
-        guard let quotation: QuotationEntity = try service?.lastQuotation(forCurrency: self.exchangeForCurrency) else {
+        guard let toQuotation: QuotationEntity =
+            try service?.lastQuotation(forCurrency: self.exchangeForCurrency) else {
             throw TransactionError.noQuotations
         }
-        return self.calculateTotalValue(forExchangeAmount: value, withQuotation: quotation)
+        guard let fromQuotation: QuotationEntity = try service?.lastQuotation(forCurrency: self.buyCurrency) else {
+            throw TransactionError.noQuotations
+        }
+        return self.calculateTotalValue(forExchangeAmount: value,
+                                        toQuotation: toQuotation, fromQuotation: fromQuotation)
     }
 
     private func calculateTotalValue(forExchangeAmount amount: Double,
-                                     withQuotation quotation: QuotationEntity) -> String {
-        let total: Double = self.transaction.convert(amount: amount, toQuotation: quotation)
-        return "\(self.buyCurrency)\(total)"
+                                     toQuotation: QuotationEntity,
+                                     fromQuotation: QuotationEntity) -> String {
+        let total: Double = self.transaction.convert(amount: amount,
+                                                     toQuotation: toQuotation,
+                                                     fromQuotation: fromQuotation)
+        guard let formattedTotal: String = total.currencyString(withSymbol: self.buyCurrency) else {
+            return ""
+        }
+        return formattedTotal
     }
 }
 

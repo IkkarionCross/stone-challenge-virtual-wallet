@@ -13,12 +13,6 @@ enum QuotationListKey: String {
     case value
 }
 
-enum QuotationReportType: String, Codable {
-    case open = "Abertura"
-    case intermediary = "Intermediário"
-    case close = "Fechamento PTAX"
-}
-
 struct JSONQuotation: Decodable, DateDecodable {
     let buyParity: Double
     let sellParity: Double
@@ -53,8 +47,6 @@ struct JSONQuotation: Decodable, DateDecodable {
     func toEntity(acronym: String, context: NSManagedObjectContext) -> QuotationEntity {
         let quotation: QuotationEntity = QuotationEntity(context: context)
         quotation.acronym = acronym
-        quotation.buyParity = buyParity
-        quotation.sellParity = sellParity
         quotation.sellPrice = sellQuotation
         quotation.buyPrice = buyQuotation
         quotation.timeStamp = timeStamp

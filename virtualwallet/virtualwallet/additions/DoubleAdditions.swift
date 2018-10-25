@@ -17,4 +17,15 @@ extension Double {
         formatter.locale = NSLocale(localeIdentifier: "pt_BR") as Locale
         return formatter.string(from: NSNumber(floatLiteral: Double(self))) ?? "\(self)"
     }
+
+    func currencyString(withSymbol symbol: String) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyDecimalSeparator = "."
+        formatter.currencyGroupingSeparator = ","
+        formatter.currencySymbol = symbol
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: self))
+    }
 }

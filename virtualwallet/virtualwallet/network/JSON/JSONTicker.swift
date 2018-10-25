@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+
 enum JSONTickerKey: String {
     case ticker
 }
@@ -85,5 +87,15 @@ struct JSONTicker: Decodable, DateDecodable {
 
     static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
         return .millisecondsSince1970
+    }
+
+    func toEntity(inContext context: NSManagedObjectContext, acronym: String) -> QuotationEntity {
+        let quotationEntity: QuotationEntity = QuotationEntity(context: context)
+        quotationEntity.acronym = acronym
+        quotationEntity.sellPrice = sell
+        quotationEntity.buyPrice = buy
+        quotationEntity.timeStamp = date
+        quotationEntity.reportType = QuotationReportType.ticker.rawValue
+        return quotationEntity
     }
 }

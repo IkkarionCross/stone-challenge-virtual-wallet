@@ -28,8 +28,18 @@ struct CurrencyTransaction {
         self.wallet = wallet
     }
 
-    func convert(amount: Double, toQuotation: QuotationEntity) -> Double {
-        return amount / toQuotation.buyPrice
+    func convert(amount: Double,
+                 toQuotation: QuotationEntity,
+                 fromQuotation: QuotationEntity) -> Double {
+        let fromBuyPrice: Double
+        if (fromQuotation.acronym == SupportedCurrencies.USD.rawValue ||
+            fromQuotation.acronym == SupportedCurrencies.BRITAS.rawValue) &&
+            toQuotation.acronym == SupportedCurrencies.BTC.rawValue {
+            fromBuyPrice = fromQuotation.buyPrice
+        } else {
+            fromBuyPrice = 1.0
+        }
+        return (amount * toQuotation.buyPrice) / fromBuyPrice
     }
 
     func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity,
