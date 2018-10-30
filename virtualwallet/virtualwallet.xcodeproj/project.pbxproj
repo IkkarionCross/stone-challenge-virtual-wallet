@@ -56,6 +56,7 @@
 		57921E572138BED20069E029 /* QuotationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E562138BED20069E029 /* QuotationsService.swift */; };
 		57921E5F2138C8320069E029 /* InitialDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57921E5E2138C8320069E029 /* InitialDataCreator.swift */; };
 		579F34112187D3410047B6C8 /* Quotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F34102187D3410047B6C8 /* Quotation.swift */; };
+		579F34132187E7BD0047B6C8 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F34122187E7BD0047B6C8 /* CoreDataError.swift */; };
 		57A03285214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */; };
 		57ABBC9520D1F0C700834EDE /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ABBC9420D1F0C700834EDE /* TransactionController.swift */; };
 		57AEF91320434294001E77C8 /* JSONQuotationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEF91220434294001E77C8 /* JSONQuotationTest.swift */; };
@@ -148,6 +149,7 @@
 		57921E562138BED20069E029 /* QuotationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationsService.swift; sourceTree = "<group>"; };
 		57921E5E2138C8320069E029 /* InitialDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDataCreator.swift; sourceTree = "<group>"; };
 		579F34102187D3410047B6C8 /* Quotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotation.swift; sourceTree = "<group>"; };
+		579F34122187E7BD0047B6C8 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		57A03284214B3E4F008C0795 /* CurrencyTypeTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTypeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		57ABBC9420D1F0C700834EDE /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		57AEF91220434294001E77C8 /* JSONQuotationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONQuotationTest.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				574AC2D42039130A006FFF97 /* NetworkError.swift */,
 				57881F47203BABEA00B7CFE4 /* JSONError.swift */,
 				57921E542138B78B0069E029 /* OperationError.swift */,
+				579F34122187E7BD0047B6C8 /* CoreDataError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				57B508A92112854600C29E70 /* CurrencyEntity+CoreDataProperties.swift in Sources */,
 				57AEF91620434BC9001E77C8 /* QuotationsViewModel.swift in Sources */,
 				5784E05D2038FA6C0096B151 /* BaseRouter.swift in Sources */,
+				579F34132187E7BD0047B6C8 /* CoreDataError.swift in Sources */,
 				5725C92720438B3F001099E0 /* JSONTicker.swift in Sources */,
 				57764F282036316A00FFCE08 /* QuotationsViewController.swift in Sources */,
 				57B296B72085825000751A0F /* WalletViewModel.swift in Sources */,

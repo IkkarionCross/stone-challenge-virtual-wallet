@@ -4,8 +4,8 @@
         <attribute name="acronym" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="quotation" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="QuotationEntity" inverseName="currency" inverseEntity="QuotationEntity" syncable="YES"/>
-        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="WalletEntity" inverseName="currencies" inverseEntity="WalletEntity" syncable="YES"/>
+        <relationship name="quotation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuotationEntity" inverseName="currency" inverseEntity="QuotationEntity" syncable="YES"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WalletEntity" inverseName="currencies" inverseEntity="WalletEntity" syncable="YES"/>
     </entity>
     <entity name="QuotationEntity" representedClassName="QuotationEntity" syncable="YES">
         <attribute name="buyPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -29,7 +29,7 @@
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TransactionEntity" inverseName="wallet" inverseEntity="TransactionEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrencyEntity" positionX="-72" positionY="-189" width="128" height="118"/>
+        <element name="CurrencyEntity" positionX="-72" positionY="-189" width="128" height="120"/>
         <element name="QuotationEntity" positionX="-36" positionY="72" width="128" height="165"/>
         <element name="TransactionEntity" positionX="-306" positionY="126" width="128" height="118"/>
         <element name="WalletEntity" positionX="-461" positionY="-30" width="128" height="75"/>

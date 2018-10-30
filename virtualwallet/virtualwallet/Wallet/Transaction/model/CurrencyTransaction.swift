@@ -24,34 +24,37 @@ enum TransactionType: Int {
 struct CurrencyTransaction {
     private var wallet: WalletEntity
 
+    var useInvertedQuotation: Bool = false
+
     init(withWallet wallet: WalletEntity) {
         self.wallet = wallet
     }
 
     func convert(amount: Double,
-                 quotation: QuotationEntity, useInverted: Bool) -> Double {
-        if useInverted {
+                 quotation: QuotationEntity) -> Double {
+        if useInvertedQuotation {
             return (amount * quotation.invertedBuyPrice)
         } else {
             return (amount * quotation.buyPrice)
         }
     }
 
-    func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity,
-             withCurrency givingCurrency: CurrencyEntity) throws -> WalletEntity {
-        let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
+    func buy(ammount: Double, withQuotation quotation: QuotationEntity,
+             ofCurrency buyingCurrency: CurrencyEntity,
+             withExchangeCurrency exchangeCurrency: CurrencyEntity) throws -> WalletEntity {
+        let neededBasedOnCurrencyAmmount: Double =
+            convert(amount: ammount, quotation: quotation)
         if !self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
-                                     ofCurrencyAcronym: givingCurrency.acronym) {
-            throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.toAcronym)
+                                     ofCurrencyAcronym: buyingCurrency.acronym) {
+            throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.acronym)
         }
 
-        try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.toAcronym,
-                            withName: buyingCurrency.currency.name)
+        try self.wallet.add(ammount: ammount, forCurrencyAcronym: exchangeCurrency.acronym,
+                            withName: exchangeCurrency.name)
         try self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
-                             ofCurrencyAcronym: buyingCurrency.toAcronym,
-                             withName: buyingCurrency.currency.name)
+                             ofCurrencyAcronym: buyingCurrency.acronym,
+                             withName: buyingCurrency.name)
 
         return self.wallet
     }
-
 }

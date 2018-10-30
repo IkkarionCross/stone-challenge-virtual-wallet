@@ -81,7 +81,14 @@ class TransactionViewController: UIViewController {
 
     // MARK: Bar button actions
     @objc func onOkBarButtonTouch() {
-
+        do {
+            try viewModel.doTransaction()
+            self.dismiss(animated: true, completion: nil)
+        } catch {
+            let appError: AppError = (error as? AppError) ??
+                TransactionError.unknownError(description: error.localizedDescription)
+            show(appError: appError)
+        }
     }
 
     @objc func onCancelBarButtonTouch() {
@@ -94,7 +101,9 @@ class TransactionViewController: UIViewController {
         do {
             try controller.transactionTypeChanged(newIndex: transactionTypeSegmented.selectedSegmentIndex)
         } catch {
-            self.show(appError: (error as? AppError) ?? TransactionError.unrecognezedTransactiontype)
+            let appError: AppError = (error as? AppError) ??
+                TransactionError.unknownError(description: error.localizedDescription)
+            self.show(appError: appError)
         }
     }
 

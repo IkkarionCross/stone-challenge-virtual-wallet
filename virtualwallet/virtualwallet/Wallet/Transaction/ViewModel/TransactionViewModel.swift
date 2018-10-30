@@ -52,6 +52,11 @@ class TransactionViewModel: NSObject {
         return "\(transactionType.description) com"
     }
 
+    private var exchangeValue: Double {
+        return exchangeAmount
+            .currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
+    }
+
     private(set) var exchangeCurrencySelectedIndex: Int
 
     private(set) var buyCurrencySelectedIndex: Int
@@ -86,8 +91,32 @@ class TransactionViewModel: NSObject {
         return acceptedCurrencies[row]
     }
 
+    func doTransaction() throws {
+        let quotation = try transactionQuotation()
+        guard let fromCurrency: CurrencyEntity = wallet.currency(forAcronym: buyCurrency) else {
+            throw TransactionError.unrecognizedCurrency
+        }
+        guard let toCurrency: CurrencyEntity = wallet.currency(forAcronym: exchangeForCurrency) else {
+            throw TransactionError.unrecognizedCurrency
+        }
+        transaction.useInvertedQuotation = quotation.useInverted
+        wallet = try transaction.buy(ammount: exchangeValue, withQuotation: quotation.quotation,
+                        ofCurrency: fromCurrency,
+                        withExchangeCurrency: toCurrency)
+
+        _ = try transactionEntity(withQuotation: quotation.quotation)
+        try dataContainer?.walletDataContext.save()
+    }
+
     func totalValue() throws -> String {
-        let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
+        let quotation = try transactionQuotation()
+
+        return self.calculateTotalValue(forExchangeAmount: exchangeValue,
+                                        quotation: quotation.quotation,
+                                        useInverted: quotation.useInverted)
+    }
+
+    private func transactionQuotation() throws -> (quotation: QuotationEntity, useInverted: Bool) {
         var useInverted: Bool = true
         var lastQuotation: QuotationEntity? =
             try service?.lastQuotation(fromCurrency: self.buyCurrency, toCurrency: self.exchangeForCurrency)
@@ -101,15 +130,29 @@ class TransactionViewModel: NSObject {
             throw TransactionError.noQuotations
         }
 
-        return self.calculateTotalValue(forExchangeAmount: value,
-                                        quotation: quotation, useInverted: useInverted)
+        return (quotation: quotation, useInverted: useInverted)
+    }
+
+    private func transactionEntity(withQuotation quotation: QuotationEntity) throws -> TransactionEntity {
+        guard let context = dataContainer?.walletDataContext else {
+            throw CoreDataError.invalidContext
+        }
+        let transactionEntity: TransactionEntity = TransactionEntity(context: context)
+        transactionEntity.fromCurrencyAcronym = exchangeForCurrency
+        transactionEntity.toCurrencyAcronym = buyCurrency
+        transactionEntity.value = exchangeValue
+        transactionEntity.quotationUsed = quotation
+        transactionEntity.wallet = wallet
+
+        return transactionEntity
     }
 
     private func calculateTotalValue(forExchangeAmount amount: Double,
                                      quotation: QuotationEntity,
                                      useInverted: Bool) -> String {
+        transaction.useInvertedQuotation = useInverted
         let total: Double = self.transaction.convert(amount: amount,
-                                                     quotation: quotation, useInverted: useInverted)
+                                                     quotation: quotation)
         guard let formattedTotal: String = total.currencyString(withSymbol: self.buyCurrency) else {
             return ""
         }

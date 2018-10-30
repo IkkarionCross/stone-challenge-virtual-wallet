@@ -13,6 +13,8 @@ enum TransactionError: AppError, Equatable {
     case unrecognezedTransactiontype
     case noQuotations
     case canNotCalculateTotalValue
+    case unrecognizedCurrency
+    case unknownError(description: String)
 
     var title: String {
         switch self {
@@ -22,7 +24,7 @@ enum TransactionError: AppError, Equatable {
             return "Tipo de Transação"
         case .noQuotations:
             return "Cotações"
-        case .canNotCalculateTotalValue:
+        case .canNotCalculateTotalValue, .unrecognizedCurrency, .unknownError:
             return "Transação"
         }
     }
@@ -37,6 +39,10 @@ enum TransactionError: AppError, Equatable {
             return "Não existem cotações salvas para entre a moeda de compra e a moeda de troca!"
         case .canNotCalculateTotalValue:
             return "Não foi possível efeturar a transação, o valor total não foi calculado."
+        case .unrecognizedCurrency:
+            return "A moeda da transação não foi reconhecida."
+        case let .unknownError(description):
+            return "Ocorreu um erro na transação: \(description)"
         }
     }
 }

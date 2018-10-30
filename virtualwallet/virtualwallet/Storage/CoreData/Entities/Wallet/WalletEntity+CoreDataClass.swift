@@ -55,10 +55,7 @@ public class WalletEntity: NSManagedObject {
         newCurrencyValue.acronym = acronym
         newCurrencyValue.value = walletCurrencyAmmount + ammount
         newCurrencyValue.name = name
-
-        currencies.insert(newCurrencyValue)
-
-        try context.save()
+        newCurrencyValue.wallet = self
     }
 
     func subtract(ammount: Double, ofCurrencyAcronym acronym: String, withName name: String) throws {
