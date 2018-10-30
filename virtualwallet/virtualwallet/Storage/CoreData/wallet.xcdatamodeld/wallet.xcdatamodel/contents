@@ -8,11 +8,12 @@
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="WalletEntity" inverseName="currencies" inverseEntity="WalletEntity" syncable="YES"/>
     </entity>
     <entity name="QuotationEntity" representedClassName="QuotationEntity" syncable="YES">
-        <attribute name="acronym" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="buyPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fromAcronym" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reportType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sellPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="toAcronym" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="currency" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="CurrencyEntity" inverseName="quotation" inverseEntity="CurrencyEntity" syncable="YES"/>
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="TransactionEntity" inverseName="quotationUsed" inverseEntity="TransactionEntity" syncable="YES"/>
     </entity>
@@ -29,7 +30,7 @@
     </entity>
     <elements>
         <element name="CurrencyEntity" positionX="-72" positionY="-189" width="128" height="118"/>
-        <element name="QuotationEntity" positionX="-36" positionY="72" width="128" height="148"/>
+        <element name="QuotationEntity" positionX="-36" positionY="72" width="128" height="165"/>
         <element name="TransactionEntity" positionX="-306" positionY="126" width="128" height="118"/>
         <element name="WalletEntity" positionX="-461" positionY="-30" width="128" height="75"/>
     </elements>

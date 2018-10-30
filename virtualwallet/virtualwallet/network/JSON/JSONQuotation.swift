@@ -16,17 +16,17 @@ enum QuotationListKey: String {
 struct JSONQuotation: Decodable, DateDecodable {
     let buyParity: Double
     let sellParity: Double
-    let buyQuotation: Double
-    let sellQuotation: Double
-    let timeStamp: Date
+    let buy: Double
+    let sell: Double
+    let date: Date
     let reportType: QuotationReportType
 
     enum CodingKeys: String, CodingKey {
         case buyParity = "paridadeCompra"
         case sellParity = "paridadeVenda"
-        case buyQuotation = "cotacaoCompra"
-        case sellQuotation = "cotacaoVenda"
-        case timeStamp = "dataHoraCotacao"
+        case buy = "cotacaoCompra"
+        case sell = "cotacaoVenda"
+        case date = "dataHoraCotacao"
         case reportType = "tipoBoletim"
     }
 
@@ -44,25 +44,20 @@ struct JSONQuotation: Decodable, DateDecodable {
         return .formatted(dateFormatter())
     }
 
-    func toEntity(acronym: String, context: NSManagedObjectContext) -> QuotationEntity {
-        let quotation: QuotationEntity = QuotationEntity(context: context)
-        quotation.acronym = acronym
-        quotation.sellPrice = sellQuotation
-        quotation.buyPrice = buyQuotation
-        quotation.timeStamp = timeStamp
-        quotation.reportType = reportType.rawValue
-
-        return quotation
-    }
 }
 
 extension Array where Element == JSONQuotation {
-    func toEntity(acronym: String, context: NSManagedObjectContext) -> [QuotationEntity] {
+    func toEntity(fromAcronym: String, toAcronym: String, context: NSManagedObjectContext) -> [QuotationEntity] {
         var quotations: [QuotationEntity] = []
         for jsonQuotation in self {
-            let quotation: QuotationEntity = jsonQuotation.toEntity(acronym: acronym, context: context)
+            let quotation: QuotationEntity =
+                jsonQuotation.toEntity(inContext: context,
+                                       fromAcronym: fromAcronym,
+                                       toAcronym: toAcronym)
             quotations.append(quotation)
         }
         return quotations
     }
 }
+
+extension JSONQuotation: Quotation {}

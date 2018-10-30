@@ -11,7 +11,8 @@ import Foundation
 enum SupportedCurrencies: String {
     case USD,
          BTC,
-         BRITAS
+         BRITAS,
+         BRL
 }
 
 enum CurrencyProvider: Int {

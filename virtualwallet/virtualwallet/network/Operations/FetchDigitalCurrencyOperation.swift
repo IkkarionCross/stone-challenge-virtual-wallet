@@ -62,7 +62,10 @@ class FetchDigitalCurrencyOperation: CustomOperation {
                     return
                 }
                 do {
-                    let quotation: QuotationEntity = ticker.toEntity(inContext: context, acronym: currencyAcronym)
+                    let quotation: QuotationEntity =
+                        ticker.toEntity(inContext: context,
+                                        fromAcronym: currencyAcronym,
+                                        toAcronym: SupportedCurrencies.BRL.rawValue)
                     try context.save()
                     self?.finish(withInfo: [quotation])
                 } catch {

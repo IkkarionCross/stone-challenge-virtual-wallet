@@ -23,6 +23,10 @@ struct JSONTicker: Decodable, DateDecodable {
     let sell: Double
     let date: Date
 
+    var reportType: QuotationReportType {
+        return QuotationReportType.ticker
+    }
+
     enum CodingKeys: String, CodingKey {
         case high
         case low
@@ -88,14 +92,6 @@ struct JSONTicker: Decodable, DateDecodable {
     static func encodeDateStrategy() -> JSONEncoder.DateEncodingStrategy {
         return .millisecondsSince1970
     }
-
-    func toEntity(inContext context: NSManagedObjectContext, acronym: String) -> QuotationEntity {
-        let quotationEntity: QuotationEntity = QuotationEntity(context: context)
-        quotationEntity.acronym = acronym
-        quotationEntity.sellPrice = sell
-        quotationEntity.buyPrice = buy
-        quotationEntity.timeStamp = date
-        quotationEntity.reportType = QuotationReportType.ticker.rawValue
-        return quotationEntity
-    }
 }
+
+extension JSONTicker: Quotation {}

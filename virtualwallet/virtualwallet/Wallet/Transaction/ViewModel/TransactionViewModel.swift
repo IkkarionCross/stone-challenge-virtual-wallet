@@ -88,23 +88,28 @@ class TransactionViewModel: NSObject {
 
     func totalValue() throws -> String {
         let value: Double = exchangeAmount.currencyStringToDouble(currencySymbol: self.exchangeForCurrency)
-        guard let toQuotation: QuotationEntity =
-            try service?.lastQuotation(forCurrency: self.exchangeForCurrency) else {
+        var useInverted: Bool = true
+        var lastQuotation: QuotationEntity? =
+            try service?.lastQuotation(fromCurrency: self.buyCurrency, toCurrency: self.exchangeForCurrency)
+        if lastQuotation == nil {
+            useInverted = false
+            lastQuotation =
+                try service?.lastQuotation(fromCurrency: self.exchangeForCurrency, toCurrency: self.buyCurrency)
+        }
+
+        guard let quotation: QuotationEntity = lastQuotation else {
             throw TransactionError.noQuotations
         }
-        guard let fromQuotation: QuotationEntity = try service?.lastQuotation(forCurrency: self.buyCurrency) else {
-            throw TransactionError.noQuotations
-        }
+
         return self.calculateTotalValue(forExchangeAmount: value,
-                                        toQuotation: toQuotation, fromQuotation: fromQuotation)
+                                        quotation: quotation, useInverted: useInverted)
     }
 
     private func calculateTotalValue(forExchangeAmount amount: Double,
-                                     toQuotation: QuotationEntity,
-                                     fromQuotation: QuotationEntity) -> String {
+                                     quotation: QuotationEntity,
+                                     useInverted: Bool) -> String {
         let total: Double = self.transaction.convert(amount: amount,
-                                                     toQuotation: toQuotation,
-                                                     fromQuotation: fromQuotation)
+                                                     quotation: quotation, useInverted: useInverted)
         guard let formattedTotal: String = total.currencyString(withSymbol: self.buyCurrency) else {
             return ""
         }

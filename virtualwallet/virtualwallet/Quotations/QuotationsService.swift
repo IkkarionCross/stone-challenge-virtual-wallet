@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 protocol QuotationServant {
-    func lastQuotation(forCurrency currency: String) throws -> QuotationEntity?
+    func lastQuotation(fromCurrency: String, toCurrency: String) throws -> QuotationEntity?
     func fetchQuotations(fromCurrencyProvider provider: CurrencyProvider,
                          completion: @escaping (_ result: Completion<[QuotationEntity]>) -> Void)
     func hasQuotations(forCurrency currency: String, inWallet wallet: WalletEntity?) throws -> Bool
@@ -61,11 +61,11 @@ class QuotationsService: QuotationServant {
         return try !context.fetch(fetchRequest).isEmpty
     }
 
-    func lastQuotation(forCurrency currency: String) throws -> QuotationEntity? {
+    func lastQuotation(fromCurrency: String, toCurrency: String) throws -> QuotationEntity? {
         let context: NSManagedObjectContext = self.dataContainer.walletDataContext
         let currencyPredicate: NSPredicate =
-            NSPredicate(format: "acronym = %@",
-                        currency )
+            NSPredicate(format: "fromAcronym = %@ and toAcronym = %@",
+                        fromCurrency, toCurrency )
 
         let fetchRequest: NSFetchRequest<QuotationEntity> = NSFetchRequest(entityName: "QuotationEntity")
         fetchRequest.predicate = currencyPredicate

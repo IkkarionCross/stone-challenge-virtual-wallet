@@ -77,10 +77,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 () // it should log on a analytics library
             }
         }
-        service?.fetchQuotations(fromCurrencyProvider: .bitcoinMarket) { result in
+        service?.fetchQuotations(fromCurrencyProvider: .bitcoinMarket) { [weak self] result in
+            guard let container: DataContainer = self?.container else {
+                return
+            }
             switch result {
             case .success:
-                ()
+                do {
+                    // for the sake of simplicity: added some quotations
+                    let service: QuotationsService = QuotationsService(dataContainer: container)
+
+                    let usdToBritas: QuotationEntity = QuotationEntity(context: container.walletDataContext)
+                    usdToBritas.buyPrice = 1.0
+                    usdToBritas.sellPrice = 1.0
+                    usdToBritas.fromAcronym = SupportedCurrencies.BRITAS.rawValue
+                    usdToBritas.toAcronym = SupportedCurrencies.USD.rawValue
+                    usdToBritas.timeStamp = Date()
+                    usdToBritas.reportType = QuotationReportType.close.rawValue
+
+                    let btcToBRL: QuotationEntity! =
+                        try service.lastQuotation(fromCurrency: SupportedCurrencies.BTC.rawValue,
+                                                  toCurrency: SupportedCurrencies.BRL.rawValue)
+
+                    let usdToBRL: QuotationEntity! =
+                        try service.lastQuotation(fromCurrency: SupportedCurrencies.USD.rawValue,
+                                                  toCurrency: SupportedCurrencies.BRL.rawValue)
+
+                    let btcToUsd: QuotationEntity = QuotationEntity(context: container.walletDataContext)
+                    btcToUsd.buyPrice = btcToBRL.buyPrice * usdToBRL.invertedBuyPrice
+                    btcToUsd.sellPrice = btcToBRL.sellPrice * usdToBRL.invertedSellPrice
+                    btcToUsd.fromAcronym = SupportedCurrencies.BTC.rawValue
+                    btcToUsd.toAcronym = SupportedCurrencies.USD.rawValue
+                    btcToUsd.timeStamp = Date()
+                    btcToUsd.reportType = QuotationReportType.close.rawValue
+
+                    try container.walletDataContext.save()
+                } catch {}
             case .failure: // if there is a failure it will be shown on the transactions screen
                 () // it should log on a analytics library
             }

@@ -29,17 +29,12 @@ struct CurrencyTransaction {
     }
 
     func convert(amount: Double,
-                 toQuotation: QuotationEntity,
-                 fromQuotation: QuotationEntity) -> Double {
-        let fromBuyPrice: Double
-        if (fromQuotation.acronym == SupportedCurrencies.USD.rawValue ||
-            fromQuotation.acronym == SupportedCurrencies.BRITAS.rawValue) &&
-            toQuotation.acronym == SupportedCurrencies.BTC.rawValue {
-            fromBuyPrice = fromQuotation.buyPrice
+                 quotation: QuotationEntity, useInverted: Bool) -> Double {
+        if useInverted {
+            return (amount * quotation.invertedBuyPrice)
         } else {
-            fromBuyPrice = 1.0
+            return (amount * quotation.buyPrice)
         }
-        return (amount * toQuotation.buyPrice) / fromBuyPrice
     }
 
     func buy(ammount: Double, ofCurrency buyingCurrency: QuotationEntity,
@@ -47,13 +42,13 @@ struct CurrencyTransaction {
         let neededBasedOnCurrencyAmmount: Double = ammount * buyingCurrency.buyPrice
         if !self.wallet.hasAtLeast(funds: neededBasedOnCurrencyAmmount,
                                      ofCurrencyAcronym: givingCurrency.acronym) {
-            throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.acronym)
+            throw TransactionError.notEnoughFunds(ofCurrency: buyingCurrency.toAcronym)
         }
 
-        try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.acronym,
+        try self.wallet.add(ammount: ammount, forCurrencyAcronym: buyingCurrency.toAcronym,
                             withName: buyingCurrency.currency.name)
         try self.wallet.subtract(ammount: neededBasedOnCurrencyAmmount,
-                             ofCurrencyAcronym: buyingCurrency.acronym,
+                             ofCurrencyAcronym: buyingCurrency.toAcronym,
                              withName: buyingCurrency.currency.name)
 
         return self.wallet

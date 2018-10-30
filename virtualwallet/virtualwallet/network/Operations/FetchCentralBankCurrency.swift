@@ -68,10 +68,12 @@ class FetchCentralBankCurrency: CustomOperation {
                     }
 
                     var quotations: [QuotationEntity] =
-                        parsedQuotations.toEntity(acronym: currenyAcronym, context: context)
+                        parsedQuotations.toEntity(fromAcronym: currenyAcronym,
+                                                  toAcronym: SupportedCurrencies.BRL.rawValue, context: context)
                     // same as dollar
                     let briQuotations: [QuotationEntity] =
-                        parsedQuotations.toEntity(acronym: SupportedCurrencies.BRITAS.rawValue, context: context)
+                        parsedQuotations.toEntity(fromAcronym: SupportedCurrencies.BRITAS.rawValue,
+                                                  toAcronym: SupportedCurrencies.BRL.rawValue, context: context)
                     quotations.append(contentsOf: briQuotations)
                     try context.save()
                     self?.finish(withInfo: quotations)
