@@ -227,6 +227,7 @@
 		572031202090199A00425EDD /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				579F34152187F30D0047B6C8 /* Error */,
 				57A03283214B3DD7008C0795 /* view */,
 				57B508B32112863400C29E70 /* model */,
 				57DB92272106AA2E00E66717 /* ViewModel */,
@@ -246,6 +247,7 @@
 		57260A02212E41AE00A44D77 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				5738E50C20B4FB8F004FDA88 /* FieldMask */,
 				57260A03212E41C300A44D77 /* Completion.swift */,
 			);
 			path = utils;
@@ -287,8 +289,9 @@
 		574AC2E12039FD52006FFF97 /* protocols */ = {
 			isa = PBXGroup;
 			children = (
+				579F34142187F2C30047B6C8 /* model */,
+				579F34192187F36C0047B6C8 /* error */,
 				573140A1209FD9D9000C1574 /* Money */,
-				574AC2E22039FD60006FFF97 /* Service.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -320,12 +323,10 @@
 				57260A02212E41AE00A44D77 /* utils */,
 				57B508B22112860400C29E70 /* additions */,
 				57921E582138C3BB0069E029 /* Storage */,
-				5738E50C20B4FB8F004FDA88 /* FieldMask */,
 				5731409E209FD4D1000C1574 /* MainViewController */,
 				57764F542038C3A700FFCE08 /* Wallet */,
 				57AEF91420434BB2001E77C8 /* Quotations */,
 				574AC2E12039FD52006FFF97 /* protocols */,
-				57B508B1211285DD00C29E70 /* Errors */,
 				57B508B42112865A00C29E70 /* network */,
 				57764F48203636F000FFCE08 /* R.generated.swift */,
 				57764F252036316A00FFCE08 /* AppDelegate.swift */,
@@ -373,6 +374,7 @@
 		57764F572038C5D200FFCE08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5725C91C2043822E001099E0 /* SupportedCurrencies.swift */,
 				57764F552038C3B400FFCE08 /* Wallet.swift */,
 				57764F582038C5E400FFCE08 /* CurrencyProperties.swift */,
 			);
@@ -386,6 +388,78 @@
 				57921E5E2138C8320069E029 /* InitialDataCreator.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		579F34142187F2C30047B6C8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				579F34102187D3410047B6C8 /* Quotation.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		579F34152187F30D0047B6C8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				57764F5B2038D35C00FFCE08 /* TransactionError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		579F34162187F32B0047B6C8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				57921E542138B78B0069E029 /* OperationError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		579F34172187F3390047B6C8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				574AC2D42039130A006FFF97 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		579F34182187F3590047B6C8 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				579F34122187E7BD0047B6C8 /* CoreDataError.swift */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		579F34192187F36C0047B6C8 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				5784E0582038D3AA0096B151 /* AppError.swift */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		579F341A2187F3C80047B6C8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				57764F272036316A00FFCE08 /* QuotationsViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		579F341B2187F3D50047B6C8 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		579F341C2187F4020047B6C8 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				57921E562138BED20069E029 /* QuotationsService.swift */,
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 		57A03283214B3DD7008C0795 /* view */ = {
@@ -412,10 +486,9 @@
 		57AEF91420434BB2001E77C8 /* Quotations */ = {
 			isa = PBXGroup;
 			children = (
-				57764F272036316A00FFCE08 /* QuotationsViewController.swift */,
-				57AEF91520434BC9001E77C8 /* QuotationsViewModel.swift */,
-				5725C91C2043822E001099E0 /* SupportedCurrencies.swift */,
-				57921E562138BED20069E029 /* QuotationsService.swift */,
+				579F341C2187F4020047B6C8 /* service */,
+				579F341B2187F3D50047B6C8 /* viewModel */,
+				579F341A2187F3C80047B6C8 /* view */,
 			);
 			path = Quotations;
 			sourceTree = "<group>";
@@ -484,19 +557,6 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
-		57B508B1211285DD00C29E70 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				57764F5B2038D35C00FFCE08 /* TransactionError.swift */,
-				5784E0582038D3AA0096B151 /* AppError.swift */,
-				574AC2D42039130A006FFF97 /* NetworkError.swift */,
-				57881F47203BABEA00B7CFE4 /* JSONError.swift */,
-				57921E542138B78B0069E029 /* OperationError.swift */,
-				579F34122187E7BD0047B6C8 /* CoreDataError.swift */,
-			);
-			path = Errors;
-			sourceTree = "<group>";
-		};
 		57B508B22112860400C29E70 /* additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +580,7 @@
 		57B508B42112865A00C29E70 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				579F34172187F3390047B6C8 /* Error */,
 				57B508B82112869800C29E70 /* Operations */,
 				57B508B72112868C00C29E70 /* Service */,
 				57B508B62112867B00C29E70 /* Router */,
@@ -531,11 +592,11 @@
 		57B508B52112866900C29E70 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				57881F47203BABEA00B7CFE4 /* JSONError.swift */,
 				57881F45203BA1F400B7CFE4 /* JSONQuotation.swift */,
 				5725C92620438B3F001099E0 /* JSONTicker.swift */,
 				5725C92820438F60001099E0 /* DateDecodable.swift */,
 				57888847218132FB00EAB34C /* ReportType.swift */,
-				579F34102187D3410047B6C8 /* Quotation.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -554,6 +615,7 @@
 		57B508B72112868C00C29E70 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				574AC2E22039FD60006FFF97 /* Service.swift */,
 				574AC2D2203911B9006FFF97 /* RESTService.swift */,
 			);
 			path = Service;
@@ -562,6 +624,7 @@
 		57B508B82112869800C29E70 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				579F34162187F32B0047B6C8 /* Error */,
 				5784E0642038FF170096B151 /* FetchCentralBankCurrency.swift */,
 				5725C92420438942001099E0 /* FetchDigitalCurrencyOperation.swift */,
 				5784E066203906570096B151 /* CustomOperation.swift */,
@@ -573,6 +636,7 @@
 		57BD36A420EDB0E900AE2AFC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				579F34182187F3590047B6C8 /* error */,
 				57B5089B2112850C00C29E70 /* Entities */,
 				57BD36A520EDB10900AE2AFC /* wallet.xcdatamodeld */,
 				57B508B921128AE000C29E70 /* WalletDataContainer.swift */,
